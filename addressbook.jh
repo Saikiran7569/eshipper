@@ -1,0 +1,68 @@
+entity AddressBook {	
+	companyName String maxlength(255) 
+    address1 String maxlength(255) 
+    address2 String maxlength(255) 
+    postalCode String maxlength(255)    
+    contactName String maxlength(255) 
+    phoneNo String maxlength(255) 
+    contactEmail String maxlength(255)
+    province String maxlength(255)
+   	defaultFrom Boolean
+	defaultTo Boolean
+    createdByUser String maxlength(255)	
+    dateCreated LocalDate
+    dateUpdated LocalDate
+    
+}
+
+entity Country {
+  name String maxlength(255)
+  fullName String maxlength(255)
+  isRestricted Boolean
+  
+}
+
+entity Customer {
+  
+  accountNumber String maxlength(255) 
+  name String maxlength(255) 
+  address1 String maxlength(255) 
+  address2 String maxlength(255)    
+  postalCode String maxlength(255)   
+  phone String maxlength(255) 
+  email String maxlength(255) 
+  timeZone String maxlength(255) 
+  costAccount Integer max(4) 
+  dateCreated ZonedDateTime    
+  creator Integer max(20)
+  contact String maxlength(255)
+  isShopifyEnable Boolean
+  defaultSignatureOption Integer max(10)
+  
+  
+  
+}
+
+entity Province {
+  
+  name String maxlength(255)
+  fullName String maxlength(255)
+  
+ 
+ }
+ entity City {
+  
+  city String maxlength(255)
+   
+ }
+ 
+  relationship OneToMany {
+  Customer to AddressBook
+  }
+ 
+relationship ManyToOne {
+ 	 AddressBook to Country 
+     AddressBook to Province
+     AddressBook to City 
+}
+
