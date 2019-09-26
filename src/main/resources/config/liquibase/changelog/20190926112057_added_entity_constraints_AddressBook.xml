@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity AddressBook.
+    -->
+    <changeSet id="20190926112057-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="country_id"
+                                 baseTableName="address_book"
+                                 constraintName="fk_address_book_country_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+
+        <addForeignKeyConstraint baseColumnNames="province_id"
+                                 baseTableName="address_book"
+                                 constraintName="fk_address_book_province_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="province"/>
+
+        <addForeignKeyConstraint baseColumnNames="city_id"
+                                 baseTableName="address_book"
+                                 constraintName="fk_address_book_city_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="city"/>
+
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="address_book"
+                                 constraintName="fk_address_book_customer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+
+    </changeSet>
+</databaseChangeLog>
