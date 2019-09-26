@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="country">
+            <h2><span jhiTranslate="eshipperApp.country.detail.title">Country</span> {{country.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.country.name">Name</span></dt>
+                <dd>
+                    <span>{{country.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.country.fullName">Full Name</span></dt>
+                <dd>
+                    <span>{{country.fullName}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.country.isRestricted">Is Restricted</span></dt>
+                <dd>
+                    <span>{{country.isRestricted}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/country', country.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

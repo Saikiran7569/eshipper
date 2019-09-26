@@ -1,0 +1,105 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eshipperApp.addressBook.home.title">Address Books</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-address-book" [routerLink]="['/address-book/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="eshipperApp.addressBook.home.createLabel">
+            Create a new Address Book
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="addressBooks?.length === 0">
+        <span jhiTranslate="eshipperApp.addressBook.home.notFound">No addressBooks found</span>
+    </div>
+    <div class="table-responsive" *ngIf="addressBooks?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.companyName">Company Name</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.address1">Address 1</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.address2">Address 2</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.postalCode">Postal Code</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.contactName">Contact Name</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.phoneNo">Phone No</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.contactEmail">Contact Email</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.province">Province</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.defaultFrom">Default From</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.defaultTo">Default To</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.createdByUser">Created By User</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.dateCreated">Date Created</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.dateUpdated">Date Updated</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.country">Country</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.province">Province</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.city">City</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.customer">Customer</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let addressBook of addressBooks ;trackBy: trackId">
+                <td><a [routerLink]="['/address-book', addressBook.id, 'view' ]">{{addressBook.id}}</a></td>
+                <td>{{addressBook.companyName}}</td>
+                <td>{{addressBook.address1}}</td>
+                <td>{{addressBook.address2}}</td>
+                <td>{{addressBook.postalCode}}</td>
+                <td>{{addressBook.contactName}}</td>
+                <td>{{addressBook.phoneNo}}</td>
+                <td>{{addressBook.contactEmail}}</td>
+                <td>{{addressBook.province}}</td>
+                <td>{{addressBook.defaultFrom}}</td>
+                <td>{{addressBook.defaultTo}}</td>
+                <td>{{addressBook.createdByUser}}</td>
+                <td>{{addressBook.dateCreated | date:'mediumDate'}}</td>
+                <td>{{addressBook.dateUpdated | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="addressBook.country">
+                        <a [routerLink]="['/country', addressBook.country?.id, 'view' ]" >{{addressBook.country?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="addressBook.province">
+                        <a [routerLink]="['/province', addressBook.province?.id, 'view' ]" >{{addressBook.province?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="addressBook.city">
+                        <a [routerLink]="['/city', addressBook.city?.id, 'view' ]" >{{addressBook.city?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="addressBook.customer">
+                        <a [routerLink]="['/customer', addressBook.customer?.id, 'view' ]" >{{addressBook.customer?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/address-book', addressBook.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/address-book', addressBook.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/address-book', { outlets: { popup: addressBook.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

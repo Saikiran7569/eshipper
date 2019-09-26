@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="customer">
+            <h2><span jhiTranslate="eshipperApp.customer.detail.title">Customer</span> {{customer.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.customer.accountNumber">Account Number</span></dt>
+                <dd>
+                    <span>{{customer.accountNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.name">Name</span></dt>
+                <dd>
+                    <span>{{customer.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.address1">Address 1</span></dt>
+                <dd>
+                    <span>{{customer.address1}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.address2">Address 2</span></dt>
+                <dd>
+                    <span>{{customer.address2}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{customer.postalCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.phone">Phone</span></dt>
+                <dd>
+                    <span>{{customer.phone}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.email">Email</span></dt>
+                <dd>
+                    <span>{{customer.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.timeZone">Time Zone</span></dt>
+                <dd>
+                    <span>{{customer.timeZone}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.costAccount">Cost Account</span></dt>
+                <dd>
+                    <span>{{customer.costAccount}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.dateCreated">Date Created</span></dt>
+                <dd>
+                    <span>{{customer.dateCreated}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.creator">Creator</span></dt>
+                <dd>
+                    <span>{{customer.creator}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.contact">Contact</span></dt>
+                <dd>
+                    <span>{{customer.contact}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.isShopifyEnable">Is Shopify Enable</span></dt>
+                <dd>
+                    <span>{{customer.isShopifyEnable}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.customer.defaultSignatureOption">Default Signature Option</span></dt>
+                <dd>
+                    <span>{{customer.defaultSignatureOption}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/customer', customer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

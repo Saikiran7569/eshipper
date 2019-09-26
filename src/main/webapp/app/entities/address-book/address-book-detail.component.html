@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="addressBook">
+            <h2><span jhiTranslate="eshipperApp.addressBook.detail.title">Address Book</span> {{addressBook.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.addressBook.companyName">Company Name</span></dt>
+                <dd>
+                    <span>{{addressBook.companyName}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.address1">Address 1</span></dt>
+                <dd>
+                    <span>{{addressBook.address1}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.address2">Address 2</span></dt>
+                <dd>
+                    <span>{{addressBook.address2}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{addressBook.postalCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.contactName">Contact Name</span></dt>
+                <dd>
+                    <span>{{addressBook.contactName}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.phoneNo">Phone No</span></dt>
+                <dd>
+                    <span>{{addressBook.phoneNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.contactEmail">Contact Email</span></dt>
+                <dd>
+                    <span>{{addressBook.contactEmail}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.province">Province</span></dt>
+                <dd>
+                    <span>{{addressBook.province}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.defaultFrom">Default From</span></dt>
+                <dd>
+                    <span>{{addressBook.defaultFrom}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.defaultTo">Default To</span></dt>
+                <dd>
+                    <span>{{addressBook.defaultTo}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.createdByUser">Created By User</span></dt>
+                <dd>
+                    <span>{{addressBook.createdByUser}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.dateCreated">Date Created</span></dt>
+                <dd>
+                    <span>{{addressBook.dateCreated}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.dateUpdated">Date Updated</span></dt>
+                <dd>
+                    <span>{{addressBook.dateUpdated}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.country">Country</span></dt>
+                <dd>
+                    <div *ngIf="addressBook.country">
+                        <a [routerLink]="['/country', addressBook.country?.id, 'view']">{{addressBook.country?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.province">Province</span></dt>
+                <dd>
+                    <div *ngIf="addressBook.province">
+                        <a [routerLink]="['/province', addressBook.province?.id, 'view']">{{addressBook.province?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.city">City</span></dt>
+                <dd>
+                    <div *ngIf="addressBook.city">
+                        <a [routerLink]="['/city', addressBook.city?.id, 'view']">{{addressBook.city?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="addressBook.customer">
+                        <a [routerLink]="['/customer', addressBook.customer?.id, 'view']">{{addressBook.customer?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/address-book', addressBook.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
