@@ -26,7 +26,7 @@ entity User{
 userName String maxlength(255)
 }
 
-entity Customer {
+entity Company {
   
   accountNumber String maxlength(255) 
   name String maxlength(255) 
@@ -61,7 +61,7 @@ entity Province {
  }
  
   relationship OneToMany {
-  Customer to AddressBook
+  Company to AddressBook
   User to AddressBook
   }
  
