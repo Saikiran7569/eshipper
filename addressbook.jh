@@ -6,7 +6,6 @@ entity AddressBook {
     contactName String maxlength(255) 
     phoneNo String maxlength(255) 
     contactEmail String maxlength(255)
-    province String maxlength(255)
    	notify Boolean
 	residential Boolean
     createdByUser String maxlength(255)	
@@ -21,6 +20,10 @@ entity Country {
   fullName String maxlength(255)
   isRestricted Boolean
   
+}
+
+entity User{
+userName String maxlength(255)
 }
 
 entity Customer {
@@ -59,6 +62,7 @@ entity Province {
  
   relationship OneToMany {
   Customer to AddressBook
+  User to AddressBook
   }
  
 relationship ManyToOne {
