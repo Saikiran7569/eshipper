@@ -87,17 +87,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.province" for="field_province">Province</label>
-                    <input type="text" class="form-control" name="province" id="field_province"
-                           formControlName="province"/>
-                    <div *ngIf="editForm.get('province').invalid && (editForm.get('province').dirty || editForm.get('province').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('province').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
-                        This field cannot be longer than 255 characters.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.notify" for="field_notify">Notify</label>
                     <input type="checkbox" class="form-control" name="notify" id="field_notify"
                            formControlName="notify"/>
@@ -150,30 +139,30 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.country" for="field_country">Country</label>
-                    <select class="form-control" id="field_country" name="country" formControlName="country">
+                    <select class="form-control" id="field_country" name="country" formControlName="countryId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="countryOption.id === editForm.get('country').value?.id ? editForm.get('country').value : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
+                        <option [ngValue]="countryOption.id" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.province" for="field_province">Province</label>
-                    <select class="form-control" id="field_province" name="province" formControlName="province">
+                    <select class="form-control" id="field_province" name="province" formControlName="provinceId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="provinceOption.id === editForm.get('province').value?.id ? editForm.get('province').value : provinceOption" *ngFor="let provinceOption of provinces; trackBy: trackProvinceById">{{provinceOption.id}}</option>
+                        <option [ngValue]="provinceOption.id" *ngFor="let provinceOption of provinces; trackBy: trackProvinceById">{{provinceOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.city" for="field_city">City</label>
-                    <select class="form-control" id="field_city" name="city" formControlName="city">
+                    <select class="form-control" id="field_city" name="city" formControlName="cityId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="cityOption.id === editForm.get('city').value?.id ? editForm.get('city').value : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.id}}</option>
+                        <option [ngValue]="cityOption.id" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.customer" for="field_customer">Customer</label>
-                    <select class="form-control" id="field_customer" name="customer" formControlName="customer">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.company" for="field_company">Company</label>
+                    <select class="form-control" id="field_company" name="company" formControlName="companyId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="customerOption.id === editForm.get('customer').value?.id ? editForm.get('customer').value : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+                        <option [ngValue]="companyOption.id" *ngFor="let companyOption of companies; trackBy: trackCompanyById">{{companyOption.id}}</option>
                     </select>
                 </div>
             </div>

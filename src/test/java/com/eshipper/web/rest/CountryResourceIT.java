@@ -3,6 +3,9 @@ package com.eshipper.web.rest;
 import com.eshipper.EshipperApp;
 import com.eshipper.domain.Country;
 import com.eshipper.repository.CountryRepository;
+import com.eshipper.service.CountryService;
+import com.eshipper.service.dto.CountryDTO;
+import com.eshipper.service.mapper.CountryMapper;
 import com.eshipper.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -46,6 +49,12 @@ public class CountryResourceIT {
     private CountryRepository countryRepository;
 
     @Autowired
+    private CountryMapper countryMapper;
+
+    @Autowired
+    private CountryService countryService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -67,7 +76,7 @@ public class CountryResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CountryResource countryResource = new CountryResource(countryRepository);
+        final CountryResource countryResource = new CountryResource(countryService);
         this.restCountryMockMvc = MockMvcBuilders.standaloneSetup(countryResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -114,9 +123,10 @@ public class CountryResourceIT {
         int databaseSizeBeforeCreate = countryRepository.findAll().size();
 
         // Create the Country
+        CountryDTO countryDTO = countryMapper.toDto(country);
         restCountryMockMvc.perform(post("/api/countries")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(country)))
+            .content(TestUtil.convertObjectToJsonBytes(countryDTO)))
             .andExpect(status().isCreated());
 
         // Validate the Country in the database
@@ -135,11 +145,12 @@ public class CountryResourceIT {
 
         // Create the Country with an existing ID
         country.setId(1L);
+        CountryDTO countryDTO = countryMapper.toDto(country);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCountryMockMvc.perform(post("/api/countries")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(country)))
+            .content(TestUtil.convertObjectToJsonBytes(countryDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Country in the database
@@ -204,10 +215,11 @@ public class CountryResourceIT {
             .name(UPDATED_NAME)
             .fullName(UPDATED_FULL_NAME)
             .isRestricted(UPDATED_IS_RESTRICTED);
+        CountryDTO countryDTO = countryMapper.toDto(updatedCountry);
 
         restCountryMockMvc.perform(put("/api/countries")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedCountry)))
+            .content(TestUtil.convertObjectToJsonBytes(countryDTO)))
             .andExpect(status().isOk());
 
         // Validate the Country in the database
@@ -225,11 +237,12 @@ public class CountryResourceIT {
         int databaseSizeBeforeUpdate = countryRepository.findAll().size();
 
         // Create the Country
+        CountryDTO countryDTO = countryMapper.toDto(country);
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restCountryMockMvc.perform(put("/api/countries")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(country)))
+            .content(TestUtil.convertObjectToJsonBytes(countryDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Country in the database
@@ -268,5 +281,28 @@ public class CountryResourceIT {
         assertThat(country1).isNotEqualTo(country2);
         country1.setId(null);
         assertThat(country1).isNotEqualTo(country2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(CountryDTO.class);
+        CountryDTO countryDTO1 = new CountryDTO();
+        countryDTO1.setId(1L);
+        CountryDTO countryDTO2 = new CountryDTO();
+        assertThat(countryDTO1).isNotEqualTo(countryDTO2);
+        countryDTO2.setId(countryDTO1.getId());
+        assertThat(countryDTO1).isEqualTo(countryDTO2);
+        countryDTO2.setId(2L);
+        assertThat(countryDTO1).isNotEqualTo(countryDTO2);
+        countryDTO1.setId(null);
+        assertThat(countryDTO1).isNotEqualTo(countryDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(countryMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(countryMapper.fromId(null)).isNull();
     }
 }

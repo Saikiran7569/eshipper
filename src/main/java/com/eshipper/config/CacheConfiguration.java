@@ -51,6 +51,8 @@ public class CacheConfiguration {
             createCache(cm, com.eshipper.domain.Province.class.getName() + ".addressBooks");
             createCache(cm, com.eshipper.domain.City.class.getName());
             createCache(cm, com.eshipper.domain.City.class.getName() + ".addressBooks");
+            createCache(cm, com.eshipper.domain.Company.class.getName());
+            createCache(cm, com.eshipper.domain.Company.class.getName() + ".addressBooks");
             // jhipster-needle-ehcache-add-entry
         };
     }

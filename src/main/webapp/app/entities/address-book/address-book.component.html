@@ -25,7 +25,6 @@
             <th><span jhiTranslate="eshipperApp.addressBook.contactName">Contact Name</span></th>
             <th><span jhiTranslate="eshipperApp.addressBook.phoneNo">Phone No</span></th>
             <th><span jhiTranslate="eshipperApp.addressBook.contactEmail">Contact Email</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.province">Province</span></th>
             <th><span jhiTranslate="eshipperApp.addressBook.notify">Notify</span></th>
             <th><span jhiTranslate="eshipperApp.addressBook.residential">Residential</span></th>
             <th><span jhiTranslate="eshipperApp.addressBook.createdByUser">Created By User</span></th>
@@ -35,7 +34,7 @@
             <th><span jhiTranslate="eshipperApp.addressBook.country">Country</span></th>
             <th><span jhiTranslate="eshipperApp.addressBook.province">Province</span></th>
             <th><span jhiTranslate="eshipperApp.addressBook.city">City</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.customer">Customer</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.company">Company</span></th>
             <th></th>
             </tr>
             </thead>
@@ -49,7 +48,6 @@
                 <td>{{addressBook.contactName}}</td>
                 <td>{{addressBook.phoneNo}}</td>
                 <td>{{addressBook.contactEmail}}</td>
-                <td>{{addressBook.province}}</td>
                 <td>{{addressBook.notify}}</td>
                 <td>{{addressBook.residential}}</td>
                 <td>{{addressBook.createdByUser}}</td>
@@ -57,23 +55,23 @@
                 <td>{{addressBook.dateCreated | date:'mediumDate'}}</td>
                 <td>{{addressBook.dateUpdated | date:'mediumDate'}}</td>
                 <td>
-                    <div *ngIf="addressBook.country">
-                        <a [routerLink]="['/country', addressBook.country?.id, 'view' ]" >{{addressBook.country?.id}}</a>
+                    <div *ngIf="addressBook.countryId">
+                        <a [routerLink]="['/country', addressBook.countryId , 'view' ]" >{{addressBook.countryId}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="addressBook.province">
-                        <a [routerLink]="['/province', addressBook.province?.id, 'view' ]" >{{addressBook.province?.id}}</a>
+                    <div *ngIf="addressBook.provinceId">
+                        <a [routerLink]="['/province', addressBook.provinceId , 'view' ]" >{{addressBook.provinceId}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="addressBook.city">
-                        <a [routerLink]="['/city', addressBook.city?.id, 'view' ]" >{{addressBook.city?.id}}</a>
+                    <div *ngIf="addressBook.cityId">
+                        <a [routerLink]="['/city', addressBook.cityId , 'view' ]" >{{addressBook.cityId}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="addressBook.customer">
-                        <a [routerLink]="['/customer', addressBook.customer?.id, 'view' ]" >{{addressBook.customer?.id}}</a>
+                    <div *ngIf="addressBook.companyId">
+                        <a [routerLink]="['/company', addressBook.companyId , 'view' ]" >{{addressBook.companyId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

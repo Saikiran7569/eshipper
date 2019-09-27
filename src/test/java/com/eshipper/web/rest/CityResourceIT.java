@@ -3,6 +3,9 @@ package com.eshipper.web.rest;
 import com.eshipper.EshipperApp;
 import com.eshipper.domain.City;
 import com.eshipper.repository.CityRepository;
+import com.eshipper.service.CityService;
+import com.eshipper.service.dto.CityDTO;
+import com.eshipper.service.mapper.CityMapper;
 import com.eshipper.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -40,6 +43,12 @@ public class CityResourceIT {
     private CityRepository cityRepository;
 
     @Autowired
+    private CityMapper cityMapper;
+
+    @Autowired
+    private CityService cityService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -61,7 +70,7 @@ public class CityResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CityResource cityResource = new CityResource(cityRepository);
+        final CityResource cityResource = new CityResource(cityService);
         this.restCityMockMvc = MockMvcBuilders.standaloneSetup(cityResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -104,9 +113,10 @@ public class CityResourceIT {
         int databaseSizeBeforeCreate = cityRepository.findAll().size();
 
         // Create the City
+        CityDTO cityDTO = cityMapper.toDto(city);
         restCityMockMvc.perform(post("/api/cities")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(city)))
+            .content(TestUtil.convertObjectToJsonBytes(cityDTO)))
             .andExpect(status().isCreated());
 
         // Validate the City in the database
@@ -123,11 +133,12 @@ public class CityResourceIT {
 
         // Create the City with an existing ID
         city.setId(1L);
+        CityDTO cityDTO = cityMapper.toDto(city);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCityMockMvc.perform(post("/api/cities")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(city)))
+            .content(TestUtil.convertObjectToJsonBytes(cityDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the City in the database
@@ -186,10 +197,11 @@ public class CityResourceIT {
         em.detach(updatedCity);
         updatedCity
             .city(UPDATED_CITY);
+        CityDTO cityDTO = cityMapper.toDto(updatedCity);
 
         restCityMockMvc.perform(put("/api/cities")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedCity)))
+            .content(TestUtil.convertObjectToJsonBytes(cityDTO)))
             .andExpect(status().isOk());
 
         // Validate the City in the database
@@ -205,11 +217,12 @@ public class CityResourceIT {
         int databaseSizeBeforeUpdate = cityRepository.findAll().size();
 
         // Create the City
+        CityDTO cityDTO = cityMapper.toDto(city);
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restCityMockMvc.perform(put("/api/cities")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(city)))
+            .content(TestUtil.convertObjectToJsonBytes(cityDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the City in the database
@@ -248,5 +261,28 @@ public class CityResourceIT {
         assertThat(city1).isNotEqualTo(city2);
         city1.setId(null);
         assertThat(city1).isNotEqualTo(city2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(CityDTO.class);
+        CityDTO cityDTO1 = new CityDTO();
+        cityDTO1.setId(1L);
+        CityDTO cityDTO2 = new CityDTO();
+        assertThat(cityDTO1).isNotEqualTo(cityDTO2);
+        cityDTO2.setId(cityDTO1.getId());
+        assertThat(cityDTO1).isEqualTo(cityDTO2);
+        cityDTO2.setId(2L);
+        assertThat(cityDTO1).isNotEqualTo(cityDTO2);
+        cityDTO1.setId(null);
+        assertThat(cityDTO1).isNotEqualTo(cityDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(cityMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(cityMapper.fromId(null)).isNull();
     }
 }

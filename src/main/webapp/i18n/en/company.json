@@ -1,0 +1,36 @@
+{
+  "eshipperApp": {
+    "company": {
+      "home": {
+        "title": "Companies",
+        "createLabel": "Create a new Company",
+        "createOrEditLabel": "Create or edit a Company",
+        "notFound": "No Companies found"
+      },
+      "created": "A new Company is created with identifier {{ param }}",
+      "updated": "A Company is updated with identifier {{ param }}",
+      "deleted": "A Company is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Company {{ id }}?"
+      },
+      "detail": {
+        "title": "Company"
+      },
+      "accountNumber": "Account Number",
+      "name": "Name",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "postalCode": "Postal Code",
+      "phone": "Phone",
+      "email": "Email",
+      "timeZone": "Time Zone",
+      "costAccount": "Cost Account",
+      "dateCreated": "Date Created",
+      "creator": "Creator",
+      "contact": "Contact",
+      "isShopifyEnable": "Is Shopify Enable",
+      "defaultSignatureOption": "Default Signature Option",
+      "addressBook": "Address Book"
+    }
+  }
+}

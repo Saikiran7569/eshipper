@@ -51,10 +51,6 @@ public class AddressBook implements Serializable {
     @Column(name = "contact_email", length = 255)
     private String contactEmail;
 
-    @Size(max = 255)
-    @Column(name = "province", length = 255)
-    private String province;
-
     @Column(name = "notify")
     private Boolean notify;
 
@@ -89,7 +85,7 @@ public class AddressBook implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("addressBooks")
-    private Customer customer;
+    private Company company;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -189,19 +185,6 @@ public class AddressBook implements Serializable {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public AddressBook province(String province) {
-        this.province = province;
-        return this;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
     }
 
     public Boolean isNotify() {
@@ -321,17 +304,17 @@ public class AddressBook implements Serializable {
         this.city = city;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Company getCompany() {
+        return company;
     }
 
-    public AddressBook customer(Customer customer) {
-        this.customer = customer;
+    public AddressBook company(Company company) {
+        this.company = company;
         return this;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCompany(Company company) {
+        this.company = company;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -362,7 +345,6 @@ public class AddressBook implements Serializable {
             ", contactName='" + getContactName() + "'" +
             ", phoneNo='" + getPhoneNo() + "'" +
             ", contactEmail='" + getContactEmail() + "'" +
-            ", province='" + getProvince() + "'" +
             ", notify='" + isNotify() + "'" +
             ", residential='" + isResidential() + "'" +
             ", createdByUser='" + getCreatedByUser() + "'" +

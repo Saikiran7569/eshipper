@@ -23,7 +23,6 @@
       "contactName": "Contact Name",
       "phoneNo": "Phone No",
       "contactEmail": "Contact Email",
-      "province": "Province",
       "notify": "Notify",
       "residential": "Residential",
       "createdByUser": "Created By User",
@@ -33,7 +32,7 @@
       "country": "Country",
       "province": "Province",
       "city": "City",
-      "customer": "Customer"
+      "company": "Company"
     }
   }
 }

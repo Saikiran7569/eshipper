@@ -3,6 +3,9 @@ package com.eshipper.web.rest;
 import com.eshipper.EshipperApp;
 import com.eshipper.domain.Province;
 import com.eshipper.repository.ProvinceRepository;
+import com.eshipper.service.ProvinceService;
+import com.eshipper.service.dto.ProvinceDTO;
+import com.eshipper.service.mapper.ProvinceMapper;
 import com.eshipper.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -43,6 +46,12 @@ public class ProvinceResourceIT {
     private ProvinceRepository provinceRepository;
 
     @Autowired
+    private ProvinceMapper provinceMapper;
+
+    @Autowired
+    private ProvinceService provinceService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -64,7 +73,7 @@ public class ProvinceResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ProvinceResource provinceResource = new ProvinceResource(provinceRepository);
+        final ProvinceResource provinceResource = new ProvinceResource(provinceService);
         this.restProvinceMockMvc = MockMvcBuilders.standaloneSetup(provinceResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -109,9 +118,10 @@ public class ProvinceResourceIT {
         int databaseSizeBeforeCreate = provinceRepository.findAll().size();
 
         // Create the Province
+        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
         restProvinceMockMvc.perform(post("/api/provinces")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(province)))
+            .content(TestUtil.convertObjectToJsonBytes(provinceDTO)))
             .andExpect(status().isCreated());
 
         // Validate the Province in the database
@@ -129,11 +139,12 @@ public class ProvinceResourceIT {
 
         // Create the Province with an existing ID
         province.setId(1L);
+        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restProvinceMockMvc.perform(post("/api/provinces")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(province)))
+            .content(TestUtil.convertObjectToJsonBytes(provinceDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Province in the database
@@ -195,10 +206,11 @@ public class ProvinceResourceIT {
         updatedProvince
             .name(UPDATED_NAME)
             .fullName(UPDATED_FULL_NAME);
+        ProvinceDTO provinceDTO = provinceMapper.toDto(updatedProvince);
 
         restProvinceMockMvc.perform(put("/api/provinces")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedProvince)))
+            .content(TestUtil.convertObjectToJsonBytes(provinceDTO)))
             .andExpect(status().isOk());
 
         // Validate the Province in the database
@@ -215,11 +227,12 @@ public class ProvinceResourceIT {
         int databaseSizeBeforeUpdate = provinceRepository.findAll().size();
 
         // Create the Province
+        ProvinceDTO provinceDTO = provinceMapper.toDto(province);
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restProvinceMockMvc.perform(put("/api/provinces")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(province)))
+            .content(TestUtil.convertObjectToJsonBytes(provinceDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Province in the database
@@ -258,5 +271,28 @@ public class ProvinceResourceIT {
         assertThat(province1).isNotEqualTo(province2);
         province1.setId(null);
         assertThat(province1).isNotEqualTo(province2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(ProvinceDTO.class);
+        ProvinceDTO provinceDTO1 = new ProvinceDTO();
+        provinceDTO1.setId(1L);
+        ProvinceDTO provinceDTO2 = new ProvinceDTO();
+        assertThat(provinceDTO1).isNotEqualTo(provinceDTO2);
+        provinceDTO2.setId(provinceDTO1.getId());
+        assertThat(provinceDTO1).isEqualTo(provinceDTO2);
+        provinceDTO2.setId(2L);
+        assertThat(provinceDTO1).isNotEqualTo(provinceDTO2);
+        provinceDTO1.setId(null);
+        assertThat(provinceDTO1).isNotEqualTo(provinceDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(provinceMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(provinceMapper.fromId(null)).isNull();
     }
 }

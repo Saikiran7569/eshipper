@@ -26,11 +26,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="city"/>
 
-        <addForeignKeyConstraint baseColumnNames="customer_id"
+        <addForeignKeyConstraint baseColumnNames="company_id"
                                  baseTableName="address_book"
-                                 constraintName="fk_address_book_customer_id"
+                                 constraintName="fk_address_book_company_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="customer"/>
+                                 referencedTableName="company"/>
 
     </changeSet>
 </databaseChangeLog>
