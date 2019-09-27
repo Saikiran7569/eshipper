@@ -3,6 +3,9 @@ package com.eshipper.web.rest;
 import com.eshipper.EshipperApp;
 import com.eshipper.domain.AddressBook;
 import com.eshipper.repository.AddressBookRepository;
+import com.eshipper.service.AddressBookService;
+import com.eshipper.service.dto.AddressBookDTO;
+import com.eshipper.service.mapper.AddressBookMapper;
 import com.eshipper.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -56,9 +59,6 @@ public class AddressBookResourceIT {
     private static final String DEFAULT_CONTACT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_CONTACT_EMAIL = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PROVINCE = "AAAAAAAAAA";
-    private static final String UPDATED_PROVINCE = "BBBBBBBBBB";
-
     private static final Boolean DEFAULT_NOTIFY = false;
     private static final Boolean UPDATED_NOTIFY = true;
 
@@ -83,6 +83,12 @@ public class AddressBookResourceIT {
     private AddressBookRepository addressBookRepository;
 
     @Autowired
+    private AddressBookMapper addressBookMapper;
+
+    @Autowired
+    private AddressBookService addressBookService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -104,7 +110,7 @@ public class AddressBookResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final AddressBookResource addressBookResource = new AddressBookResource(addressBookRepository);
+        final AddressBookResource addressBookResource = new AddressBookResource(addressBookService);
         this.restAddressBookMockMvc = MockMvcBuilders.standaloneSetup(addressBookResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -128,7 +134,6 @@ public class AddressBookResourceIT {
             .contactName(DEFAULT_CONTACT_NAME)
             .phoneNo(DEFAULT_PHONE_NO)
             .contactEmail(DEFAULT_CONTACT_EMAIL)
-            .province(DEFAULT_PROVINCE)
             .notify(DEFAULT_NOTIFY)
             .residential(DEFAULT_RESIDENTIAL)
             .createdByUser(DEFAULT_CREATED_BY_USER)
@@ -152,7 +157,6 @@ public class AddressBookResourceIT {
             .contactName(UPDATED_CONTACT_NAME)
             .phoneNo(UPDATED_PHONE_NO)
             .contactEmail(UPDATED_CONTACT_EMAIL)
-            .province(UPDATED_PROVINCE)
             .notify(UPDATED_NOTIFY)
             .residential(UPDATED_RESIDENTIAL)
             .createdByUser(UPDATED_CREATED_BY_USER)
@@ -173,9 +177,10 @@ public class AddressBookResourceIT {
         int databaseSizeBeforeCreate = addressBookRepository.findAll().size();
 
         // Create the AddressBook
+        AddressBookDTO addressBookDTO = addressBookMapper.toDto(addressBook);
         restAddressBookMockMvc.perform(post("/api/address-books")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(addressBook)))
+            .content(TestUtil.convertObjectToJsonBytes(addressBookDTO)))
             .andExpect(status().isCreated());
 
         // Validate the AddressBook in the database
@@ -189,7 +194,6 @@ public class AddressBookResourceIT {
         assertThat(testAddressBook.getContactName()).isEqualTo(DEFAULT_CONTACT_NAME);
         assertThat(testAddressBook.getPhoneNo()).isEqualTo(DEFAULT_PHONE_NO);
         assertThat(testAddressBook.getContactEmail()).isEqualTo(DEFAULT_CONTACT_EMAIL);
-        assertThat(testAddressBook.getProvince()).isEqualTo(DEFAULT_PROVINCE);
         assertThat(testAddressBook.isNotify()).isEqualTo(DEFAULT_NOTIFY);
         assertThat(testAddressBook.isResidential()).isEqualTo(DEFAULT_RESIDENTIAL);
         assertThat(testAddressBook.getCreatedByUser()).isEqualTo(DEFAULT_CREATED_BY_USER);
@@ -205,11 +209,12 @@ public class AddressBookResourceIT {
 
         // Create the AddressBook with an existing ID
         addressBook.setId(1L);
+        AddressBookDTO addressBookDTO = addressBookMapper.toDto(addressBook);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restAddressBookMockMvc.perform(post("/api/address-books")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(addressBook)))
+            .content(TestUtil.convertObjectToJsonBytes(addressBookDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the AddressBook in the database
@@ -236,7 +241,6 @@ public class AddressBookResourceIT {
             .andExpect(jsonPath("$.[*].contactName").value(hasItem(DEFAULT_CONTACT_NAME.toString())))
             .andExpect(jsonPath("$.[*].phoneNo").value(hasItem(DEFAULT_PHONE_NO.toString())))
             .andExpect(jsonPath("$.[*].contactEmail").value(hasItem(DEFAULT_CONTACT_EMAIL.toString())))
-            .andExpect(jsonPath("$.[*].province").value(hasItem(DEFAULT_PROVINCE.toString())))
             .andExpect(jsonPath("$.[*].notify").value(hasItem(DEFAULT_NOTIFY.booleanValue())))
             .andExpect(jsonPath("$.[*].residential").value(hasItem(DEFAULT_RESIDENTIAL.booleanValue())))
             .andExpect(jsonPath("$.[*].createdByUser").value(hasItem(DEFAULT_CREATED_BY_USER.toString())))
@@ -263,7 +267,6 @@ public class AddressBookResourceIT {
             .andExpect(jsonPath("$.contactName").value(DEFAULT_CONTACT_NAME.toString()))
             .andExpect(jsonPath("$.phoneNo").value(DEFAULT_PHONE_NO.toString()))
             .andExpect(jsonPath("$.contactEmail").value(DEFAULT_CONTACT_EMAIL.toString()))
-            .andExpect(jsonPath("$.province").value(DEFAULT_PROVINCE.toString()))
             .andExpect(jsonPath("$.notify").value(DEFAULT_NOTIFY.booleanValue()))
             .andExpect(jsonPath("$.residential").value(DEFAULT_RESIDENTIAL.booleanValue()))
             .andExpect(jsonPath("$.createdByUser").value(DEFAULT_CREATED_BY_USER.toString()))
@@ -300,17 +303,17 @@ public class AddressBookResourceIT {
             .contactName(UPDATED_CONTACT_NAME)
             .phoneNo(UPDATED_PHONE_NO)
             .contactEmail(UPDATED_CONTACT_EMAIL)
-            .province(UPDATED_PROVINCE)
             .notify(UPDATED_NOTIFY)
             .residential(UPDATED_RESIDENTIAL)
             .createdByUser(UPDATED_CREATED_BY_USER)
             .instruction(UPDATED_INSTRUCTION)
             .dateCreated(UPDATED_DATE_CREATED)
             .dateUpdated(UPDATED_DATE_UPDATED);
+        AddressBookDTO addressBookDTO = addressBookMapper.toDto(updatedAddressBook);
 
         restAddressBookMockMvc.perform(put("/api/address-books")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedAddressBook)))
+            .content(TestUtil.convertObjectToJsonBytes(addressBookDTO)))
             .andExpect(status().isOk());
 
         // Validate the AddressBook in the database
@@ -324,7 +327,6 @@ public class AddressBookResourceIT {
         assertThat(testAddressBook.getContactName()).isEqualTo(UPDATED_CONTACT_NAME);
         assertThat(testAddressBook.getPhoneNo()).isEqualTo(UPDATED_PHONE_NO);
         assertThat(testAddressBook.getContactEmail()).isEqualTo(UPDATED_CONTACT_EMAIL);
-        assertThat(testAddressBook.getProvince()).isEqualTo(UPDATED_PROVINCE);
         assertThat(testAddressBook.isNotify()).isEqualTo(UPDATED_NOTIFY);
         assertThat(testAddressBook.isResidential()).isEqualTo(UPDATED_RESIDENTIAL);
         assertThat(testAddressBook.getCreatedByUser()).isEqualTo(UPDATED_CREATED_BY_USER);
@@ -339,11 +341,12 @@ public class AddressBookResourceIT {
         int databaseSizeBeforeUpdate = addressBookRepository.findAll().size();
 
         // Create the AddressBook
+        AddressBookDTO addressBookDTO = addressBookMapper.toDto(addressBook);
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restAddressBookMockMvc.perform(put("/api/address-books")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(addressBook)))
+            .content(TestUtil.convertObjectToJsonBytes(addressBookDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the AddressBook in the database
@@ -382,5 +385,28 @@ public class AddressBookResourceIT {
         assertThat(addressBook1).isNotEqualTo(addressBook2);
         addressBook1.setId(null);
         assertThat(addressBook1).isNotEqualTo(addressBook2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(AddressBookDTO.class);
+        AddressBookDTO addressBookDTO1 = new AddressBookDTO();
+        addressBookDTO1.setId(1L);
+        AddressBookDTO addressBookDTO2 = new AddressBookDTO();
+        assertThat(addressBookDTO1).isNotEqualTo(addressBookDTO2);
+        addressBookDTO2.setId(addressBookDTO1.getId());
+        assertThat(addressBookDTO1).isEqualTo(addressBookDTO2);
+        addressBookDTO2.setId(2L);
+        assertThat(addressBookDTO1).isNotEqualTo(addressBookDTO2);
+        addressBookDTO1.setId(null);
+        assertThat(addressBookDTO1).isNotEqualTo(addressBookDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(addressBookMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(addressBookMapper.fromId(null)).isNull();
     }
 }

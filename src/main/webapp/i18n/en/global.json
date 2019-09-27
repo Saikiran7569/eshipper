@@ -12,6 +12,7 @@
         "customer": "Customer",
         "province": "Province",
         "city": "City",
+        "company": "Company",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -58,14 +58,6 @@
             "fieldValidateRulesMaxlength": 255
         },
         {
-            "fieldName": "province",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 255
-        },
-        {
             "fieldName": "notify",
             "fieldType": "Boolean"
         },
@@ -122,17 +114,17 @@
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "customer",
+            "otherEntityName": "company",
             "otherEntityRelationshipName": "addressBook",
-            "relationshipName": "customer",
+            "relationshipName": "company",
             "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190926112057",
     "entityTableName": "address_book",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
-    "service": "no",
+    "service": "serviceImpl",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",

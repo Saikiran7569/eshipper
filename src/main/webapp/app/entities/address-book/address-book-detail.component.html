@@ -33,10 +33,6 @@
                 <dd>
                     <span>{{addressBook.contactEmail}}</span>
                 </dd>
-                <dt><span jhiTranslate="eshipperApp.addressBook.province">Province</span></dt>
-                <dd>
-                    <span>{{addressBook.province}}</span>
-                </dd>
                 <dt><span jhiTranslate="eshipperApp.addressBook.notify">Notify</span></dt>
                 <dd>
                     <span>{{addressBook.notify}}</span>
@@ -63,26 +59,26 @@
                 </dd>
                 <dt><span jhiTranslate="eshipperApp.addressBook.country">Country</span></dt>
                 <dd>
-                    <div *ngIf="addressBook.country">
-                        <a [routerLink]="['/country', addressBook.country?.id, 'view']">{{addressBook.country?.id}}</a>
+                    <div *ngIf="addressBook.countryId">
+                        <a [routerLink]="['/country', addressBook.countryId, 'view']">{{addressBook.countryId}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="eshipperApp.addressBook.province">Province</span></dt>
                 <dd>
-                    <div *ngIf="addressBook.province">
-                        <a [routerLink]="['/province', addressBook.province?.id, 'view']">{{addressBook.province?.id}}</a>
+                    <div *ngIf="addressBook.provinceId">
+                        <a [routerLink]="['/province', addressBook.provinceId, 'view']">{{addressBook.provinceId}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="eshipperApp.addressBook.city">City</span></dt>
                 <dd>
-                    <div *ngIf="addressBook.city">
-                        <a [routerLink]="['/city', addressBook.city?.id, 'view']">{{addressBook.city?.id}}</a>
+                    <div *ngIf="addressBook.cityId">
+                        <a [routerLink]="['/city', addressBook.cityId, 'view']">{{addressBook.cityId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="eshipperApp.addressBook.customer">Customer</span></dt>
+                <dt><span jhiTranslate="eshipperApp.addressBook.company">Company</span></dt>
                 <dd>
-                    <div *ngIf="addressBook.customer">
-                        <a [routerLink]="['/customer', addressBook.customer?.id, 'view']">{{addressBook.customer?.id}}</a>
+                    <div *ngIf="addressBook.companyId">
+                        <a [routerLink]="['/company', addressBook.companyId, 'view']">{{addressBook.companyId}}</a>
                     </div>
                 </dd>
             </dl>

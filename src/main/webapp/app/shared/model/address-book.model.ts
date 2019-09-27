@@ -1,8 +1,4 @@
 import { Moment } from 'moment';
-import { ICountry } from 'app/shared/model/country.model';
-import { IProvince } from 'app/shared/model/province.model';
-import { ICity } from 'app/shared/model/city.model';
-import { ICustomer } from 'app/shared/model/customer.model';
 
 export interface IAddressBook {
   id?: number;
@@ -13,17 +9,16 @@ export interface IAddressBook {
   contactName?: string;
   phoneNo?: string;
   contactEmail?: string;
-  province?: string;
   notify?: boolean;
   residential?: boolean;
   createdByUser?: string;
   instruction?: string;
   dateCreated?: Moment;
   dateUpdated?: Moment;
-  country?: ICountry;
-  province?: IProvince;
-  city?: ICity;
-  customer?: ICustomer;
+  countryId?: number;
+  provinceId?: number;
+  cityId?: number;
+  companyId?: number;
 }
 
 export class AddressBook implements IAddressBook {
@@ -36,17 +31,16 @@ export class AddressBook implements IAddressBook {
     public contactName?: string,
     public phoneNo?: string,
     public contactEmail?: string,
-    public province?: string,
     public notify?: boolean,
     public residential?: boolean,
     public createdByUser?: string,
     public instruction?: string,
     public dateCreated?: Moment,
     public dateUpdated?: Moment,
-    public country?: ICountry,
-    public province?: IProvince,
-    public city?: ICity,
-    public customer?: ICustomer
+    public countryId?: number,
+    public provinceId?: number,
+    public cityId?: number,
+    public companyId?: number
   ) {
     this.notify = this.notify || false;
     this.residential = this.residential || false;

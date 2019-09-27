@@ -1,8 +1,8 @@
 package com.eshipper.web.rest;
 
-import com.eshipper.domain.Province;
-import com.eshipper.repository.ProvinceRepository;
+import com.eshipper.service.ProvinceService;
 import com.eshipper.web.rest.errors.BadRequestAlertException;
+import com.eshipper.service.dto.ProvinceDTO;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -33,26 +33,26 @@ public class ProvinceResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final ProvinceRepository provinceRepository;
+    private final ProvinceService provinceService;
 
-    public ProvinceResource(ProvinceRepository provinceRepository) {
-        this.provinceRepository = provinceRepository;
+    public ProvinceResource(ProvinceService provinceService) {
+        this.provinceService = provinceService;
     }
 
     /**
      * {@code POST  /provinces} : Create a new province.
      *
-     * @param province the province to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new province, or with status {@code 400 (Bad Request)} if the province has already an ID.
+     * @param provinceDTO the provinceDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new provinceDTO, or with status {@code 400 (Bad Request)} if the province has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/provinces")
-    public ResponseEntity<Province> createProvince(@Valid @RequestBody Province province) throws URISyntaxException {
-        log.debug("REST request to save Province : {}", province);
-        if (province.getId() != null) {
+    public ResponseEntity<ProvinceDTO> createProvince(@Valid @RequestBody ProvinceDTO provinceDTO) throws URISyntaxException {
+        log.debug("REST request to save Province : {}", provinceDTO);
+        if (provinceDTO.getId() != null) {
             throw new BadRequestAlertException("A new province cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Province result = provinceRepository.save(province);
+        ProvinceDTO result = provinceService.save(provinceDTO);
         return ResponseEntity.created(new URI("/api/provinces/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -61,21 +61,21 @@ public class ProvinceResource {
     /**
      * {@code PUT  /provinces} : Updates an existing province.
      *
-     * @param province the province to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated province,
-     * or with status {@code 400 (Bad Request)} if the province is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the province couldn't be updated.
+     * @param provinceDTO the provinceDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated provinceDTO,
+     * or with status {@code 400 (Bad Request)} if the provinceDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the provinceDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/provinces")
-    public ResponseEntity<Province> updateProvince(@Valid @RequestBody Province province) throws URISyntaxException {
-        log.debug("REST request to update Province : {}", province);
-        if (province.getId() == null) {
+    public ResponseEntity<ProvinceDTO> updateProvince(@Valid @RequestBody ProvinceDTO provinceDTO) throws URISyntaxException {
+        log.debug("REST request to update Province : {}", provinceDTO);
+        if (provinceDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Province result = provinceRepository.save(province);
+        ProvinceDTO result = provinceService.save(provinceDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, province.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, provinceDTO.getId().toString()))
             .body(result);
     }
 
@@ -86,34 +86,34 @@ public class ProvinceResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of provinces in body.
      */
     @GetMapping("/provinces")
-    public List<Province> getAllProvinces() {
+    public List<ProvinceDTO> getAllProvinces() {
         log.debug("REST request to get all Provinces");
-        return provinceRepository.findAll();
+        return provinceService.findAll();
     }
 
     /**
      * {@code GET  /provinces/:id} : get the "id" province.
      *
-     * @param id the id of the province to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the province, or with status {@code 404 (Not Found)}.
+     * @param id the id of the provinceDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the provinceDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/provinces/{id}")
-    public ResponseEntity<Province> getProvince(@PathVariable Long id) {
+    public ResponseEntity<ProvinceDTO> getProvince(@PathVariable Long id) {
         log.debug("REST request to get Province : {}", id);
-        Optional<Province> province = provinceRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(province);
+        Optional<ProvinceDTO> provinceDTO = provinceService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(provinceDTO);
     }
 
     /**
      * {@code DELETE  /provinces/:id} : delete the "id" province.
      *
-     * @param id the id of the province to delete.
+     * @param id the id of the provinceDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/provinces/{id}")
     public ResponseEntity<Void> deleteProvince(@PathVariable Long id) {
         log.debug("REST request to delete Province : {}", id);
-        provinceRepository.deleteById(id);
+        provinceService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }

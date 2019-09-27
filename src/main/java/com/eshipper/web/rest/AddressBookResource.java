@@ -1,8 +1,8 @@
 package com.eshipper.web.rest;
 
-import com.eshipper.domain.AddressBook;
-import com.eshipper.repository.AddressBookRepository;
+import com.eshipper.service.AddressBookService;
 import com.eshipper.web.rest.errors.BadRequestAlertException;
+import com.eshipper.service.dto.AddressBookDTO;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -33,26 +33,26 @@ public class AddressBookResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final AddressBookRepository addressBookRepository;
+    private final AddressBookService addressBookService;
 
-    public AddressBookResource(AddressBookRepository addressBookRepository) {
-        this.addressBookRepository = addressBookRepository;
+    public AddressBookResource(AddressBookService addressBookService) {
+        this.addressBookService = addressBookService;
     }
 
     /**
      * {@code POST  /address-books} : Create a new addressBook.
      *
-     * @param addressBook the addressBook to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new addressBook, or with status {@code 400 (Bad Request)} if the addressBook has already an ID.
+     * @param addressBookDTO the addressBookDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new addressBookDTO, or with status {@code 400 (Bad Request)} if the addressBook has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/address-books")
-    public ResponseEntity<AddressBook> createAddressBook(@Valid @RequestBody AddressBook addressBook) throws URISyntaxException {
-        log.debug("REST request to save AddressBook : {}", addressBook);
-        if (addressBook.getId() != null) {
+    public ResponseEntity<AddressBookDTO> createAddressBook(@Valid @RequestBody AddressBookDTO addressBookDTO) throws URISyntaxException {
+        log.debug("REST request to save AddressBook : {}", addressBookDTO);
+        if (addressBookDTO.getId() != null) {
             throw new BadRequestAlertException("A new addressBook cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        AddressBook result = addressBookRepository.save(addressBook);
+        AddressBookDTO result = addressBookService.save(addressBookDTO);
         return ResponseEntity.created(new URI("/api/address-books/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -61,21 +61,21 @@ public class AddressBookResource {
     /**
      * {@code PUT  /address-books} : Updates an existing addressBook.
      *
-     * @param addressBook the addressBook to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated addressBook,
-     * or with status {@code 400 (Bad Request)} if the addressBook is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the addressBook couldn't be updated.
+     * @param addressBookDTO the addressBookDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated addressBookDTO,
+     * or with status {@code 400 (Bad Request)} if the addressBookDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the addressBookDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/address-books")
-    public ResponseEntity<AddressBook> updateAddressBook(@Valid @RequestBody AddressBook addressBook) throws URISyntaxException {
-        log.debug("REST request to update AddressBook : {}", addressBook);
-        if (addressBook.getId() == null) {
+    public ResponseEntity<AddressBookDTO> updateAddressBook(@Valid @RequestBody AddressBookDTO addressBookDTO) throws URISyntaxException {
+        log.debug("REST request to update AddressBook : {}", addressBookDTO);
+        if (addressBookDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        AddressBook result = addressBookRepository.save(addressBook);
+        AddressBookDTO result = addressBookService.save(addressBookDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, addressBook.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, addressBookDTO.getId().toString()))
             .body(result);
     }
 
@@ -86,34 +86,34 @@ public class AddressBookResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of addressBooks in body.
      */
     @GetMapping("/address-books")
-    public List<AddressBook> getAllAddressBooks() {
+    public List<AddressBookDTO> getAllAddressBooks() {
         log.debug("REST request to get all AddressBooks");
-        return addressBookRepository.findAll();
+        return addressBookService.findAll();
     }
 
     /**
      * {@code GET  /address-books/:id} : get the "id" addressBook.
      *
-     * @param id the id of the addressBook to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the addressBook, or with status {@code 404 (Not Found)}.
+     * @param id the id of the addressBookDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the addressBookDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/address-books/{id}")
-    public ResponseEntity<AddressBook> getAddressBook(@PathVariable Long id) {
+    public ResponseEntity<AddressBookDTO> getAddressBook(@PathVariable Long id) {
         log.debug("REST request to get AddressBook : {}", id);
-        Optional<AddressBook> addressBook = addressBookRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(addressBook);
+        Optional<AddressBookDTO> addressBookDTO = addressBookService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(addressBookDTO);
     }
 
     /**
      * {@code DELETE  /address-books/:id} : delete the "id" addressBook.
      *
-     * @param id the id of the addressBook to delete.
+     * @param id the id of the addressBookDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/address-books/{id}")
     public ResponseEntity<Void> deleteAddressBook(@PathVariable Long id) {
         log.debug("REST request to delete AddressBook : {}", id);
-        addressBookRepository.deleteById(id);
+        addressBookService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }

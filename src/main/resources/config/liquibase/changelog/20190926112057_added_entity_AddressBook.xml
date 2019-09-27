@@ -37,9 +37,6 @@
             <column name="contact_email" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="province" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="notify" type="boolean">
                 <constraints nullable="true" />
             </column>
@@ -67,7 +64,7 @@
             <column name="city_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="customer_id" type="bigint">
+            <column name="company_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -100,7 +97,6 @@
             <column name="contact_name" type="string"/>
             <column name="phone_no" type="string"/>
             <column name="contact_email" type="string"/>
-            <column name="province" type="string"/>
             <column name="notify" type="boolean"/>
             <column name="residential" type="boolean"/>
             <column name="created_by_user" type="string"/>

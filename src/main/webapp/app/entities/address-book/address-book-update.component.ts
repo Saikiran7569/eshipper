@@ -16,8 +16,8 @@ import { IProvince } from 'app/shared/model/province.model';
 import { ProvinceService } from 'app/entities/province/province.service';
 import { ICity } from 'app/shared/model/city.model';
 import { CityService } from 'app/entities/city/city.service';
-import { ICustomer } from 'app/shared/model/customer.model';
-import { CustomerService } from 'app/entities/customer/customer.service';
+import { ICompany } from 'app/shared/model/company.model';
+import { CompanyService } from 'app/entities/company/company.service';
 
 @Component({
   selector: 'jhi-address-book-update',
@@ -32,7 +32,7 @@ export class AddressBookUpdateComponent implements OnInit {
 
   cities: ICity[];
 
-  customers: ICustomer[];
+  companies: ICompany[];
   dateCreatedDp: any;
   dateUpdatedDp: any;
 
@@ -45,17 +45,16 @@ export class AddressBookUpdateComponent implements OnInit {
     contactName: [null, [Validators.maxLength(255)]],
     phoneNo: [null, [Validators.maxLength(255)]],
     contactEmail: [null, [Validators.maxLength(255)]],
-    province: [null, [Validators.maxLength(255)]],
     notify: [],
     residential: [],
     createdByUser: [null, [Validators.maxLength(255)]],
     instruction: [null, [Validators.maxLength(255)]],
     dateCreated: [],
     dateUpdated: [],
-    country: [],
-    province: [],
-    city: [],
-    customer: []
+    countryId: [],
+    provinceId: [],
+    cityId: [],
+    companyId: []
   });
 
   constructor(
@@ -64,7 +63,7 @@ export class AddressBookUpdateComponent implements OnInit {
     protected countryService: CountryService,
     protected provinceService: ProvinceService,
     protected cityService: CityService,
-    protected customerService: CustomerService,
+    protected companyService: CompanyService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -95,13 +94,13 @@ export class AddressBookUpdateComponent implements OnInit {
         map((response: HttpResponse<ICity[]>) => response.body)
       )
       .subscribe((res: ICity[]) => (this.cities = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.customerService
+    this.companyService
       .query()
       .pipe(
-        filter((mayBeOk: HttpResponse<ICustomer[]>) => mayBeOk.ok),
-        map((response: HttpResponse<ICustomer[]>) => response.body)
+        filter((mayBeOk: HttpResponse<ICompany[]>) => mayBeOk.ok),
+        map((response: HttpResponse<ICompany[]>) => response.body)
       )
-      .subscribe((res: ICustomer[]) => (this.customers = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: ICompany[]) => (this.companies = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(addressBook: IAddressBook) {
@@ -114,17 +113,16 @@ export class AddressBookUpdateComponent implements OnInit {
       contactName: addressBook.contactName,
       phoneNo: addressBook.phoneNo,
       contactEmail: addressBook.contactEmail,
-      province: addressBook.province,
       notify: addressBook.notify,
       residential: addressBook.residential,
       createdByUser: addressBook.createdByUser,
       instruction: addressBook.instruction,
       dateCreated: addressBook.dateCreated,
       dateUpdated: addressBook.dateUpdated,
-      country: addressBook.country,
-      province: addressBook.province,
-      city: addressBook.city,
-      customer: addressBook.customer
+      countryId: addressBook.countryId,
+      provinceId: addressBook.provinceId,
+      cityId: addressBook.cityId,
+      companyId: addressBook.companyId
     });
   }
 
@@ -153,17 +151,16 @@ export class AddressBookUpdateComponent implements OnInit {
       contactName: this.editForm.get(['contactName']).value,
       phoneNo: this.editForm.get(['phoneNo']).value,
       contactEmail: this.editForm.get(['contactEmail']).value,
-      province: this.editForm.get(['province']).value,
       notify: this.editForm.get(['notify']).value,
       residential: this.editForm.get(['residential']).value,
       createdByUser: this.editForm.get(['createdByUser']).value,
       instruction: this.editForm.get(['instruction']).value,
       dateCreated: this.editForm.get(['dateCreated']).value,
       dateUpdated: this.editForm.get(['dateUpdated']).value,
-      country: this.editForm.get(['country']).value,
-      province: this.editForm.get(['province']).value,
-      city: this.editForm.get(['city']).value,
-      customer: this.editForm.get(['customer']).value
+      countryId: this.editForm.get(['countryId']).value,
+      provinceId: this.editForm.get(['provinceId']).value,
+      cityId: this.editForm.get(['cityId']).value,
+      companyId: this.editForm.get(['companyId']).value
     };
   }
 
@@ -195,7 +192,7 @@ export class AddressBookUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackCustomerById(index: number, item: ICustomer) {
+  trackCompanyById(index: number, item: ICompany) {
     return item.id;
   }
 }
