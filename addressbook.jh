@@ -7,9 +7,10 @@ entity AddressBook {
     phoneNo String maxlength(255) 
     contactEmail String maxlength(255)
     province String maxlength(255)
-   	defaultFrom Boolean
-	defaultTo Boolean
+   	notify Boolean
+	residential Boolean
     createdByUser String maxlength(255)	
+	instruction String maxlength(255)	
     dateCreated LocalDate
     dateUpdated LocalDate
     

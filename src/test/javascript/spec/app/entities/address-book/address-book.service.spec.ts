@@ -37,6 +37,7 @@ describe('Service Tests', () => {
         false,
         false,
         'AAAAAAA',
+        'AAAAAAA',
         currentDate,
         currentDate
       );
@@ -97,9 +98,10 @@ describe('Service Tests', () => {
             phoneNo: 'BBBBBB',
             contactEmail: 'BBBBBB',
             province: 'BBBBBB',
-            defaultFrom: true,
-            defaultTo: true,
+            notify: true,
+            residential: true,
             createdByUser: 'BBBBBB',
+            instruction: 'BBBBBB',
             dateCreated: currentDate.format(DATE_FORMAT),
             dateUpdated: currentDate.format(DATE_FORMAT)
           },
@@ -133,9 +135,10 @@ describe('Service Tests', () => {
             phoneNo: 'BBBBBB',
             contactEmail: 'BBBBBB',
             province: 'BBBBBB',
-            defaultFrom: true,
-            defaultTo: true,
+            notify: true,
+            residential: true,
             createdByUser: 'BBBBBB',
+            instruction: 'BBBBBB',
             dateCreated: currentDate.format(DATE_FORMAT),
             dateUpdated: currentDate.format(DATE_FORMAT)
           },

@@ -59,14 +59,17 @@ public class AddressBookResourceIT {
     private static final String DEFAULT_PROVINCE = "AAAAAAAAAA";
     private static final String UPDATED_PROVINCE = "BBBBBBBBBB";
 
-    private static final Boolean DEFAULT_DEFAULT_FROM = false;
-    private static final Boolean UPDATED_DEFAULT_FROM = true;
+    private static final Boolean DEFAULT_NOTIFY = false;
+    private static final Boolean UPDATED_NOTIFY = true;
 
-    private static final Boolean DEFAULT_DEFAULT_TO = false;
-    private static final Boolean UPDATED_DEFAULT_TO = true;
+    private static final Boolean DEFAULT_RESIDENTIAL = false;
+    private static final Boolean UPDATED_RESIDENTIAL = true;
 
     private static final String DEFAULT_CREATED_BY_USER = "AAAAAAAAAA";
     private static final String UPDATED_CREATED_BY_USER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_INSTRUCTION = "AAAAAAAAAA";
+    private static final String UPDATED_INSTRUCTION = "BBBBBBBBBB";
 
     private static final LocalDate DEFAULT_DATE_CREATED = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_CREATED = LocalDate.now(ZoneId.systemDefault());
@@ -126,9 +129,10 @@ public class AddressBookResourceIT {
             .phoneNo(DEFAULT_PHONE_NO)
             .contactEmail(DEFAULT_CONTACT_EMAIL)
             .province(DEFAULT_PROVINCE)
-            .defaultFrom(DEFAULT_DEFAULT_FROM)
-            .defaultTo(DEFAULT_DEFAULT_TO)
+            .notify(DEFAULT_NOTIFY)
+            .residential(DEFAULT_RESIDENTIAL)
             .createdByUser(DEFAULT_CREATED_BY_USER)
+            .instruction(DEFAULT_INSTRUCTION)
             .dateCreated(DEFAULT_DATE_CREATED)
             .dateUpdated(DEFAULT_DATE_UPDATED);
         return addressBook;
@@ -149,9 +153,10 @@ public class AddressBookResourceIT {
             .phoneNo(UPDATED_PHONE_NO)
             .contactEmail(UPDATED_CONTACT_EMAIL)
             .province(UPDATED_PROVINCE)
-            .defaultFrom(UPDATED_DEFAULT_FROM)
-            .defaultTo(UPDATED_DEFAULT_TO)
+            .notify(UPDATED_NOTIFY)
+            .residential(UPDATED_RESIDENTIAL)
             .createdByUser(UPDATED_CREATED_BY_USER)
+            .instruction(UPDATED_INSTRUCTION)
             .dateCreated(UPDATED_DATE_CREATED)
             .dateUpdated(UPDATED_DATE_UPDATED);
         return addressBook;
@@ -185,9 +190,10 @@ public class AddressBookResourceIT {
         assertThat(testAddressBook.getPhoneNo()).isEqualTo(DEFAULT_PHONE_NO);
         assertThat(testAddressBook.getContactEmail()).isEqualTo(DEFAULT_CONTACT_EMAIL);
         assertThat(testAddressBook.getProvince()).isEqualTo(DEFAULT_PROVINCE);
-        assertThat(testAddressBook.isDefaultFrom()).isEqualTo(DEFAULT_DEFAULT_FROM);
-        assertThat(testAddressBook.isDefaultTo()).isEqualTo(DEFAULT_DEFAULT_TO);
+        assertThat(testAddressBook.isNotify()).isEqualTo(DEFAULT_NOTIFY);
+        assertThat(testAddressBook.isResidential()).isEqualTo(DEFAULT_RESIDENTIAL);
         assertThat(testAddressBook.getCreatedByUser()).isEqualTo(DEFAULT_CREATED_BY_USER);
+        assertThat(testAddressBook.getInstruction()).isEqualTo(DEFAULT_INSTRUCTION);
         assertThat(testAddressBook.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
         assertThat(testAddressBook.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
     }
@@ -231,9 +237,10 @@ public class AddressBookResourceIT {
             .andExpect(jsonPath("$.[*].phoneNo").value(hasItem(DEFAULT_PHONE_NO.toString())))
             .andExpect(jsonPath("$.[*].contactEmail").value(hasItem(DEFAULT_CONTACT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].province").value(hasItem(DEFAULT_PROVINCE.toString())))
-            .andExpect(jsonPath("$.[*].defaultFrom").value(hasItem(DEFAULT_DEFAULT_FROM.booleanValue())))
-            .andExpect(jsonPath("$.[*].defaultTo").value(hasItem(DEFAULT_DEFAULT_TO.booleanValue())))
+            .andExpect(jsonPath("$.[*].notify").value(hasItem(DEFAULT_NOTIFY.booleanValue())))
+            .andExpect(jsonPath("$.[*].residential").value(hasItem(DEFAULT_RESIDENTIAL.booleanValue())))
             .andExpect(jsonPath("$.[*].createdByUser").value(hasItem(DEFAULT_CREATED_BY_USER.toString())))
+            .andExpect(jsonPath("$.[*].instruction").value(hasItem(DEFAULT_INSTRUCTION.toString())))
             .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())))
             .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())));
     }
@@ -257,9 +264,10 @@ public class AddressBookResourceIT {
             .andExpect(jsonPath("$.phoneNo").value(DEFAULT_PHONE_NO.toString()))
             .andExpect(jsonPath("$.contactEmail").value(DEFAULT_CONTACT_EMAIL.toString()))
             .andExpect(jsonPath("$.province").value(DEFAULT_PROVINCE.toString()))
-            .andExpect(jsonPath("$.defaultFrom").value(DEFAULT_DEFAULT_FROM.booleanValue()))
-            .andExpect(jsonPath("$.defaultTo").value(DEFAULT_DEFAULT_TO.booleanValue()))
+            .andExpect(jsonPath("$.notify").value(DEFAULT_NOTIFY.booleanValue()))
+            .andExpect(jsonPath("$.residential").value(DEFAULT_RESIDENTIAL.booleanValue()))
             .andExpect(jsonPath("$.createdByUser").value(DEFAULT_CREATED_BY_USER.toString()))
+            .andExpect(jsonPath("$.instruction").value(DEFAULT_INSTRUCTION.toString()))
             .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()))
             .andExpect(jsonPath("$.dateUpdated").value(DEFAULT_DATE_UPDATED.toString()));
     }
@@ -293,9 +301,10 @@ public class AddressBookResourceIT {
             .phoneNo(UPDATED_PHONE_NO)
             .contactEmail(UPDATED_CONTACT_EMAIL)
             .province(UPDATED_PROVINCE)
-            .defaultFrom(UPDATED_DEFAULT_FROM)
-            .defaultTo(UPDATED_DEFAULT_TO)
+            .notify(UPDATED_NOTIFY)
+            .residential(UPDATED_RESIDENTIAL)
             .createdByUser(UPDATED_CREATED_BY_USER)
+            .instruction(UPDATED_INSTRUCTION)
             .dateCreated(UPDATED_DATE_CREATED)
             .dateUpdated(UPDATED_DATE_UPDATED);
 
@@ -316,9 +325,10 @@ public class AddressBookResourceIT {
         assertThat(testAddressBook.getPhoneNo()).isEqualTo(UPDATED_PHONE_NO);
         assertThat(testAddressBook.getContactEmail()).isEqualTo(UPDATED_CONTACT_EMAIL);
         assertThat(testAddressBook.getProvince()).isEqualTo(UPDATED_PROVINCE);
-        assertThat(testAddressBook.isDefaultFrom()).isEqualTo(UPDATED_DEFAULT_FROM);
-        assertThat(testAddressBook.isDefaultTo()).isEqualTo(UPDATED_DEFAULT_TO);
+        assertThat(testAddressBook.isNotify()).isEqualTo(UPDATED_NOTIFY);
+        assertThat(testAddressBook.isResidential()).isEqualTo(UPDATED_RESIDENTIAL);
         assertThat(testAddressBook.getCreatedByUser()).isEqualTo(UPDATED_CREATED_BY_USER);
+        assertThat(testAddressBook.getInstruction()).isEqualTo(UPDATED_INSTRUCTION);
         assertThat(testAddressBook.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
         assertThat(testAddressBook.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);
     }

@@ -55,15 +55,19 @@ public class AddressBook implements Serializable {
     @Column(name = "province", length = 255)
     private String province;
 
-    @Column(name = "default_from")
-    private Boolean defaultFrom;
+    @Column(name = "notify")
+    private Boolean notify;
 
-    @Column(name = "default_to")
-    private Boolean defaultTo;
+    @Column(name = "residential")
+    private Boolean residential;
 
     @Size(max = 255)
     @Column(name = "created_by_user", length = 255)
     private String createdByUser;
+
+    @Size(max = 255)
+    @Column(name = "instruction", length = 255)
+    private String instruction;
 
     @Column(name = "date_created")
     private LocalDate dateCreated;
@@ -200,30 +204,30 @@ public class AddressBook implements Serializable {
         this.province = province;
     }
 
-    public Boolean isDefaultFrom() {
-        return defaultFrom;
+    public Boolean isNotify() {
+        return notify;
     }
 
-    public AddressBook defaultFrom(Boolean defaultFrom) {
-        this.defaultFrom = defaultFrom;
+    public AddressBook notify(Boolean notify) {
+        this.notify = notify;
         return this;
     }
 
-    public void setDefaultFrom(Boolean defaultFrom) {
-        this.defaultFrom = defaultFrom;
+    public void setNotify(Boolean notify) {
+        this.notify = notify;
     }
 
-    public Boolean isDefaultTo() {
-        return defaultTo;
+    public Boolean isResidential() {
+        return residential;
     }
 
-    public AddressBook defaultTo(Boolean defaultTo) {
-        this.defaultTo = defaultTo;
+    public AddressBook residential(Boolean residential) {
+        this.residential = residential;
         return this;
     }
 
-    public void setDefaultTo(Boolean defaultTo) {
-        this.defaultTo = defaultTo;
+    public void setResidential(Boolean residential) {
+        this.residential = residential;
     }
 
     public String getCreatedByUser() {
@@ -237,6 +241,19 @@ public class AddressBook implements Serializable {
 
     public void setCreatedByUser(String createdByUser) {
         this.createdByUser = createdByUser;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public AddressBook instruction(String instruction) {
+        this.instruction = instruction;
+        return this;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
     }
 
     public LocalDate getDateCreated() {
@@ -346,9 +363,10 @@ public class AddressBook implements Serializable {
             ", phoneNo='" + getPhoneNo() + "'" +
             ", contactEmail='" + getContactEmail() + "'" +
             ", province='" + getProvince() + "'" +
-            ", defaultFrom='" + isDefaultFrom() + "'" +
-            ", defaultTo='" + isDefaultTo() + "'" +
+            ", notify='" + isNotify() + "'" +
+            ", residential='" + isResidential() + "'" +
             ", createdByUser='" + getCreatedByUser() + "'" +
+            ", instruction='" + getInstruction() + "'" +
             ", dateCreated='" + getDateCreated() + "'" +
             ", dateUpdated='" + getDateUpdated() + "'" +
             "}";
