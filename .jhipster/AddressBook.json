@@ -66,15 +66,23 @@
             "fieldValidateRulesMaxlength": 255
         },
         {
-            "fieldName": "defaultFrom",
+            "fieldName": "notify",
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "defaultTo",
+            "fieldName": "residential",
             "fieldType": "Boolean"
         },
         {
             "fieldName": "createdByUser",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 255
+        },
+        {
+            "fieldName": "instruction",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"

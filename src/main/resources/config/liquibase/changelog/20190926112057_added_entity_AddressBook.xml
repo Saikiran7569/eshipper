@@ -40,13 +40,16 @@
             <column name="province" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="default_from" type="boolean">
+            <column name="notify" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="default_to" type="boolean">
+            <column name="residential" type="boolean">
                 <constraints nullable="true" />
             </column>
             <column name="created_by_user" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="instruction" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="date_created" type="date">
@@ -98,9 +101,10 @@
             <column name="phone_no" type="string"/>
             <column name="contact_email" type="string"/>
             <column name="province" type="string"/>
-            <column name="default_from" type="boolean"/>
-            <column name="default_to" type="boolean"/>
+            <column name="notify" type="boolean"/>
+            <column name="residential" type="boolean"/>
             <column name="created_by_user" type="string"/>
+            <column name="instruction" type="string"/>
             <column name="date_created" type="date"/>
             <column name="date_updated" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->

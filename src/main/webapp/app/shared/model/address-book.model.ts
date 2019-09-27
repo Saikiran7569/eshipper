@@ -14,9 +14,10 @@ export interface IAddressBook {
   phoneNo?: string;
   contactEmail?: string;
   province?: string;
-  defaultFrom?: boolean;
-  defaultTo?: boolean;
+  notify?: boolean;
+  residential?: boolean;
   createdByUser?: string;
+  instruction?: string;
   dateCreated?: Moment;
   dateUpdated?: Moment;
   country?: ICountry;
@@ -36,9 +37,10 @@ export class AddressBook implements IAddressBook {
     public phoneNo?: string,
     public contactEmail?: string,
     public province?: string,
-    public defaultFrom?: boolean,
-    public defaultTo?: boolean,
+    public notify?: boolean,
+    public residential?: boolean,
     public createdByUser?: string,
+    public instruction?: string,
     public dateCreated?: Moment,
     public dateUpdated?: Moment,
     public country?: ICountry,
@@ -46,7 +48,7 @@ export class AddressBook implements IAddressBook {
     public city?: ICity,
     public customer?: ICustomer
   ) {
-    this.defaultFrom = this.defaultFrom || false;
-    this.defaultTo = this.defaultTo || false;
+    this.notify = this.notify || false;
+    this.residential = this.residential || false;
   }
 }

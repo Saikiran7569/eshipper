@@ -98,14 +98,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.defaultFrom" for="field_defaultFrom">Default From</label>
-                    <input type="checkbox" class="form-control" name="defaultFrom" id="field_defaultFrom"
-                           formControlName="defaultFrom"/>
+                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.notify" for="field_notify">Notify</label>
+                    <input type="checkbox" class="form-control" name="notify" id="field_notify"
+                           formControlName="notify"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.defaultTo" for="field_defaultTo">Default To</label>
-                    <input type="checkbox" class="form-control" name="defaultTo" id="field_defaultTo"
-                           formControlName="defaultTo"/>
+                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.residential" for="field_residential">Residential</label>
+                    <input type="checkbox" class="form-control" name="residential" id="field_residential"
+                           formControlName="residential"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.createdByUser" for="field_createdByUser">Created By User</label>
@@ -114,6 +114,17 @@
                     <div *ngIf="editForm.get('createdByUser').invalid && (editForm.get('createdByUser').dirty || editForm.get('createdByUser').touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('createdByUser').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.instruction" for="field_instruction">Instruction</label>
+                    <input type="text" class="form-control" name="instruction" id="field_instruction"
+                           formControlName="instruction"/>
+                    <div *ngIf="editForm.get('instruction').invalid && (editForm.get('instruction').dirty || editForm.get('instruction').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('instruction').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
                         This field cannot be longer than 255 characters.
                         </small>
                     </div>
