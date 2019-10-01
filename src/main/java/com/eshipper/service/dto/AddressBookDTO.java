@@ -37,9 +37,6 @@ public class AddressBookDTO implements Serializable {
     private Boolean residential;
 
     @Size(max = 255)
-    private String createdByUser;
-
-    @Size(max = 255)
     private String instruction;
 
     private LocalDate dateCreated;
@@ -135,14 +132,6 @@ public class AddressBookDTO implements Serializable {
         this.residential = residential;
     }
 
-    public String getCreatedByUser() {
-        return createdByUser;
-    }
-
-    public void setCreatedByUser(String createdByUser) {
-        this.createdByUser = createdByUser;
-    }
-
     public String getInstruction() {
         return instruction;
     }
@@ -233,7 +222,6 @@ public class AddressBookDTO implements Serializable {
             ", contactEmail='" + getContactEmail() + "'" +
             ", notify='" + isNotify() + "'" +
             ", residential='" + isResidential() + "'" +
-            ", createdByUser='" + getCreatedByUser() + "'" +
             ", instruction='" + getInstruction() + "'" +
             ", dateCreated='" + getDateCreated() + "'" +
             ", dateUpdated='" + getDateUpdated() + "'" +

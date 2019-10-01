@@ -66,14 +66,6 @@
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "createdByUser",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": 255
-        },
-        {
             "fieldName": "instruction",
             "fieldType": "String",
             "fieldValidateRules": [
