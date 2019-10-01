@@ -43,9 +43,6 @@
             <column name="residential" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="created_by_user" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="instruction" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -99,7 +96,6 @@
             <column name="contact_email" type="string"/>
             <column name="notify" type="boolean"/>
             <column name="residential" type="boolean"/>
-            <column name="created_by_user" type="string"/>
             <column name="instruction" type="string"/>
             <column name="date_created" type="date"/>
             <column name="date_updated" type="date"/>

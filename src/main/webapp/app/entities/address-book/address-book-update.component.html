@@ -97,17 +97,6 @@
                            formControlName="residential"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.createdByUser" for="field_createdByUser">Created By User</label>
-                    <input type="text" class="form-control" name="createdByUser" id="field_createdByUser"
-                           formControlName="createdByUser"/>
-                    <div *ngIf="editForm.get('createdByUser').invalid && (editForm.get('createdByUser').dirty || editForm.get('createdByUser').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('createdByUser').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
-                        This field cannot be longer than 255 characters.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.instruction" for="field_instruction">Instruction</label>
                     <input type="text" class="form-control" name="instruction" id="field_instruction"
                            formControlName="instruction"/>

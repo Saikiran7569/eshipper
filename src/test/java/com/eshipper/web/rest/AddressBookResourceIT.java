@@ -65,9 +65,6 @@ public class AddressBookResourceIT {
     private static final Boolean DEFAULT_RESIDENTIAL = false;
     private static final Boolean UPDATED_RESIDENTIAL = true;
 
-    private static final String DEFAULT_CREATED_BY_USER = "AAAAAAAAAA";
-    private static final String UPDATED_CREATED_BY_USER = "BBBBBBBBBB";
-
     private static final String DEFAULT_INSTRUCTION = "AAAAAAAAAA";
     private static final String UPDATED_INSTRUCTION = "BBBBBBBBBB";
 
@@ -136,7 +133,6 @@ public class AddressBookResourceIT {
             .contactEmail(DEFAULT_CONTACT_EMAIL)
             .notify(DEFAULT_NOTIFY)
             .residential(DEFAULT_RESIDENTIAL)
-            .createdByUser(DEFAULT_CREATED_BY_USER)
             .instruction(DEFAULT_INSTRUCTION)
             .dateCreated(DEFAULT_DATE_CREATED)
             .dateUpdated(DEFAULT_DATE_UPDATED);
@@ -159,7 +155,6 @@ public class AddressBookResourceIT {
             .contactEmail(UPDATED_CONTACT_EMAIL)
             .notify(UPDATED_NOTIFY)
             .residential(UPDATED_RESIDENTIAL)
-            .createdByUser(UPDATED_CREATED_BY_USER)
             .instruction(UPDATED_INSTRUCTION)
             .dateCreated(UPDATED_DATE_CREATED)
             .dateUpdated(UPDATED_DATE_UPDATED);
@@ -196,7 +191,6 @@ public class AddressBookResourceIT {
         assertThat(testAddressBook.getContactEmail()).isEqualTo(DEFAULT_CONTACT_EMAIL);
         assertThat(testAddressBook.isNotify()).isEqualTo(DEFAULT_NOTIFY);
         assertThat(testAddressBook.isResidential()).isEqualTo(DEFAULT_RESIDENTIAL);
-        assertThat(testAddressBook.getCreatedByUser()).isEqualTo(DEFAULT_CREATED_BY_USER);
         assertThat(testAddressBook.getInstruction()).isEqualTo(DEFAULT_INSTRUCTION);
         assertThat(testAddressBook.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
         assertThat(testAddressBook.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
@@ -243,7 +237,6 @@ public class AddressBookResourceIT {
             .andExpect(jsonPath("$.[*].contactEmail").value(hasItem(DEFAULT_CONTACT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].notify").value(hasItem(DEFAULT_NOTIFY.booleanValue())))
             .andExpect(jsonPath("$.[*].residential").value(hasItem(DEFAULT_RESIDENTIAL.booleanValue())))
-            .andExpect(jsonPath("$.[*].createdByUser").value(hasItem(DEFAULT_CREATED_BY_USER.toString())))
             .andExpect(jsonPath("$.[*].instruction").value(hasItem(DEFAULT_INSTRUCTION.toString())))
             .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())))
             .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())));
@@ -269,7 +262,6 @@ public class AddressBookResourceIT {
             .andExpect(jsonPath("$.contactEmail").value(DEFAULT_CONTACT_EMAIL.toString()))
             .andExpect(jsonPath("$.notify").value(DEFAULT_NOTIFY.booleanValue()))
             .andExpect(jsonPath("$.residential").value(DEFAULT_RESIDENTIAL.booleanValue()))
-            .andExpect(jsonPath("$.createdByUser").value(DEFAULT_CREATED_BY_USER.toString()))
             .andExpect(jsonPath("$.instruction").value(DEFAULT_INSTRUCTION.toString()))
             .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()))
             .andExpect(jsonPath("$.dateUpdated").value(DEFAULT_DATE_UPDATED.toString()));
@@ -305,7 +297,6 @@ public class AddressBookResourceIT {
             .contactEmail(UPDATED_CONTACT_EMAIL)
             .notify(UPDATED_NOTIFY)
             .residential(UPDATED_RESIDENTIAL)
-            .createdByUser(UPDATED_CREATED_BY_USER)
             .instruction(UPDATED_INSTRUCTION)
             .dateCreated(UPDATED_DATE_CREATED)
             .dateUpdated(UPDATED_DATE_UPDATED);
@@ -329,7 +320,6 @@ public class AddressBookResourceIT {
         assertThat(testAddressBook.getContactEmail()).isEqualTo(UPDATED_CONTACT_EMAIL);
         assertThat(testAddressBook.isNotify()).isEqualTo(UPDATED_NOTIFY);
         assertThat(testAddressBook.isResidential()).isEqualTo(UPDATED_RESIDENTIAL);
-        assertThat(testAddressBook.getCreatedByUser()).isEqualTo(UPDATED_CREATED_BY_USER);
         assertThat(testAddressBook.getInstruction()).isEqualTo(UPDATED_INSTRUCTION);
         assertThat(testAddressBook.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
         assertThat(testAddressBook.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);

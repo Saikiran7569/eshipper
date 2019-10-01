@@ -11,7 +11,6 @@ export interface IAddressBook {
   contactEmail?: string;
   notify?: boolean;
   residential?: boolean;
-  createdByUser?: string;
   instruction?: string;
   dateCreated?: Moment;
   dateUpdated?: Moment;
@@ -33,7 +32,6 @@ export class AddressBook implements IAddressBook {
     public contactEmail?: string,
     public notify?: boolean,
     public residential?: boolean,
-    public createdByUser?: string,
     public instruction?: string,
     public dateCreated?: Moment,
     public dateUpdated?: Moment,
