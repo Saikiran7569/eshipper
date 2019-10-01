@@ -8,7 +8,6 @@ entity AddressBook {
     contactEmail String maxlength(255)
    	notify Boolean
 	residential Boolean
-    createdByUser String maxlength(255)	
 	instruction String maxlength(255)	
     dateCreated LocalDate
     dateUpdated LocalDate
