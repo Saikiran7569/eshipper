@@ -12,8 +12,8 @@ import org.mapstruct.*;
 public interface User1Mapper extends EntityMapper<User1DTO, User1> {
 
 
-    @Mapping(target = "createdBies", ignore = true)
-    @Mapping(target = "removeCreatedBy", ignore = true)
+    @Mapping(target = "addressBooks", ignore = true)
+    @Mapping(target = "removeAddressBook", ignore = true)
     User1 toEntity(User1DTO user1DTO);
 
     default User1 fromId(Long id) {
