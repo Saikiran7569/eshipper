@@ -106,16 +106,16 @@
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "company",
+            "otherEntityName": "user1",
             "otherEntityRelationshipName": "addressBook",
-            "relationshipName": "company",
+            "relationshipName": "createdBy",
             "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "user1",
+            "otherEntityName": "company",
             "otherEntityRelationshipName": "addressBook",
-            "relationshipName": "user1",
+            "relationshipName": "company",
             "otherEntityField": "id"
         }
     ],

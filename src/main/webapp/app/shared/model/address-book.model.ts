@@ -17,8 +17,8 @@ export interface IAddressBook {
   countryId?: number;
   provinceId?: number;
   cityId?: number;
+  createdById?: number;
   companyId?: number;
-  user1Id?: number;
 }
 
 export class AddressBook implements IAddressBook {
@@ -39,8 +39,8 @@ export class AddressBook implements IAddressBook {
     public countryId?: number,
     public provinceId?: number,
     public cityId?: number,
-    public companyId?: number,
-    public user1Id?: number
+    public createdById?: number,
+    public companyId?: number
   ) {
     this.notify = this.notify || false;
     this.residential = this.residential || false;

@@ -61,10 +61,10 @@
             <column name="city_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="company_id" type="bigint">
+            <column name="created_by_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="user1_id" type="bigint">
+            <column name="company_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
