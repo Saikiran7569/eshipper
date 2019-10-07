@@ -11,7 +11,7 @@
             "relationshipType": "one-to-many",
             "otherEntityName": "addressBook",
             "otherEntityRelationshipName": "user1",
-            "relationshipName": "createdBy"
+            "relationshipName": "addressBook"
         }
     ],
     "changelogDate": "20191007071426",

@@ -112,9 +112,10 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "user1",
-            "otherEntityName": "user1",
             "relationshipType": "many-to-one",
+            "otherEntityName": "user1",
+            "otherEntityRelationshipName": "addressBook",
+            "relationshipName": "user1",
             "otherEntityField": "id"
         }
     ],
