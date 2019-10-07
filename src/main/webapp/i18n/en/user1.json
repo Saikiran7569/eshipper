@@ -17,7 +17,7 @@
         "title": "User 1"
       },
       "name": "Name",
-      "createdByUserId": "Created By User Id"
+      "createdBy": "Created By"
     }
   }
 }
