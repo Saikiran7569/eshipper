@@ -59,6 +59,7 @@ entity Province {
  
   relationship OneToMany {
   Company to AddressBook
+  User{createdByUserId} to AddressBook
  
   }
  
