@@ -77,6 +77,12 @@
                         <a [routerLink]="['/company', addressBook.companyId, 'view']">{{addressBook.companyId}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.user1">User 1</span></dt>
+                <dd>
+                    <div *ngIf="addressBook.user1Id">
+                        <a [routerLink]="['/user-1', addressBook.user1Id, 'view']">{{addressBook.user1Id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -13,7 +13,10 @@ entity AddressBook {
     dateUpdated LocalDate
     
 }
+entity User1{
 
+name String
+}
 entity Country {
   name String maxlength(255)
   fullName String maxlength(255)
@@ -59,7 +62,7 @@ entity Province {
  
   relationship OneToMany {
   Company to AddressBook
-  User{createdByUserId} to AddressBook
+  User1{createdByUserId} to AddressBook
  
   }
  

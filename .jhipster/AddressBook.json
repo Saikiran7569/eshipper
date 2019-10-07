@@ -110,6 +110,12 @@
             "otherEntityRelationshipName": "addressBook",
             "relationshipName": "company",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "user1",
+            "otherEntityName": "user1",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190926112057",
