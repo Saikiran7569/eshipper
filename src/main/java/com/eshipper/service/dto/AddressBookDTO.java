@@ -50,9 +50,9 @@ public class AddressBookDTO implements Serializable {
 
     private Long cityId;
 
-    private Long companyId;
+    private Long createdById;
 
-    private Long user1Id;
+    private Long companyId;
 
     public Long getId() {
         return id;
@@ -182,20 +182,20 @@ public class AddressBookDTO implements Serializable {
         this.cityId = cityId;
     }
 
+    public Long getCreatedById() {
+        return createdById;
+    }
+
+    public void setCreatedById(Long user1Id) {
+        this.createdById = user1Id;
+    }
+
     public Long getCompanyId() {
         return companyId;
     }
 
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
-    }
-
-    public Long getUser1Id() {
-        return user1Id;
-    }
-
-    public void setUser1Id(Long user1Id) {
-        this.user1Id = user1Id;
     }
 
     @Override
@@ -238,8 +238,8 @@ public class AddressBookDTO implements Serializable {
             ", country=" + getCountryId() +
             ", province=" + getProvinceId() +
             ", city=" + getCityId() +
+            ", createdBy=" + getCreatedById() +
             ", company=" + getCompanyId() +
-            ", user1=" + getUser1Id() +
             "}";
     }
 }

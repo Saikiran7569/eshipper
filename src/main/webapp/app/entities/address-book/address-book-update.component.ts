@@ -16,10 +16,10 @@ import { IProvince } from 'app/shared/model/province.model';
 import { ProvinceService } from 'app/entities/province/province.service';
 import { ICity } from 'app/shared/model/city.model';
 import { CityService } from 'app/entities/city/city.service';
-import { ICompany } from 'app/shared/model/company.model';
-import { CompanyService } from 'app/entities/company/company.service';
 import { IUser1 } from 'app/shared/model/user-1.model';
 import { User1Service } from 'app/entities/user-1/user-1.service';
+import { ICompany } from 'app/shared/model/company.model';
+import { CompanyService } from 'app/entities/company/company.service';
 
 @Component({
   selector: 'jhi-address-book-update',
@@ -34,9 +34,9 @@ export class AddressBookUpdateComponent implements OnInit {
 
   cities: ICity[];
 
-  companies: ICompany[];
-
   user1s: IUser1[];
+
+  companies: ICompany[];
   dateCreatedDp: any;
   dateUpdatedDp: any;
 
@@ -57,8 +57,8 @@ export class AddressBookUpdateComponent implements OnInit {
     countryId: [],
     provinceId: [],
     cityId: [],
-    companyId: [],
-    user1Id: []
+    createdById: [],
+    companyId: []
   });
 
   constructor(
@@ -67,8 +67,8 @@ export class AddressBookUpdateComponent implements OnInit {
     protected countryService: CountryService,
     protected provinceService: ProvinceService,
     protected cityService: CityService,
-    protected companyService: CompanyService,
     protected user1Service: User1Service,
+    protected companyService: CompanyService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -99,13 +99,6 @@ export class AddressBookUpdateComponent implements OnInit {
         map((response: HttpResponse<ICity[]>) => response.body)
       )
       .subscribe((res: ICity[]) => (this.cities = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.companyService
-      .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<ICompany[]>) => mayBeOk.ok),
-        map((response: HttpResponse<ICompany[]>) => response.body)
-      )
-      .subscribe((res: ICompany[]) => (this.companies = res), (res: HttpErrorResponse) => this.onError(res.message));
     this.user1Service
       .query()
       .pipe(
@@ -113,6 +106,13 @@ export class AddressBookUpdateComponent implements OnInit {
         map((response: HttpResponse<IUser1[]>) => response.body)
       )
       .subscribe((res: IUser1[]) => (this.user1s = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.companyService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<ICompany[]>) => mayBeOk.ok),
+        map((response: HttpResponse<ICompany[]>) => response.body)
+      )
+      .subscribe((res: ICompany[]) => (this.companies = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(addressBook: IAddressBook) {
@@ -133,8 +133,8 @@ export class AddressBookUpdateComponent implements OnInit {
       countryId: addressBook.countryId,
       provinceId: addressBook.provinceId,
       cityId: addressBook.cityId,
-      companyId: addressBook.companyId,
-      user1Id: addressBook.user1Id
+      createdById: addressBook.createdById,
+      companyId: addressBook.companyId
     });
   }
 
@@ -171,8 +171,8 @@ export class AddressBookUpdateComponent implements OnInit {
       countryId: this.editForm.get(['countryId']).value,
       provinceId: this.editForm.get(['provinceId']).value,
       cityId: this.editForm.get(['cityId']).value,
-      companyId: this.editForm.get(['companyId']).value,
-      user1Id: this.editForm.get(['user1Id']).value
+      createdById: this.editForm.get(['createdById']).value,
+      companyId: this.editForm.get(['companyId']).value
     };
   }
 
@@ -204,11 +204,11 @@ export class AddressBookUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackCompanyById(index: number, item: ICompany) {
+  trackUser1ById(index: number, item: IUser1) {
     return item.id;
   }
 
-  trackUser1ById(index: number, item: IUser1) {
+  trackCompanyById(index: number, item: ICompany) {
     return item.id;
   }
 }

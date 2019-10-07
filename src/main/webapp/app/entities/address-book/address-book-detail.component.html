@@ -71,16 +71,16 @@
                         <a [routerLink]="['/city', addressBook.cityId, 'view']">{{addressBook.cityId}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="eshipperApp.addressBook.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="addressBook.createdById">
+                        <a [routerLink]="['/user-1', addressBook.createdById, 'view']">{{addressBook.createdById}}</a>
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="eshipperApp.addressBook.company">Company</span></dt>
                 <dd>
                     <div *ngIf="addressBook.companyId">
                         <a [routerLink]="['/company', addressBook.companyId, 'view']">{{addressBook.companyId}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="eshipperApp.addressBook.user1">User 1</span></dt>
-                <dd>
-                    <div *ngIf="addressBook.user1Id">
-                        <a [routerLink]="['/user-1', addressBook.user1Id, 'view']">{{addressBook.user1Id}}</a>
                     </div>
                 </dd>
             </dl>
