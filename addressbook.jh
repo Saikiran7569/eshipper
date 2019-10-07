@@ -13,7 +13,10 @@ entity AddressBook {
     dateUpdated LocalDate
     
 }
+entity User{
 
+name String
+}
 entity Country {
   name String maxlength(255)
   fullName String maxlength(255)
