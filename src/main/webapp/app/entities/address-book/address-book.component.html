@@ -34,6 +34,7 @@
             <th><span jhiTranslate="eshipperApp.addressBook.province">Province</span></th>
             <th><span jhiTranslate="eshipperApp.addressBook.city">City</span></th>
             <th><span jhiTranslate="eshipperApp.addressBook.company">Company</span></th>
+            <th><span jhiTranslate="eshipperApp.addressBook.user1">User 1</span></th>
             <th></th>
             </tr>
             </thead>
@@ -70,6 +71,11 @@
                 <td>
                     <div *ngIf="addressBook.companyId">
                         <a [routerLink]="['/company', addressBook.companyId , 'view' ]" >{{addressBook.companyId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="addressBook.user1Id">
+                        <a [routerLink]="['/user-1', addressBook.user1Id , 'view' ]" >{{addressBook.user1Id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

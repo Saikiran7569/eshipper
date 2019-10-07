@@ -154,6 +154,13 @@
                         <option [ngValue]="companyOption.id" *ngFor="let companyOption of companies; trackBy: trackCompanyById">{{companyOption.id}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.addressBook.user1" for="field_user1">User 1</label>
+                    <select class="form-control" id="field_user1" name="user1" formControlName="user1Id">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="user1Option.id" *ngFor="let user1Option of user1s; trackBy: trackUser1ById">{{user1Option.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

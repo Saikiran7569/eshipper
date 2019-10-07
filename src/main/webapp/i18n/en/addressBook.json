@@ -31,7 +31,8 @@
       "country": "Country",
       "province": "Province",
       "city": "City",
-      "company": "Company"
+      "company": "Company",
+      "user1": "User 1"
     }
   }
 }

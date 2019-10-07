@@ -52,6 +52,8 @@ public class AddressBookDTO implements Serializable {
 
     private Long companyId;
 
+    private Long user1Id;
+
     public Long getId() {
         return id;
     }
@@ -188,6 +190,14 @@ public class AddressBookDTO implements Serializable {
         this.companyId = companyId;
     }
 
+    public Long getUser1Id() {
+        return user1Id;
+    }
+
+    public void setUser1Id(Long user1Id) {
+        this.user1Id = user1Id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -229,6 +239,7 @@ public class AddressBookDTO implements Serializable {
             ", province=" + getProvinceId() +
             ", city=" + getCityId() +
             ", company=" + getCompanyId() +
+            ", user1=" + getUser1Id() +
             "}";
     }
 }

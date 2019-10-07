@@ -83,6 +83,10 @@ public class AddressBook implements Serializable {
     @JsonIgnoreProperties("addressBooks")
     private Company company;
 
+    @ManyToOne
+    @JsonIgnoreProperties("addressBooks")
+    private User1 user1;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -298,6 +302,19 @@ public class AddressBook implements Serializable {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public User1 getUser1() {
+        return user1;
+    }
+
+    public AddressBook user1(User1 user1) {
+        this.user1 = user1;
+        return this;
+    }
+
+    public void setUser1(User1 user1) {
+        this.user1 = user1;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
