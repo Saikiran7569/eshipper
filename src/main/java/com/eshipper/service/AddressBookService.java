@@ -2,7 +2,9 @@ package com.eshipper.service;
 
 import com.eshipper.service.dto.AddressBookDTO;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface AddressBookService {
     /**
      * Get all the addressBooks.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<AddressBookDTO> findAll();
+    Page<AddressBookDTO> findAll(Pageable pageable);
 
 
     /**
