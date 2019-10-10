@@ -8,13 +8,12 @@ import com.eshipper.service.mapper.AddressBookMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link AddressBook}.
@@ -51,15 +50,15 @@ public class AddressBookServiceImpl implements AddressBookService {
     /**
      * Get all the addressBooks.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Override
     @Transactional(readOnly = true)
-    public List<AddressBookDTO> findAll() {
+    public Page<AddressBookDTO> findAll(Pageable pageable) {
         log.debug("Request to get all AddressBooks");
-        return addressBookRepository.findAll().stream()
-            .map(addressBookMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
+        return addressBookRepository.findAll(pageable)
+            .map(addressBookMapper::toDto);
     }
 
 

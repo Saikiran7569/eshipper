@@ -122,7 +122,7 @@
     "changelogDate": "20190926112057",
     "entityTableName": "address_book",
     "dto": "mapstruct",
-    "pagination": "no",
+    "pagination": "pagination",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,

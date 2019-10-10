@@ -16,25 +16,25 @@
     <div class="table-responsive" *ngIf="addressBooks?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-            <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.companyName">Company Name</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.address1">Address 1</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.address2">Address 2</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.postalCode">Postal Code</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.contactName">Contact Name</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.phoneNo">Phone No</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.contactEmail">Contact Email</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.notify">Notify</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.residential">Residential</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.instruction">Instruction</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.dateCreated">Date Created</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.dateUpdated">Date Updated</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.country">Country</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.province">Province</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.city">City</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.createdBy">Created By</span></th>
-            <th><span jhiTranslate="eshipperApp.addressBook.company">Company</span></th>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="companyName"><span jhiTranslate="eshipperApp.addressBook.companyName">Company Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="address1"><span jhiTranslate="eshipperApp.addressBook.address1">Address 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="address2"><span jhiTranslate="eshipperApp.addressBook.address2">Address 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="postalCode"><span jhiTranslate="eshipperApp.addressBook.postalCode">Postal Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="contactName"><span jhiTranslate="eshipperApp.addressBook.contactName">Contact Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneNo"><span jhiTranslate="eshipperApp.addressBook.phoneNo">Phone No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="contactEmail"><span jhiTranslate="eshipperApp.addressBook.contactEmail">Contact Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="notify"><span jhiTranslate="eshipperApp.addressBook.notify">Notify</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residential"><span jhiTranslate="eshipperApp.addressBook.residential">Residential</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="instruction"><span jhiTranslate="eshipperApp.addressBook.instruction">Instruction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateCreated"><span jhiTranslate="eshipperApp.addressBook.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateUpdated"><span jhiTranslate="eshipperApp.addressBook.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="countryId"><span jhiTranslate="eshipperApp.addressBook.country">Country</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="provinceId"><span jhiTranslate="eshipperApp.addressBook.province">Province</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cityId"><span jhiTranslate="eshipperApp.addressBook.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdById"><span jhiTranslate="eshipperApp.addressBook.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="companyId"><span jhiTranslate="eshipperApp.addressBook.company">Company</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -105,5 +105,13 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div [hidden]="addressBooks?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
     </div>
 </div>
