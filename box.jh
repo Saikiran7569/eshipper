@@ -1,0 +1,28 @@
+entity Box {
+	name String  maxlength(255) 
+	description String maxlength(255)
+	maxSupportWeight Integer max(20)
+	length Integer max(20)
+	width Integer max(20)
+	height Integer max(20)
+	weight Integer max(20)
+}
+
+entity Metric{
+}
+
+entity WoPackageType{
+}
+
+relationship ManyToOne {
+ 	 Box to Metric 
+     Box to WoPackageType
+}
+
+//Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+//paginate Job with pagination
+paginate Box with pagination
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl
