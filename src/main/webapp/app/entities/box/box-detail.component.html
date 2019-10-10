@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="box">
+            <h2><span jhiTranslate="eshipperApp.box.detail.title">Box</span> {{box.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.box.name">Name</span></dt>
+                <dd>
+                    <span>{{box.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.box.description">Description</span></dt>
+                <dd>
+                    <span>{{box.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.box.maxSupportWeight">Max Support Weight</span></dt>
+                <dd>
+                    <span>{{box.maxSupportWeight}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.box.length">Length</span></dt>
+                <dd>
+                    <span>{{box.length}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.box.width">Width</span></dt>
+                <dd>
+                    <span>{{box.width}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.box.height">Height</span></dt>
+                <dd>
+                    <span>{{box.height}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.box.weight">Weight</span></dt>
+                <dd>
+                    <span>{{box.weight}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.box.metric">Metric</span></dt>
+                <dd>
+                    <div *ngIf="box.metricId">
+                        <a [routerLink]="['/metric', box.metricId, 'view']">{{box.metricId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.box.woPackageType">Wo Package Type</span></dt>
+                <dd>
+                    <div *ngIf="box.woPackageTypeId">
+                        <a [routerLink]="['/wo-package-type', box.woPackageTypeId, 'view']">{{box.woPackageTypeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/box', box.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
