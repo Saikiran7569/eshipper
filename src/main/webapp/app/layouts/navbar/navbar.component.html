@@ -69,6 +69,24 @@
                             <span jhiTranslate="global.menu.entities.user1">User 1</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="box" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.box">Box</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="metric" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.metric">Metric</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="wo-package-type" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.woPackageType">Wo Package Type</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>

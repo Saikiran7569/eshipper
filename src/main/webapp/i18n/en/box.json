@@ -1,0 +1,30 @@
+{
+  "eshipperApp": {
+    "box": {
+      "home": {
+        "title": "Boxes",
+        "createLabel": "Create a new Box",
+        "createOrEditLabel": "Create or edit a Box",
+        "notFound": "No Boxes found"
+      },
+      "created": "A new Box is created with identifier {{ param }}",
+      "updated": "A Box is updated with identifier {{ param }}",
+      "deleted": "A Box is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Box {{ id }}?"
+      },
+      "detail": {
+        "title": "Box"
+      },
+      "name": "Name",
+      "description": "Description",
+      "maxSupportWeight": "Max Support Weight",
+      "length": "Length",
+      "width": "Width",
+      "height": "Height",
+      "weight": "Weight",
+      "metric": "Metric",
+      "woPackageType": "Wo Package Type"
+    }
+  }
+}
