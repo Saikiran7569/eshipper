@@ -44,23 +44,18 @@ public class BoxResourceIT {
 
     private static final Integer DEFAULT_MAX_SUPPORT_WEIGHT = 20;
     private static final Integer UPDATED_MAX_SUPPORT_WEIGHT = 19;
-    private static final Integer SMALLER_MAX_SUPPORT_WEIGHT = 20 - 1;
 
     private static final Integer DEFAULT_LENGTH = 20;
     private static final Integer UPDATED_LENGTH = 19;
-    private static final Integer SMALLER_LENGTH = 20 - 1;
 
     private static final Integer DEFAULT_WIDTH = 20;
     private static final Integer UPDATED_WIDTH = 19;
-    private static final Integer SMALLER_WIDTH = 20 - 1;
 
     private static final Integer DEFAULT_HEIGHT = 20;
     private static final Integer UPDATED_HEIGHT = 19;
-    private static final Integer SMALLER_HEIGHT = 20 - 1;
 
     private static final Integer DEFAULT_WEIGHT = 20;
     private static final Integer UPDATED_WEIGHT = 19;
-    private static final Integer SMALLER_WEIGHT = 20 - 1;
 
     @Autowired
     private BoxRepository boxRepository;
@@ -199,8 +194,8 @@ public class BoxResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(box.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].maxSupportWeight").value(hasItem(DEFAULT_MAX_SUPPORT_WEIGHT)))
             .andExpect(jsonPath("$.[*].length").value(hasItem(DEFAULT_LENGTH)))
             .andExpect(jsonPath("$.[*].width").value(hasItem(DEFAULT_WIDTH)))
@@ -219,8 +214,8 @@ public class BoxResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(box.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.maxSupportWeight").value(DEFAULT_MAX_SUPPORT_WEIGHT))
             .andExpect(jsonPath("$.length").value(DEFAULT_LENGTH))
             .andExpect(jsonPath("$.width").value(DEFAULT_WIDTH))

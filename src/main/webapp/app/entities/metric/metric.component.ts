@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { IMetric } from 'app/shared/model/metric.model';
 import { AccountService } from 'app/core/auth/account.service';
@@ -18,12 +18,7 @@ export class MetricComponent implements OnInit, OnDestroy {
   currentAccount: any;
   eventSubscriber: Subscription;
 
-  constructor(
-    protected metricService: MetricService,
-    protected jhiAlertService: JhiAlertService,
-    protected eventManager: JhiEventManager,
-    protected accountService: AccountService
-  ) {}
+  constructor(protected metricService: MetricService, protected eventManager: JhiEventManager, protected accountService: AccountService) {}
 
   loadAll() {
     this.metricService
@@ -32,17 +27,14 @@ export class MetricComponent implements OnInit, OnDestroy {
         filter((res: HttpResponse<IMetric[]>) => res.ok),
         map((res: HttpResponse<IMetric[]>) => res.body)
       )
-      .subscribe(
-        (res: IMetric[]) => {
-          this.metrics = res;
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .subscribe((res: IMetric[]) => {
+        this.metrics = res;
+      });
   }
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
+    this.accountService.identity().subscribe(account => {
       this.currentAccount = account;
     });
     this.registerChangeInMetrics();
@@ -58,9 +50,5 @@ export class MetricComponent implements OnInit, OnDestroy {
 
   registerChangeInMetrics() {
     this.eventSubscriber = this.eventManager.subscribe('metricListModification', response => this.loadAll());
-  }
-
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
   }
 }

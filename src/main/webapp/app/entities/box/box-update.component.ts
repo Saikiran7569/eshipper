@@ -9,6 +9,8 @@ import { filter, map } from 'rxjs/operators';
 import { JhiAlertService } from 'ng-jhipster';
 import { IBox, Box } from 'app/shared/model/box.model';
 import { BoxService } from './box.service';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
 import { IMetric } from 'app/shared/model/metric.model';
 import { MetricService } from 'app/entities/metric/metric.service';
 import { IWoPackageType } from 'app/shared/model/wo-package-type.model';
@@ -20,6 +22,8 @@ import { WoPackageTypeService } from 'app/entities/wo-package-type/wo-package-ty
 })
 export class BoxUpdateComponent implements OnInit {
   isSaving: boolean;
+
+  users: IUser[];
 
   metrics: IMetric[];
 
@@ -34,6 +38,7 @@ export class BoxUpdateComponent implements OnInit {
     width: [null, [Validators.max(20)]],
     height: [null, [Validators.max(20)]],
     weight: [null, [Validators.max(20)]],
+    createdByUserId: [],
     metricId: [],
     woPackageTypeId: []
   });
@@ -41,6 +46,7 @@ export class BoxUpdateComponent implements OnInit {
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected boxService: BoxService,
+    protected userService: UserService,
     protected metricService: MetricService,
     protected woPackageTypeService: WoPackageTypeService,
     protected activatedRoute: ActivatedRoute,
@@ -52,6 +58,13 @@ export class BoxUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ box }) => {
       this.updateForm(box);
     });
+    this.userService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IUser[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IUser[]>) => response.body)
+      )
+      .subscribe((res: IUser[]) => (this.users = res), (res: HttpErrorResponse) => this.onError(res.message));
     this.metricService
       .query()
       .pipe(
@@ -78,6 +91,7 @@ export class BoxUpdateComponent implements OnInit {
       width: box.width,
       height: box.height,
       weight: box.weight,
+      createdByUserId: box.createdByUserId,
       metricId: box.metricId,
       woPackageTypeId: box.woPackageTypeId
     });
@@ -108,6 +122,7 @@ export class BoxUpdateComponent implements OnInit {
       width: this.editForm.get(['width']).value,
       height: this.editForm.get(['height']).value,
       weight: this.editForm.get(['weight']).value,
+      createdByUserId: this.editForm.get(['createdByUserId']).value,
       metricId: this.editForm.get(['metricId']).value,
       woPackageTypeId: this.editForm.get(['woPackageTypeId']).value
     };
@@ -127,6 +142,10 @@ export class BoxUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackUserById(index: number, item: IUser) {
+    return item.id;
   }
 
   trackMetricById(index: number, item: IMetric) {

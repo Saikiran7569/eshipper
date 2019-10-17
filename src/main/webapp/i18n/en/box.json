@@ -23,6 +23,7 @@
       "width": "Width",
       "height": "Height",
       "weight": "Weight",
+      "createdByUser": "Created By User",
       "metric": "Metric",
       "woPackageType": "Wo Package Type"
     }

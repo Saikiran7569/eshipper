@@ -52,6 +52,10 @@ public class Box implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("boxes")
+    private User createdByUser;
+
+    @ManyToOne
+    @JsonIgnoreProperties("boxes")
     private Metric metric;
 
     @ManyToOne
@@ -156,6 +160,19 @@ public class Box implements Serializable {
 
     public void setWeight(Integer weight) {
         this.weight = weight;
+    }
+
+    public User getCreatedByUser() {
+        return createdByUser;
+    }
+
+    public Box createdByUser(User user) {
+        this.createdByUser = user;
+        return this;
+    }
+
+    public void setCreatedByUser(User user) {
+        this.createdByUser = user;
     }
 
     public Metric getMetric() {

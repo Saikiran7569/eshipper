@@ -33,6 +33,10 @@
                 <dd>
                     <span>{{box.weight}}</span>
                 </dd>
+                <dt><span jhiTranslate="eshipperApp.box.createdByUser">Created By User</span></dt>
+                <dd>
+                    {{box.createdByUserId}}
+                </dd>
                 <dt><span jhiTranslate="eshipperApp.box.metric">Metric</span></dt>
                 <dd>
                     <div *ngIf="box.metricId">

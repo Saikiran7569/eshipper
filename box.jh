@@ -15,6 +15,7 @@ entity WoPackageType{
 }
 
 relationship ManyToOne {
+	 Box{createdByUser} to User
  	 Box to Metric 
      Box to WoPackageType
 }

@@ -61,6 +61,13 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "box",
+            "relationshipName": "createdByUser",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
             "otherEntityName": "metric",
             "otherEntityRelationshipName": "box",
             "relationshipName": "metric",
@@ -82,5 +89,6 @@
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "readOnly": false
 }
