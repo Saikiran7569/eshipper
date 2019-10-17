@@ -37,6 +37,9 @@
             <column name="weight" type="integer">
                 <constraints nullable="true" />
             </column>
+            <column name="created_by_user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <column name="metric_id" type="bigint">
                 <constraints nullable="true" />
             </column>

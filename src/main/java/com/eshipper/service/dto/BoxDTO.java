@@ -32,6 +32,8 @@ public class BoxDTO implements Serializable {
     private Integer weight;
 
 
+    private Long createdByUserId;
+
     private Long metricId;
 
     private Long woPackageTypeId;
@@ -100,6 +102,14 @@ public class BoxDTO implements Serializable {
         this.weight = weight;
     }
 
+    public Long getCreatedByUserId() {
+        return createdByUserId;
+    }
+
+    public void setCreatedByUserId(Long userId) {
+        this.createdByUserId = userId;
+    }
+
     public Long getMetricId() {
         return metricId;
     }
@@ -148,6 +158,7 @@ public class BoxDTO implements Serializable {
             ", width=" + getWidth() +
             ", height=" + getHeight() +
             ", weight=" + getWeight() +
+            ", createdByUser=" + getCreatedByUserId() +
             ", metric=" + getMetricId() +
             ", woPackageType=" + getWoPackageTypeId() +
             "}";

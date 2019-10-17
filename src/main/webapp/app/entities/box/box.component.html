@@ -8,6 +8,7 @@
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="boxes?.length === 0">
@@ -17,17 +18,18 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="name"><span jhiTranslate="eshipperApp.box.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="description"><span jhiTranslate="eshipperApp.box.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="maxSupportWeight"><span jhiTranslate="eshipperApp.box.maxSupportWeight">Max Support Weight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="length"><span jhiTranslate="eshipperApp.box.length">Length</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="width"><span jhiTranslate="eshipperApp.box.width">Width</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="height"><span jhiTranslate="eshipperApp.box.height">Height</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="weight"><span jhiTranslate="eshipperApp.box.weight">Weight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="metricId"><span jhiTranslate="eshipperApp.box.metric">Metric</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="woPackageTypeId"><span jhiTranslate="eshipperApp.box.woPackageType">Wo Package Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="name"><span jhiTranslate="eshipperApp.box.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="description"><span jhiTranslate="eshipperApp.box.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="maxSupportWeight"><span jhiTranslate="eshipperApp.box.maxSupportWeight">Max Support Weight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="length"><span jhiTranslate="eshipperApp.box.length">Length</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="width"><span jhiTranslate="eshipperApp.box.width">Width</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="height"><span jhiTranslate="eshipperApp.box.height">Height</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="weight"><span jhiTranslate="eshipperApp.box.weight">Weight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdByUserId"><span jhiTranslate="eshipperApp.box.createdByUser">Created By User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="metricId"><span jhiTranslate="eshipperApp.box.metric">Metric</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="woPackageTypeId"><span jhiTranslate="eshipperApp.box.woPackageType">Wo Package Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +42,9 @@
                 <td>{{box.width}}</td>
                 <td>{{box.height}}</td>
                 <td>{{box.weight}}</td>
+                <td>
+                    {{box.createdByUserId}}
+                </td>
                 <td>
                     <div *ngIf="box.metricId">
                         <a [routerLink]="['/metric', box.metricId , 'view' ]" >{{box.metricId}}</a>

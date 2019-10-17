@@ -7,6 +7,7 @@ export interface IBox {
   width?: number;
   height?: number;
   weight?: number;
+  createdByUserId?: number;
   metricId?: number;
   woPackageTypeId?: number;
 }
@@ -21,6 +22,7 @@ export class Box implements IBox {
     public width?: number,
     public height?: number,
     public weight?: number,
+    public createdByUserId?: number,
     public metricId?: number,
     public woPackageTypeId?: number
   ) {}

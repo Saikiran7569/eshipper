@@ -8,6 +8,12 @@
     -->
     <changeSet id="20191010100412-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id"
+                                 baseTableName="box"
+                                 constraintName="fk_box_created_by_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
         <addForeignKeyConstraint baseColumnNames="metric_id"
                                  baseTableName="box"
                                  constraintName="fk_box_metric_id"
