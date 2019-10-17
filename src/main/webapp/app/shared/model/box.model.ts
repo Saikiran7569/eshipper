@@ -1,3 +1,5 @@
+import { Moment } from 'moment';
+
 export interface IBox {
   id?: number;
   name?: string;
@@ -7,6 +9,7 @@ export interface IBox {
   width?: number;
   height?: number;
   weight?: number;
+  createdDate?: Moment;
   createdByUserId?: number;
   metricId?: number;
   woPackageTypeId?: number;
@@ -22,6 +25,7 @@ export class Box implements IBox {
     public width?: number,
     public height?: number,
     public weight?: number,
+    public createdDate?: Moment,
     public createdByUserId?: number,
     public metricId?: number,
     public woPackageTypeId?: number

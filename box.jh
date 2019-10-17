@@ -6,6 +6,7 @@ entity Box {
 	width Integer max(20)
 	height Integer max(20)
 	weight Integer max(20)
+    createdDate LocalDate
 }
 
 entity Metric{

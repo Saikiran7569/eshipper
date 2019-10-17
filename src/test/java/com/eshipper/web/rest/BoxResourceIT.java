@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static com.eshipper.web.rest.TestUtil.createFormattingConversionService;
@@ -56,6 +58,9 @@ public class BoxResourceIT {
 
     private static final Integer DEFAULT_WEIGHT = 20;
     private static final Integer UPDATED_WEIGHT = 19;
+
+    private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private BoxRepository boxRepository;
@@ -111,7 +116,8 @@ public class BoxResourceIT {
             .length(DEFAULT_LENGTH)
             .width(DEFAULT_WIDTH)
             .height(DEFAULT_HEIGHT)
-            .weight(DEFAULT_WEIGHT);
+            .weight(DEFAULT_WEIGHT)
+            .createdDate(DEFAULT_CREATED_DATE);
         return box;
     }
     /**
@@ -128,7 +134,8 @@ public class BoxResourceIT {
             .length(UPDATED_LENGTH)
             .width(UPDATED_WIDTH)
             .height(UPDATED_HEIGHT)
-            .weight(UPDATED_WEIGHT);
+            .weight(UPDATED_WEIGHT)
+            .createdDate(UPDATED_CREATED_DATE);
         return box;
     }
 
@@ -160,6 +167,7 @@ public class BoxResourceIT {
         assertThat(testBox.getWidth()).isEqualTo(DEFAULT_WIDTH);
         assertThat(testBox.getHeight()).isEqualTo(DEFAULT_HEIGHT);
         assertThat(testBox.getWeight()).isEqualTo(DEFAULT_WEIGHT);
+        assertThat(testBox.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
     }
 
     @Test
@@ -200,7 +208,8 @@ public class BoxResourceIT {
             .andExpect(jsonPath("$.[*].length").value(hasItem(DEFAULT_LENGTH)))
             .andExpect(jsonPath("$.[*].width").value(hasItem(DEFAULT_WIDTH)))
             .andExpect(jsonPath("$.[*].height").value(hasItem(DEFAULT_HEIGHT)))
-            .andExpect(jsonPath("$.[*].weight").value(hasItem(DEFAULT_WEIGHT)));
+            .andExpect(jsonPath("$.[*].weight").value(hasItem(DEFAULT_WEIGHT)))
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())));
     }
     
     @Test
@@ -220,7 +229,8 @@ public class BoxResourceIT {
             .andExpect(jsonPath("$.length").value(DEFAULT_LENGTH))
             .andExpect(jsonPath("$.width").value(DEFAULT_WIDTH))
             .andExpect(jsonPath("$.height").value(DEFAULT_HEIGHT))
-            .andExpect(jsonPath("$.weight").value(DEFAULT_WEIGHT));
+            .andExpect(jsonPath("$.weight").value(DEFAULT_WEIGHT))
+            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()));
     }
 
     @Test
@@ -250,7 +260,8 @@ public class BoxResourceIT {
             .length(UPDATED_LENGTH)
             .width(UPDATED_WIDTH)
             .height(UPDATED_HEIGHT)
-            .weight(UPDATED_WEIGHT);
+            .weight(UPDATED_WEIGHT)
+            .createdDate(UPDATED_CREATED_DATE);
         BoxDTO boxDTO = boxMapper.toDto(updatedBox);
 
         restBoxMockMvc.perform(put("/api/boxes")
@@ -269,6 +280,7 @@ public class BoxResourceIT {
         assertThat(testBox.getWidth()).isEqualTo(UPDATED_WIDTH);
         assertThat(testBox.getHeight()).isEqualTo(UPDATED_HEIGHT);
         assertThat(testBox.getWeight()).isEqualTo(UPDATED_WEIGHT);
+        assertThat(testBox.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
     }
 
     @Test

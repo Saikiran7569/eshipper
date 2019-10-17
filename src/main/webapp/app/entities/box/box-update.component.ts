@@ -6,6 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import * as moment from 'moment';
 import { JhiAlertService } from 'ng-jhipster';
 import { IBox, Box } from 'app/shared/model/box.model';
 import { BoxService } from './box.service';
@@ -28,6 +29,7 @@ export class BoxUpdateComponent implements OnInit {
   metrics: IMetric[];
 
   wopackagetypes: IWoPackageType[];
+  createdDateDp: any;
 
   editForm = this.fb.group({
     id: [],
@@ -38,6 +40,7 @@ export class BoxUpdateComponent implements OnInit {
     width: [null, [Validators.max(20)]],
     height: [null, [Validators.max(20)]],
     weight: [null, [Validators.max(20)]],
+    createdDate: [],
     createdByUserId: [],
     metricId: [],
     woPackageTypeId: []
@@ -91,6 +94,7 @@ export class BoxUpdateComponent implements OnInit {
       width: box.width,
       height: box.height,
       weight: box.weight,
+      createdDate: box.createdDate,
       createdByUserId: box.createdByUserId,
       metricId: box.metricId,
       woPackageTypeId: box.woPackageTypeId
@@ -122,6 +126,7 @@ export class BoxUpdateComponent implements OnInit {
       width: this.editForm.get(['width']).value,
       height: this.editForm.get(['height']).value,
       weight: this.editForm.get(['weight']).value,
+      createdDate: this.editForm.get(['createdDate']).value,
       createdByUserId: this.editForm.get(['createdByUserId']).value,
       metricId: this.editForm.get(['metricId']).value,
       woPackageTypeId: this.editForm.get(['woPackageTypeId']).value

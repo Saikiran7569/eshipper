@@ -1,4 +1,5 @@
 package com.eshipper.service.dto;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -30,6 +31,8 @@ public class BoxDTO implements Serializable {
 
     @Max(value = 20)
     private Integer weight;
+
+    private LocalDate createdDate;
 
 
     private Long createdByUserId;
@@ -102,6 +105,14 @@ public class BoxDTO implements Serializable {
         this.weight = weight;
     }
 
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
     public Long getCreatedByUserId() {
         return createdByUserId;
     }
@@ -158,6 +169,7 @@ public class BoxDTO implements Serializable {
             ", width=" + getWidth() +
             ", height=" + getHeight() +
             ", weight=" + getWeight() +
+            ", createdDate='" + getCreatedDate() + "'" +
             ", createdByUser=" + getCreatedByUserId() +
             ", metric=" + getMetricId() +
             ", woPackageType=" + getWoPackageTypeId() +

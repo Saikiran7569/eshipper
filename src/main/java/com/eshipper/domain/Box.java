@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * A Box.
@@ -49,6 +50,9 @@ public class Box implements Serializable {
     @Max(value = 20)
     @Column(name = "weight")
     private Integer weight;
+
+    @Column(name = "created_date")
+    private LocalDate createdDate;
 
     @ManyToOne
     @JsonIgnoreProperties("boxes")
@@ -162,6 +166,19 @@ public class Box implements Serializable {
         this.weight = weight;
     }
 
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public Box createdDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+        return this;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
     public User getCreatedByUser() {
         return createdByUser;
     }
@@ -229,6 +246,7 @@ public class Box implements Serializable {
             ", width=" + getWidth() +
             ", height=" + getHeight() +
             ", weight=" + getWeight() +
+            ", createdDate='" + getCreatedDate() + "'" +
             "}";
     }
 }
