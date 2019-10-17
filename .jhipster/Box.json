@@ -56,6 +56,10 @@
                 "max"
             ],
             "fieldValidateRulesMax": 20
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
         }
     ],
     "relationships": [

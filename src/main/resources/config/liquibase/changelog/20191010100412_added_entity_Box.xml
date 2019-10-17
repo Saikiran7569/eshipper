@@ -37,6 +37,9 @@
             <column name="weight" type="integer">
                 <constraints nullable="true" />
             </column>
+            <column name="created_date" type="date">
+                <constraints nullable="true" />
+            </column>
             <column name="created_by_user_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -76,6 +79,7 @@
             <column name="width" type="numeric"/>
             <column name="height" type="numeric"/>
             <column name="weight" type="numeric"/>
+            <column name="created_date" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

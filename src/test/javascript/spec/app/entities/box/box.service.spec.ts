@@ -1,6 +1,8 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
+import * as moment from 'moment';
+import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { BoxService } from 'app/entities/box/box.service';
 import { IBox, Box } from 'app/shared/model/box.model';
 
@@ -11,6 +13,7 @@ describe('Service Tests', () => {
     let httpMock: HttpTestingController;
     let elemDefault: IBox;
     let expectedResult;
+    let currentDate: moment.Moment;
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [HttpClientTestingModule]
@@ -19,13 +22,19 @@ describe('Service Tests', () => {
       injector = getTestBed();
       service = injector.get(BoxService);
       httpMock = injector.get(HttpTestingController);
+      currentDate = moment();
 
-      elemDefault = new Box(0, 'AAAAAAA', 'AAAAAAA', 0, 0, 0, 0, 0);
+      elemDefault = new Box(0, 'AAAAAAA', 'AAAAAAA', 0, 0, 0, 0, 0, currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            createdDate: currentDate.format(DATE_FORMAT)
+          },
+          elemDefault
+        );
         service
           .find(123)
           .pipe(take(1))
@@ -39,11 +48,17 @@ describe('Service Tests', () => {
       it('should create a Box', () => {
         const returnedFromService = Object.assign(
           {
-            id: 0
+            id: 0,
+            createdDate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            createdDate: currentDate
+          },
+          returnedFromService
+        );
         service
           .create(new Box(null))
           .pipe(take(1))
@@ -62,12 +77,18 @@ describe('Service Tests', () => {
             length: 1,
             width: 1,
             height: 1,
-            weight: 1
+            weight: 1,
+            createdDate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            createdDate: currentDate
+          },
+          returnedFromService
+        );
         service
           .update(expected)
           .pipe(take(1))
@@ -86,11 +107,17 @@ describe('Service Tests', () => {
             length: 1,
             width: 1,
             height: 1,
-            weight: 1
+            weight: 1,
+            createdDate: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            createdDate: currentDate
+          },
+          returnedFromService
+        );
         service
           .query(expected)
           .pipe(
