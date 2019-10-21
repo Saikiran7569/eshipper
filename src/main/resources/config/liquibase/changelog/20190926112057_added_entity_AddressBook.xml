@@ -40,6 +40,9 @@
             <column name="notify" type="boolean">
                 <constraints nullable="true" />
             </column>
+            <column name="default_from" type="boolean">
+                <constraints nullable="true" />
+            </column>
             <column name="residential" type="boolean">
                 <constraints nullable="true" />
             </column>
@@ -98,6 +101,7 @@
             <column name="phone_no" type="string"/>
             <column name="contact_email" type="string"/>
             <column name="notify" type="boolean"/>
+            <column name="default_from" type="boolean"/>
             <column name="residential" type="boolean"/>
             <column name="instruction" type="string"/>
             <column name="date_created" type="date"/>

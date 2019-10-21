@@ -10,6 +10,7 @@ export interface IAddressBook {
   phoneNo?: string;
   contactEmail?: string;
   notify?: boolean;
+  defaultFrom?: boolean;
   residential?: boolean;
   instruction?: string;
   dateCreated?: Moment;
@@ -32,6 +33,7 @@ export class AddressBook implements IAddressBook {
     public phoneNo?: string,
     public contactEmail?: string,
     public notify?: boolean,
+    public defaultFrom?: boolean,
     public residential?: boolean,
     public instruction?: string,
     public dateCreated?: Moment,
@@ -43,6 +45,7 @@ export class AddressBook implements IAddressBook {
     public companyId?: number
   ) {
     this.notify = this.notify || false;
+    this.defaultFrom = this.defaultFrom || false;
     this.residential = this.residential || false;
   }
 }

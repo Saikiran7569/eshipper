@@ -8,6 +8,7 @@
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="countries?.length === 0">
@@ -17,11 +18,11 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="eshipperApp.country.name">Name</span></th>
-            <th><span jhiTranslate="eshipperApp.country.fullName">Full Name</span></th>
-            <th><span jhiTranslate="eshipperApp.country.isRestricted">Is Restricted</span></th>
-            <th></th>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.country.name">Name</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.country.fullName">Full Name</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.country.isRestricted">Is Restricted</span></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>

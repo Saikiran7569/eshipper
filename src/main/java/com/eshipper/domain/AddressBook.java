@@ -54,6 +54,9 @@ public class AddressBook implements Serializable {
     @Column(name = "notify")
     private Boolean notify;
 
+    @Column(name = "default_from")
+    private Boolean defaultFrom;
+
     @Column(name = "residential")
     private Boolean residential;
 
@@ -198,6 +201,19 @@ public class AddressBook implements Serializable {
 
     public void setNotify(Boolean notify) {
         this.notify = notify;
+    }
+
+    public Boolean isDefaultFrom() {
+        return defaultFrom;
+    }
+
+    public AddressBook defaultFrom(Boolean defaultFrom) {
+        this.defaultFrom = defaultFrom;
+        return this;
+    }
+
+    public void setDefaultFrom(Boolean defaultFrom) {
+        this.defaultFrom = defaultFrom;
     }
 
     public Boolean isResidential() {
@@ -346,6 +362,7 @@ public class AddressBook implements Serializable {
             ", phoneNo='" + getPhoneNo() + "'" +
             ", contactEmail='" + getContactEmail() + "'" +
             ", notify='" + isNotify() + "'" +
+            ", defaultFrom='" + isDefaultFrom() + "'" +
             ", residential='" + isResidential() + "'" +
             ", instruction='" + getInstruction() + "'" +
             ", dateCreated='" + getDateCreated() + "'" +

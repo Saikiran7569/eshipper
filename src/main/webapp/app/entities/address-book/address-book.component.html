@@ -8,6 +8,7 @@
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="addressBooks?.length === 0">
@@ -17,25 +18,26 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="companyName"><span jhiTranslate="eshipperApp.addressBook.companyName">Company Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="address1"><span jhiTranslate="eshipperApp.addressBook.address1">Address 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="address2"><span jhiTranslate="eshipperApp.addressBook.address2">Address 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="postalCode"><span jhiTranslate="eshipperApp.addressBook.postalCode">Postal Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="contactName"><span jhiTranslate="eshipperApp.addressBook.contactName">Contact Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="phoneNo"><span jhiTranslate="eshipperApp.addressBook.phoneNo">Phone No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="contactEmail"><span jhiTranslate="eshipperApp.addressBook.contactEmail">Contact Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="notify"><span jhiTranslate="eshipperApp.addressBook.notify">Notify</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="residential"><span jhiTranslate="eshipperApp.addressBook.residential">Residential</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="instruction"><span jhiTranslate="eshipperApp.addressBook.instruction">Instruction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dateCreated"><span jhiTranslate="eshipperApp.addressBook.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dateUpdated"><span jhiTranslate="eshipperApp.addressBook.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="countryId"><span jhiTranslate="eshipperApp.addressBook.country">Country</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="provinceId"><span jhiTranslate="eshipperApp.addressBook.province">Province</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="cityId"><span jhiTranslate="eshipperApp.addressBook.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="createdById"><span jhiTranslate="eshipperApp.addressBook.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="companyId"><span jhiTranslate="eshipperApp.addressBook.company">Company</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="companyName"><span jhiTranslate="eshipperApp.addressBook.companyName">Company Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="address1"><span jhiTranslate="eshipperApp.addressBook.address1">Address 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="address2"><span jhiTranslate="eshipperApp.addressBook.address2">Address 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="postalCode"><span jhiTranslate="eshipperApp.addressBook.postalCode">Postal Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="contactName"><span jhiTranslate="eshipperApp.addressBook.contactName">Contact Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="phoneNo"><span jhiTranslate="eshipperApp.addressBook.phoneNo">Phone No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="contactEmail"><span jhiTranslate="eshipperApp.addressBook.contactEmail">Contact Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="notify"><span jhiTranslate="eshipperApp.addressBook.notify">Notify</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="defaultFrom"><span jhiTranslate="eshipperApp.addressBook.defaultFrom">Default From</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="residential"><span jhiTranslate="eshipperApp.addressBook.residential">Residential</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="instruction"><span jhiTranslate="eshipperApp.addressBook.instruction">Instruction</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateCreated"><span jhiTranslate="eshipperApp.addressBook.dateCreated">Date Created</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateUpdated"><span jhiTranslate="eshipperApp.addressBook.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="countryId"><span jhiTranslate="eshipperApp.addressBook.country">Country</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="provinceId"><span jhiTranslate="eshipperApp.addressBook.province">Province</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="cityId"><span jhiTranslate="eshipperApp.addressBook.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdById"><span jhiTranslate="eshipperApp.addressBook.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="companyId"><span jhiTranslate="eshipperApp.addressBook.company">Company</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -49,6 +51,7 @@
                 <td>{{addressBook.phoneNo}}</td>
                 <td>{{addressBook.contactEmail}}</td>
                 <td>{{addressBook.notify}}</td>
+                <td>{{addressBook.defaultFrom}}</td>
                 <td>{{addressBook.residential}}</td>
                 <td>{{addressBook.instruction}}</td>
                 <td>{{addressBook.dateCreated | date:'mediumDate'}}</td>

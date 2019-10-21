@@ -35,6 +35,7 @@ describe('Service Tests', () => {
         'AAAAAAA',
         false,
         false,
+        false,
         'AAAAAAA',
         currentDate,
         currentDate
@@ -96,6 +97,7 @@ describe('Service Tests', () => {
             phoneNo: 'BBBBBB',
             contactEmail: 'BBBBBB',
             notify: true,
+            defaultFrom: true,
             residential: true,
             instruction: 'BBBBBB',
             dateCreated: currentDate.format(DATE_FORMAT),
@@ -131,6 +133,7 @@ describe('Service Tests', () => {
             phoneNo: 'BBBBBB',
             contactEmail: 'BBBBBB',
             notify: true,
+            defaultFrom: true,
             residential: true,
             instruction: 'BBBBBB',
             dateCreated: currentDate.format(DATE_FORMAT),

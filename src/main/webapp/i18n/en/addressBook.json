@@ -24,6 +24,7 @@
       "phoneNo": "Phone No",
       "contactEmail": "Contact Email",
       "notify": "Notify",
+      "defaultFrom": "Default From",
       "residential": "Residential",
       "instruction": "Instruction",
       "dateCreated": "Date Created",
