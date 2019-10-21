@@ -8,6 +8,7 @@
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="companies?.length === 0">
@@ -17,22 +18,22 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="eshipperApp.company.accountNumber">Account Number</span></th>
-            <th><span jhiTranslate="eshipperApp.company.name">Name</span></th>
-            <th><span jhiTranslate="eshipperApp.company.address1">Address 1</span></th>
-            <th><span jhiTranslate="eshipperApp.company.address2">Address 2</span></th>
-            <th><span jhiTranslate="eshipperApp.company.postalCode">Postal Code</span></th>
-            <th><span jhiTranslate="eshipperApp.company.phone">Phone</span></th>
-            <th><span jhiTranslate="eshipperApp.company.email">Email</span></th>
-            <th><span jhiTranslate="eshipperApp.company.timeZone">Time Zone</span></th>
-            <th><span jhiTranslate="eshipperApp.company.costAccount">Cost Account</span></th>
-            <th><span jhiTranslate="eshipperApp.company.dateCreated">Date Created</span></th>
-            <th><span jhiTranslate="eshipperApp.company.creator">Creator</span></th>
-            <th><span jhiTranslate="eshipperApp.company.contact">Contact</span></th>
-            <th><span jhiTranslate="eshipperApp.company.isShopifyEnable">Is Shopify Enable</span></th>
-            <th><span jhiTranslate="eshipperApp.company.defaultSignatureOption">Default Signature Option</span></th>
-            <th></th>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.accountNumber">Account Number</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.name">Name</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.address1">Address 1</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.address2">Address 2</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.postalCode">Postal Code</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.phone">Phone</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.email">Email</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.timeZone">Time Zone</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.costAccount">Cost Account</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.dateCreated">Date Created</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.creator">Creator</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.contact">Contact</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.isShopifyEnable">Is Shopify Enable</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.defaultSignatureOption">Default Signature Option</span></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>

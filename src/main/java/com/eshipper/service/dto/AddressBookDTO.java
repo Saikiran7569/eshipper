@@ -34,6 +34,8 @@ public class AddressBookDTO implements Serializable {
 
     private Boolean notify;
 
+    private Boolean defaultFrom;
+
     private Boolean residential;
 
     @Size(max = 255)
@@ -124,6 +126,14 @@ public class AddressBookDTO implements Serializable {
 
     public void setNotify(Boolean notify) {
         this.notify = notify;
+    }
+
+    public Boolean isDefaultFrom() {
+        return defaultFrom;
+    }
+
+    public void setDefaultFrom(Boolean defaultFrom) {
+        this.defaultFrom = defaultFrom;
     }
 
     public Boolean isResidential() {
@@ -231,6 +241,7 @@ public class AddressBookDTO implements Serializable {
             ", phoneNo='" + getPhoneNo() + "'" +
             ", contactEmail='" + getContactEmail() + "'" +
             ", notify='" + isNotify() + "'" +
+            ", defaultFrom='" + isDefaultFrom() + "'" +
             ", residential='" + isResidential() + "'" +
             ", instruction='" + getInstruction() + "'" +
             ", dateCreated='" + getDateCreated() + "'" +

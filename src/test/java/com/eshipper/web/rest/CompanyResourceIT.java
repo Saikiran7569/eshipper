@@ -67,15 +67,12 @@ public class CompanyResourceIT {
 
     private static final Integer DEFAULT_COST_ACCOUNT = 4;
     private static final Integer UPDATED_COST_ACCOUNT = 3;
-    private static final Integer SMALLER_COST_ACCOUNT = 4 - 1;
 
     private static final ZonedDateTime DEFAULT_DATE_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_DATE_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
-    private static final ZonedDateTime SMALLER_DATE_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(-1L), ZoneOffset.UTC);
 
     private static final Integer DEFAULT_CREATOR = 20;
     private static final Integer UPDATED_CREATOR = 19;
-    private static final Integer SMALLER_CREATOR = 20 - 1;
 
     private static final String DEFAULT_CONTACT = "AAAAAAAAAA";
     private static final String UPDATED_CONTACT = "BBBBBBBBBB";
@@ -85,7 +82,6 @@ public class CompanyResourceIT {
 
     private static final Integer DEFAULT_DEFAULT_SIGNATURE_OPTION = 10;
     private static final Integer UPDATED_DEFAULT_SIGNATURE_OPTION = 9;
-    private static final Integer SMALLER_DEFAULT_SIGNATURE_OPTION = 10 - 1;
 
     @Autowired
     private CompanyRepository companyRepository;
@@ -245,18 +241,18 @@ public class CompanyResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(company.getId().intValue())))
-            .andExpect(jsonPath("$.[*].accountNumber").value(hasItem(DEFAULT_ACCOUNT_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].address1").value(hasItem(DEFAULT_ADDRESS_1.toString())))
-            .andExpect(jsonPath("$.[*].address2").value(hasItem(DEFAULT_ADDRESS_2.toString())))
-            .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
-            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
-            .andExpect(jsonPath("$.[*].timeZone").value(hasItem(DEFAULT_TIME_ZONE.toString())))
+            .andExpect(jsonPath("$.[*].accountNumber").value(hasItem(DEFAULT_ACCOUNT_NUMBER)))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].address1").value(hasItem(DEFAULT_ADDRESS_1)))
+            .andExpect(jsonPath("$.[*].address2").value(hasItem(DEFAULT_ADDRESS_2)))
+            .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE)))
+            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
+            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
+            .andExpect(jsonPath("$.[*].timeZone").value(hasItem(DEFAULT_TIME_ZONE)))
             .andExpect(jsonPath("$.[*].costAccount").value(hasItem(DEFAULT_COST_ACCOUNT)))
             .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(sameInstant(DEFAULT_DATE_CREATED))))
             .andExpect(jsonPath("$.[*].creator").value(hasItem(DEFAULT_CREATOR)))
-            .andExpect(jsonPath("$.[*].contact").value(hasItem(DEFAULT_CONTACT.toString())))
+            .andExpect(jsonPath("$.[*].contact").value(hasItem(DEFAULT_CONTACT)))
             .andExpect(jsonPath("$.[*].isShopifyEnable").value(hasItem(DEFAULT_IS_SHOPIFY_ENABLE.booleanValue())))
             .andExpect(jsonPath("$.[*].defaultSignatureOption").value(hasItem(DEFAULT_DEFAULT_SIGNATURE_OPTION)));
     }
@@ -272,18 +268,18 @@ public class CompanyResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(company.getId().intValue()))
-            .andExpect(jsonPath("$.accountNumber").value(DEFAULT_ACCOUNT_NUMBER.toString()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.address1").value(DEFAULT_ADDRESS_1.toString()))
-            .andExpect(jsonPath("$.address2").value(DEFAULT_ADDRESS_2.toString()))
-            .andExpect(jsonPath("$.postalCode").value(DEFAULT_POSTAL_CODE.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.timeZone").value(DEFAULT_TIME_ZONE.toString()))
+            .andExpect(jsonPath("$.accountNumber").value(DEFAULT_ACCOUNT_NUMBER))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.address1").value(DEFAULT_ADDRESS_1))
+            .andExpect(jsonPath("$.address2").value(DEFAULT_ADDRESS_2))
+            .andExpect(jsonPath("$.postalCode").value(DEFAULT_POSTAL_CODE))
+            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE))
+            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
+            .andExpect(jsonPath("$.timeZone").value(DEFAULT_TIME_ZONE))
             .andExpect(jsonPath("$.costAccount").value(DEFAULT_COST_ACCOUNT))
             .andExpect(jsonPath("$.dateCreated").value(sameInstant(DEFAULT_DATE_CREATED)))
             .andExpect(jsonPath("$.creator").value(DEFAULT_CREATOR))
-            .andExpect(jsonPath("$.contact").value(DEFAULT_CONTACT.toString()))
+            .andExpect(jsonPath("$.contact").value(DEFAULT_CONTACT))
             .andExpect(jsonPath("$.isShopifyEnable").value(DEFAULT_IS_SHOPIFY_ENABLE.booleanValue()))
             .andExpect(jsonPath("$.defaultSignatureOption").value(DEFAULT_DEFAULT_SIGNATURE_OPTION));
     }

@@ -62,6 +62,10 @@
             "fieldType": "Boolean"
         },
         {
+            "fieldName": "defaultFrom",
+            "fieldType": "Boolean"
+        },
+        {
             "fieldName": "residential",
             "fieldType": "Boolean"
         },
@@ -127,5 +131,6 @@
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "readOnly": false
 }
