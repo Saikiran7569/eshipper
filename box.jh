@@ -26,6 +26,8 @@ relationship ManyToOne {
 //paginate JobHistory, Employee with infinite-scroll
 //paginate Job with pagination
 paginate Box with pagination
+
+paginate PalletType with pagination
 dto * with mapstruct
 // Set service options to all except few
 service all with serviceImpl
