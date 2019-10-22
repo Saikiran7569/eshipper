@@ -52,14 +52,16 @@ export class BoxService {
 
   protected convertDateFromClient(box: IBox): IBox {
     const copy: IBox = Object.assign({}, box, {
-      createdDate: box.createdDate != null && box.createdDate.isValid() ? box.createdDate.format(DATE_FORMAT) : null
+      dateCreated: box.dateCreated != null && box.dateCreated.isValid() ? box.dateCreated.format(DATE_FORMAT) : null,
+      dateUpdated: box.dateUpdated != null && box.dateUpdated.isValid() ? box.dateUpdated.format(DATE_FORMAT) : null
     });
     return copy;
   }
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.createdDate = res.body.createdDate != null ? moment(res.body.createdDate) : null;
+      res.body.dateCreated = res.body.dateCreated != null ? moment(res.body.dateCreated) : null;
+      res.body.dateUpdated = res.body.dateUpdated != null ? moment(res.body.dateUpdated) : null;
     }
     return res;
   }
@@ -67,7 +69,8 @@ export class BoxService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((box: IBox) => {
-        box.createdDate = box.createdDate != null ? moment(box.createdDate) : null;
+        box.dateCreated = box.dateCreated != null ? moment(box.dateCreated) : null;
+        box.dateUpdated = box.dateUpdated != null ? moment(box.dateUpdated) : null;
       });
     }
     return res;

@@ -59,8 +59,11 @@ public class BoxResourceIT {
     private static final Float DEFAULT_WEIGHT = 1F;
     private static final Float UPDATED_WEIGHT = 2F;
 
-    private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDate DEFAULT_DATE_CREATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_CREATED = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_DATE_UPDATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_UPDATED = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private BoxRepository boxRepository;
@@ -117,7 +120,8 @@ public class BoxResourceIT {
             .width(DEFAULT_WIDTH)
             .height(DEFAULT_HEIGHT)
             .weight(DEFAULT_WEIGHT)
-            .createdDate(DEFAULT_CREATED_DATE);
+            .dateCreated(DEFAULT_DATE_CREATED)
+            .dateUpdated(DEFAULT_DATE_UPDATED);
         return box;
     }
     /**
@@ -135,7 +139,8 @@ public class BoxResourceIT {
             .width(UPDATED_WIDTH)
             .height(UPDATED_HEIGHT)
             .weight(UPDATED_WEIGHT)
-            .createdDate(UPDATED_CREATED_DATE);
+            .dateCreated(UPDATED_DATE_CREATED)
+            .dateUpdated(UPDATED_DATE_UPDATED);
         return box;
     }
 
@@ -167,7 +172,8 @@ public class BoxResourceIT {
         assertThat(testBox.getWidth()).isEqualTo(DEFAULT_WIDTH);
         assertThat(testBox.getHeight()).isEqualTo(DEFAULT_HEIGHT);
         assertThat(testBox.getWeight()).isEqualTo(DEFAULT_WEIGHT);
-        assertThat(testBox.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testBox.getDateCreated()).isEqualTo(DEFAULT_DATE_CREATED);
+        assertThat(testBox.getDateUpdated()).isEqualTo(DEFAULT_DATE_UPDATED);
     }
 
     @Test
@@ -209,7 +215,8 @@ public class BoxResourceIT {
             .andExpect(jsonPath("$.[*].width").value(hasItem(DEFAULT_WIDTH.doubleValue())))
             .andExpect(jsonPath("$.[*].height").value(hasItem(DEFAULT_HEIGHT.doubleValue())))
             .andExpect(jsonPath("$.[*].weight").value(hasItem(DEFAULT_WEIGHT.doubleValue())))
-            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())));
+            .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())))
+            .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())));
     }
     
     @Test
@@ -230,7 +237,8 @@ public class BoxResourceIT {
             .andExpect(jsonPath("$.width").value(DEFAULT_WIDTH.doubleValue()))
             .andExpect(jsonPath("$.height").value(DEFAULT_HEIGHT.doubleValue()))
             .andExpect(jsonPath("$.weight").value(DEFAULT_WEIGHT.doubleValue()))
-            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()));
+            .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()))
+            .andExpect(jsonPath("$.dateUpdated").value(DEFAULT_DATE_UPDATED.toString()));
     }
 
     @Test
@@ -261,7 +269,8 @@ public class BoxResourceIT {
             .width(UPDATED_WIDTH)
             .height(UPDATED_HEIGHT)
             .weight(UPDATED_WEIGHT)
-            .createdDate(UPDATED_CREATED_DATE);
+            .dateCreated(UPDATED_DATE_CREATED)
+            .dateUpdated(UPDATED_DATE_UPDATED);
         BoxDTO boxDTO = boxMapper.toDto(updatedBox);
 
         restBoxMockMvc.perform(put("/api/boxes")
@@ -280,7 +289,8 @@ public class BoxResourceIT {
         assertThat(testBox.getWidth()).isEqualTo(UPDATED_WIDTH);
         assertThat(testBox.getHeight()).isEqualTo(UPDATED_HEIGHT);
         assertThat(testBox.getWeight()).isEqualTo(UPDATED_WEIGHT);
-        assertThat(testBox.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testBox.getDateCreated()).isEqualTo(UPDATED_DATE_CREATED);
+        assertThat(testBox.getDateUpdated()).isEqualTo(UPDATED_DATE_UPDATED);
     }
 
     @Test

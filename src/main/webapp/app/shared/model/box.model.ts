@@ -9,7 +9,8 @@ export interface IBox {
   width?: number;
   height?: number;
   weight?: number;
-  createdDate?: Moment;
+  dateCreated?: Moment;
+  dateUpdated?: Moment;
   createdByUserId?: number;
   metricId?: number;
   palletTypeId?: number;
@@ -26,7 +27,8 @@ export class Box implements IBox {
     public width?: number,
     public height?: number,
     public weight?: number,
-    public createdDate?: Moment,
+    public dateCreated?: Moment,
+    public dateUpdated?: Moment,
     public createdByUserId?: number,
     public metricId?: number,
     public palletTypeId?: number,

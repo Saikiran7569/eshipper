@@ -38,7 +38,11 @@
             "fieldType": "Float"
         },
         {
-            "fieldName": "createdDate",
+            "fieldName": "dateCreated",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateUpdated",
             "fieldType": "LocalDate"
         }
     ],
