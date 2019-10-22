@@ -33,7 +33,8 @@ export class BoxUpdateComponent implements OnInit {
   pallettypes: IPalletType[];
 
   companies: ICompany[];
-  createdDateDp: any;
+  dateCreatedDp: any;
+  dateUpdatedDp: any;
 
   editForm = this.fb.group({
     id: [],
@@ -44,7 +45,8 @@ export class BoxUpdateComponent implements OnInit {
     width: [],
     height: [],
     weight: [],
-    createdDate: [],
+    dateCreated: [],
+    dateUpdated: [],
     createdByUserId: [],
     metricId: [],
     palletTypeId: [],
@@ -107,7 +109,8 @@ export class BoxUpdateComponent implements OnInit {
       width: box.width,
       height: box.height,
       weight: box.weight,
-      createdDate: box.createdDate,
+      dateCreated: box.dateCreated,
+      dateUpdated: box.dateUpdated,
       createdByUserId: box.createdByUserId,
       metricId: box.metricId,
       palletTypeId: box.palletTypeId,
@@ -140,7 +143,8 @@ export class BoxUpdateComponent implements OnInit {
       width: this.editForm.get(['width']).value,
       height: this.editForm.get(['height']).value,
       weight: this.editForm.get(['weight']).value,
-      createdDate: this.editForm.get(['createdDate']).value,
+      dateCreated: this.editForm.get(['dateCreated']).value,
+      dateUpdated: this.editForm.get(['dateUpdated']).value,
       createdByUserId: this.editForm.get(['createdByUserId']).value,
       metricId: this.editForm.get(['metricId']).value,
       palletTypeId: this.editForm.get(['palletTypeId']).value,

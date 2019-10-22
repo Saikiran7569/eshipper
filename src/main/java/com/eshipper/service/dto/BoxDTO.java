@@ -27,7 +27,9 @@ public class BoxDTO implements Serializable {
 
     private Float weight;
 
-    private LocalDate createdDate;
+    private LocalDate dateCreated;
+
+    private LocalDate dateUpdated;
 
 
     private Long createdByUserId;
@@ -102,12 +104,20 @@ public class BoxDTO implements Serializable {
         this.weight = weight;
     }
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
+    public LocalDate getDateCreated() {
+        return dateCreated;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public LocalDate getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateUpdated(LocalDate dateUpdated) {
+        this.dateUpdated = dateUpdated;
     }
 
     public Long getCreatedByUserId() {
@@ -174,7 +184,8 @@ public class BoxDTO implements Serializable {
             ", width=" + getWidth() +
             ", height=" + getHeight() +
             ", weight=" + getWeight() +
-            ", createdDate='" + getCreatedDate() + "'" +
+            ", dateCreated='" + getDateCreated() + "'" +
+            ", dateUpdated='" + getDateUpdated() + "'" +
             ", createdByUser=" + getCreatedByUserId() +
             ", metric=" + getMetricId() +
             ", palletType=" + getPalletTypeId() +

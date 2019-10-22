@@ -46,8 +46,11 @@ public class Box implements Serializable {
     @Column(name = "weight")
     private Float weight;
 
-    @Column(name = "created_date")
-    private LocalDate createdDate;
+    @Column(name = "date_created")
+    private LocalDate dateCreated;
+
+    @Column(name = "date_updated")
+    private LocalDate dateUpdated;
 
     @ManyToOne
     @JsonIgnoreProperties("boxes")
@@ -165,17 +168,30 @@ public class Box implements Serializable {
         this.weight = weight;
     }
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
+    public LocalDate getDateCreated() {
+        return dateCreated;
     }
 
-    public Box createdDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
+    public Box dateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
         return this;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public LocalDate getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public Box dateUpdated(LocalDate dateUpdated) {
+        this.dateUpdated = dateUpdated;
+        return this;
+    }
+
+    public void setDateUpdated(LocalDate dateUpdated) {
+        this.dateUpdated = dateUpdated;
     }
 
     public User getCreatedByUser() {
@@ -258,7 +274,8 @@ public class Box implements Serializable {
             ", width=" + getWidth() +
             ", height=" + getHeight() +
             ", weight=" + getWeight() +
-            ", createdDate='" + getCreatedDate() + "'" +
+            ", dateCreated='" + getDateCreated() + "'" +
+            ", dateUpdated='" + getDateUpdated() + "'" +
             "}";
     }
 }
