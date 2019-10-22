@@ -16,21 +16,7 @@
       "detail": {
         "title": "Company"
       },
-      "accountNumber": "Account Number",
-      "name": "Name",
-      "address1": "Address 1",
-      "address2": "Address 2",
-      "postalCode": "Postal Code",
-      "phone": "Phone",
-      "email": "Email",
-      "timeZone": "Time Zone",
-      "costAccount": "Cost Account",
-      "dateCreated": "Date Created",
-      "creator": "Creator",
-      "contact": "Contact",
-      "isShopifyEnable": "Is Shopify Enable",
-      "defaultSignatureOption": "Default Signature Option",
-      "addressBook": "Address Book"
+      "box": "Box"
     }
   }
 }

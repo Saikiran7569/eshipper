@@ -8,17 +8,19 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Box} and its DTO {@link BoxDTO}.
  */
-@Mapper(componentModel = "spring", uses = {UserMapper.class, MetricMapper.class, WoPackageTypeMapper.class})
+@Mapper(componentModel = "spring", uses = {UserMapper.class, MetricMapper.class, PalletTypeMapper.class, CompanyMapper.class})
 public interface BoxMapper extends EntityMapper<BoxDTO, Box> {
 
     @Mapping(source = "createdByUser.id", target = "createdByUserId")
     @Mapping(source = "metric.id", target = "metricId")
-    @Mapping(source = "woPackageType.id", target = "woPackageTypeId")
+    @Mapping(source = "palletType.id", target = "palletTypeId")
+    @Mapping(source = "company.id", target = "companyId")
     BoxDTO toDto(Box box);
 
     @Mapping(source = "createdByUserId", target = "createdByUser")
     @Mapping(source = "metricId", target = "metric")
-    @Mapping(source = "woPackageTypeId", target = "woPackageType")
+    @Mapping(source = "palletTypeId", target = "palletType")
+    @Mapping(source = "companyId", target = "company")
     Box toEntity(BoxDTO boxDTO);
 
     default Box fromId(Long id) {

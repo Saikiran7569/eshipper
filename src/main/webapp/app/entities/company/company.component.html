@@ -19,40 +19,12 @@
             <thead>
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.accountNumber">Account Number</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.name">Name</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.address1">Address 1</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.address2">Address 2</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.postalCode">Postal Code</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.phone">Phone</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.email">Email</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.timeZone">Time Zone</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.costAccount">Cost Account</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.dateCreated">Date Created</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.creator">Creator</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.contact">Contact</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.isShopifyEnable">Is Shopify Enable</span></th>
-            <th scope="col" ><span jhiTranslate="eshipperApp.company.defaultSignatureOption">Default Signature Option</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let company of companies ;trackBy: trackId">
                 <td><a [routerLink]="['/company', company.id, 'view' ]">{{company.id}}</a></td>
-                <td>{{company.accountNumber}}</td>
-                <td>{{company.name}}</td>
-                <td>{{company.address1}}</td>
-                <td>{{company.address2}}</td>
-                <td>{{company.postalCode}}</td>
-                <td>{{company.phone}}</td>
-                <td>{{company.email}}</td>
-                <td>{{company.timeZone}}</td>
-                <td>{{company.costAccount}}</td>
-                <td>{{company.dateCreated | date:'medium'}}</td>
-                <td>{{company.creator}}</td>
-                <td>{{company.contact}}</td>
-                <td>{{company.isShopifyEnable}}</td>
-                <td>{{company.defaultSignatureOption}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

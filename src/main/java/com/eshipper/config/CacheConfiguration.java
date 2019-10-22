@@ -62,6 +62,9 @@ public class CacheConfiguration {
             createCache(cm, com.eshipper.domain.Metric.class.getName() + ".boxes");
             createCache(cm, com.eshipper.domain.WoPackageType.class.getName());
             createCache(cm, com.eshipper.domain.WoPackageType.class.getName() + ".boxes");
+            createCache(cm, com.eshipper.domain.PalletType.class.getName());
+            createCache(cm, com.eshipper.domain.PalletType.class.getName() + ".boxes");
+            createCache(cm, com.eshipper.domain.Company.class.getName() + ".boxes");
             // jhipster-needle-ehcache-add-entry
         };
     }

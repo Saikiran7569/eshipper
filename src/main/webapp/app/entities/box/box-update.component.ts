@@ -14,8 +14,10 @@ import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
 import { IMetric } from 'app/shared/model/metric.model';
 import { MetricService } from 'app/entities/metric/metric.service';
-import { IWoPackageType } from 'app/shared/model/wo-package-type.model';
-import { WoPackageTypeService } from 'app/entities/wo-package-type/wo-package-type.service';
+import { IPalletType } from 'app/shared/model/pallet-type.model';
+import { PalletTypeService } from 'app/entities/pallet-type/pallet-type.service';
+import { ICompany } from 'app/shared/model/company.model';
+import { CompanyService } from 'app/entities/company/company.service';
 
 @Component({
   selector: 'jhi-box-update',
@@ -28,22 +30,25 @@ export class BoxUpdateComponent implements OnInit {
 
   metrics: IMetric[];
 
-  wopackagetypes: IWoPackageType[];
+  pallettypes: IPalletType[];
+
+  companies: ICompany[];
   createdDateDp: any;
 
   editForm = this.fb.group({
     id: [],
     name: [null, [Validators.maxLength(255)]],
     description: [null, [Validators.maxLength(255)]],
-    maxSupportWeight: [null, [Validators.max(20)]],
-    length: [null, [Validators.max(20)]],
-    width: [null, [Validators.max(20)]],
-    height: [null, [Validators.max(20)]],
-    weight: [null, [Validators.max(20)]],
+    maxSupportWeight: [],
+    length: [],
+    width: [],
+    height: [],
+    weight: [],
     createdDate: [],
     createdByUserId: [],
     metricId: [],
-    woPackageTypeId: []
+    palletTypeId: [],
+    companyId: []
   });
 
   constructor(
@@ -51,7 +56,8 @@ export class BoxUpdateComponent implements OnInit {
     protected boxService: BoxService,
     protected userService: UserService,
     protected metricService: MetricService,
-    protected woPackageTypeService: WoPackageTypeService,
+    protected palletTypeService: PalletTypeService,
+    protected companyService: CompanyService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -75,13 +81,20 @@ export class BoxUpdateComponent implements OnInit {
         map((response: HttpResponse<IMetric[]>) => response.body)
       )
       .subscribe((res: IMetric[]) => (this.metrics = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.woPackageTypeService
+    this.palletTypeService
       .query()
       .pipe(
-        filter((mayBeOk: HttpResponse<IWoPackageType[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IWoPackageType[]>) => response.body)
+        filter((mayBeOk: HttpResponse<IPalletType[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IPalletType[]>) => response.body)
       )
-      .subscribe((res: IWoPackageType[]) => (this.wopackagetypes = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: IPalletType[]) => (this.pallettypes = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.companyService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<ICompany[]>) => mayBeOk.ok),
+        map((response: HttpResponse<ICompany[]>) => response.body)
+      )
+      .subscribe((res: ICompany[]) => (this.companies = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(box: IBox) {
@@ -97,7 +110,8 @@ export class BoxUpdateComponent implements OnInit {
       createdDate: box.createdDate,
       createdByUserId: box.createdByUserId,
       metricId: box.metricId,
-      woPackageTypeId: box.woPackageTypeId
+      palletTypeId: box.palletTypeId,
+      companyId: box.companyId
     });
   }
 
@@ -129,7 +143,8 @@ export class BoxUpdateComponent implements OnInit {
       createdDate: this.editForm.get(['createdDate']).value,
       createdByUserId: this.editForm.get(['createdByUserId']).value,
       metricId: this.editForm.get(['metricId']).value,
-      woPackageTypeId: this.editForm.get(['woPackageTypeId']).value
+      palletTypeId: this.editForm.get(['palletTypeId']).value,
+      companyId: this.editForm.get(['companyId']).value
     };
   }
 
@@ -157,7 +172,11 @@ export class BoxUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackWoPackageTypeById(index: number, item: IWoPackageType) {
+  trackPalletTypeById(index: number, item: IPalletType) {
+    return item.id;
+  }
+
+  trackCompanyById(index: number, item: ICompany) {
     return item.id;
   }
 }

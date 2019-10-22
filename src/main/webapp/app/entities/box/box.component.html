@@ -29,7 +29,8 @@
             <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="eshipperApp.box.createdDate">Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdByUserId"><span jhiTranslate="eshipperApp.box.createdByUser">Created By User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="metricId"><span jhiTranslate="eshipperApp.box.metric">Metric</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="woPackageTypeId"><span jhiTranslate="eshipperApp.box.woPackageType">Wo Package Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="palletTypeId"><span jhiTranslate="eshipperApp.box.palletType">Pallet Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="companyId"><span jhiTranslate="eshipperApp.box.company">Company</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -53,8 +54,13 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="box.woPackageTypeId">
-                        <a [routerLink]="['/wo-package-type', box.woPackageTypeId , 'view' ]" >{{box.woPackageTypeId}}</a>
+                    <div *ngIf="box.palletTypeId">
+                        <a [routerLink]="['/pallet-type', box.palletTypeId , 'view' ]" >{{box.palletTypeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="box.companyId">
+                        <a [routerLink]="['/company', box.companyId , 'view' ]" >{{box.companyId}}</a>
                     </div>
                 </td>
                 <td class="text-right">
