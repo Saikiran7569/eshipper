@@ -1,24 +1,25 @@
 entity Box {
 	name String  maxlength(255) 
 	description String maxlength(255)
-	maxSupportWeight Integer max(20)
-	length Integer max(20)
-	width Integer max(20)
-	height Integer max(20)
-	weight Integer max(20)
+	maxSupportWeight Float 
+	length Float 
+	width Float 
+	height Float 
+	weight Float 
     createdDate LocalDate
 }
 
 entity Metric{
 }
-
-entity WoPackageType{
+entity PalletType{
+ name String
 }
 
 relationship ManyToOne {
 	 Box{createdByUser} to User
  	 Box to Metric 
-     Box to WoPackageType
+     Box to PalletType
+     Box to Company
 }
 
 //Set pagination options
