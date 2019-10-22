@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Box.
+    -->
+    <changeSet id="20191022103441-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="created_by_user_id"
+                                 baseTableName="box"
+                                 constraintName="fk_box_created_by_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="metric_id"
+                                 baseTableName="box"
+                                 constraintName="fk_box_metric_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="metric"/>
+
+        <addForeignKeyConstraint baseColumnNames="pallet_type_id"
+                                 baseTableName="box"
+                                 constraintName="fk_box_pallet_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pallet_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="box"
+                                 constraintName="fk_box_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+
+    </changeSet>
+</databaseChangeLog>

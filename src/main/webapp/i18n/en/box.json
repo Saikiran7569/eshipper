@@ -26,7 +26,8 @@
       "createdDate": "Created Date",
       "createdByUser": "Created By User",
       "metric": "Metric",
-      "woPackageType": "Wo Package Type"
+      "palletType": "Pallet Type",
+      "company": "Company"
     }
   }
 }

@@ -14,6 +14,13 @@ entity PalletType{
  name String
 }
 
+entity Company{
+
+}
+entity Metric{
+
+}
+
 relationship ManyToOne {
 	 Box{createdByUser} to User
  	 Box to Metric 

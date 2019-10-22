@@ -24,8 +24,11 @@
     <include file="config/liquibase/changelog/20191010100412_added_entity_Box.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191010100413_added_entity_Metric.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191010100414_added_entity_WoPackageType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191022103441_added_entity_Box.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191022103442_added_entity_PalletType.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20190926112057_added_entity_constraints_AddressBook.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191010100412_added_entity_constraints_Box.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191022103441_added_entity_constraints_Box.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

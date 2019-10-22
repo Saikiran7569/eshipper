@@ -1,0 +1,27 @@
+{
+    "name": "PalletType",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "box",
+            "otherEntityRelationshipName": "palletType",
+            "relationshipName": "box"
+        }
+    ],
+    "changelogDate": "20191022103442",
+    "entityTableName": "pallet_type",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

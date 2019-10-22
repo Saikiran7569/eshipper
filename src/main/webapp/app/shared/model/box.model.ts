@@ -12,7 +12,8 @@ export interface IBox {
   createdDate?: Moment;
   createdByUserId?: number;
   metricId?: number;
-  woPackageTypeId?: number;
+  palletTypeId?: number;
+  companyId?: number;
 }
 
 export class Box implements IBox {
@@ -28,6 +29,7 @@ export class Box implements IBox {
     public createdDate?: Moment,
     public createdByUserId?: number,
     public metricId?: number,
-    public woPackageTypeId?: number
+    public palletTypeId?: number,
+    public companyId?: number
   ) {}
 }
