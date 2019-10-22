@@ -9,8 +9,7 @@ entity Box {
     createdDate LocalDate
 }
 
-entity Metric{
-}
+
 entity PalletType{
  name String
 }
