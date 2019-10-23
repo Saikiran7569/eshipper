@@ -39,11 +39,11 @@
         },
         {
             "fieldName": "dateCreated",
-            "fieldType": "LocalDate"
+            "fieldType": "ZonedDateTime"
         },
         {
             "fieldName": "dateUpdated",
-            "fieldType": "LocalDate"
+            "fieldType": "ZonedDateTime"
         }
     ],
     "relationships": [

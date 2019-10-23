@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IBox, Box } from 'app/shared/model/box.model';
 import { BoxService } from './box.service';
@@ -33,8 +34,6 @@ export class BoxUpdateComponent implements OnInit {
   pallettypes: IPalletType[];
 
   companies: ICompany[];
-  dateCreatedDp: any;
-  dateUpdatedDp: any;
 
   editForm = this.fb.group({
     id: [],
@@ -109,8 +108,8 @@ export class BoxUpdateComponent implements OnInit {
       width: box.width,
       height: box.height,
       weight: box.weight,
-      dateCreated: box.dateCreated,
-      dateUpdated: box.dateUpdated,
+      dateCreated: box.dateCreated != null ? box.dateCreated.format(DATE_TIME_FORMAT) : null,
+      dateUpdated: box.dateUpdated != null ? box.dateUpdated.format(DATE_TIME_FORMAT) : null,
       createdByUserId: box.createdByUserId,
       metricId: box.metricId,
       palletTypeId: box.palletTypeId,
@@ -143,8 +142,10 @@ export class BoxUpdateComponent implements OnInit {
       width: this.editForm.get(['width']).value,
       height: this.editForm.get(['height']).value,
       weight: this.editForm.get(['weight']).value,
-      dateCreated: this.editForm.get(['dateCreated']).value,
-      dateUpdated: this.editForm.get(['dateUpdated']).value,
+      dateCreated:
+        this.editForm.get(['dateCreated']).value != null ? moment(this.editForm.get(['dateCreated']).value, DATE_TIME_FORMAT) : undefined,
+      dateUpdated:
+        this.editForm.get(['dateUpdated']).value != null ? moment(this.editForm.get(['dateUpdated']).value, DATE_TIME_FORMAT) : undefined,
       createdByUserId: this.editForm.get(['createdByUserId']).value,
       metricId: this.editForm.get(['metricId']).value,
       palletTypeId: this.editForm.get(['palletTypeId']).value,

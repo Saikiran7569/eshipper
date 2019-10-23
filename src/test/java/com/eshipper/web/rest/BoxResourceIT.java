@@ -22,10 +22,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
 import java.time.ZoneId;
 import java.util.List;
 
+import static com.eshipper.web.rest.TestUtil.sameInstant;
 import static com.eshipper.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -59,11 +62,11 @@ public class BoxResourceIT {
     private static final Float DEFAULT_WEIGHT = 1F;
     private static final Float UPDATED_WEIGHT = 2F;
 
-    private static final LocalDate DEFAULT_DATE_CREATED = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_CREATED = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_DATE_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_DATE_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final LocalDate DEFAULT_DATE_UPDATED = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_UPDATED = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_DATE_UPDATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_DATE_UPDATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private BoxRepository boxRepository;
@@ -215,8 +218,8 @@ public class BoxResourceIT {
             .andExpect(jsonPath("$.[*].width").value(hasItem(DEFAULT_WIDTH.doubleValue())))
             .andExpect(jsonPath("$.[*].height").value(hasItem(DEFAULT_HEIGHT.doubleValue())))
             .andExpect(jsonPath("$.[*].weight").value(hasItem(DEFAULT_WEIGHT.doubleValue())))
-            .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())))
-            .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())));
+            .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(sameInstant(DEFAULT_DATE_CREATED))))
+            .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(sameInstant(DEFAULT_DATE_UPDATED))));
     }
     
     @Test
@@ -237,8 +240,8 @@ public class BoxResourceIT {
             .andExpect(jsonPath("$.width").value(DEFAULT_WIDTH.doubleValue()))
             .andExpect(jsonPath("$.height").value(DEFAULT_HEIGHT.doubleValue()))
             .andExpect(jsonPath("$.weight").value(DEFAULT_WEIGHT.doubleValue()))
-            .andExpect(jsonPath("$.dateCreated").value(DEFAULT_DATE_CREATED.toString()))
-            .andExpect(jsonPath("$.dateUpdated").value(DEFAULT_DATE_UPDATED.toString()));
+            .andExpect(jsonPath("$.dateCreated").value(sameInstant(DEFAULT_DATE_CREATED)))
+            .andExpect(jsonPath("$.dateUpdated").value(sameInstant(DEFAULT_DATE_UPDATED)));
     }
 
     @Test

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 /**
  * A Box.
@@ -47,10 +47,10 @@ public class Box implements Serializable {
     private Float weight;
 
     @Column(name = "date_created")
-    private LocalDate dateCreated;
+    private ZonedDateTime dateCreated;
 
     @Column(name = "date_updated")
-    private LocalDate dateUpdated;
+    private ZonedDateTime dateUpdated;
 
     @ManyToOne
     @JsonIgnoreProperties("boxes")
@@ -168,29 +168,29 @@ public class Box implements Serializable {
         this.weight = weight;
     }
 
-    public LocalDate getDateCreated() {
+    public ZonedDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public Box dateCreated(LocalDate dateCreated) {
+    public Box dateCreated(ZonedDateTime dateCreated) {
         this.dateCreated = dateCreated;
         return this;
     }
 
-    public void setDateCreated(LocalDate dateCreated) {
+    public void setDateCreated(ZonedDateTime dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public LocalDate getDateUpdated() {
+    public ZonedDateTime getDateUpdated() {
         return dateUpdated;
     }
 
-    public Box dateUpdated(LocalDate dateUpdated) {
+    public Box dateUpdated(ZonedDateTime dateUpdated) {
         this.dateUpdated = dateUpdated;
         return this;
     }
 
-    public void setDateUpdated(LocalDate dateUpdated) {
+    public void setDateUpdated(ZonedDateTime dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
 
