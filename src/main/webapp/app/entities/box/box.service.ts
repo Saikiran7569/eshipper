@@ -52,8 +52,8 @@ export class BoxService {
 
   protected convertDateFromClient(box: IBox): IBox {
     const copy: IBox = Object.assign({}, box, {
-      dateCreated: box.dateCreated != null && box.dateCreated.isValid() ? box.dateCreated.format(DATE_FORMAT) : null,
-      dateUpdated: box.dateUpdated != null && box.dateUpdated.isValid() ? box.dateUpdated.format(DATE_FORMAT) : null
+      dateCreated: box.dateCreated != null && box.dateCreated.isValid() ? box.dateCreated.toJSON() : null,
+      dateUpdated: box.dateUpdated != null && box.dateUpdated.isValid() ? box.dateUpdated.toJSON() : null
     });
     return copy;
   }

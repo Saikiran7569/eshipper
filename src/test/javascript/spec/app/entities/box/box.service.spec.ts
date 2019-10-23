@@ -2,7 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { BoxService } from 'app/entities/box/box.service';
 import { IBox, Box } from 'app/shared/model/box.model';
 
@@ -31,8 +31,8 @@ describe('Service Tests', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            dateCreated: currentDate.format(DATE_FORMAT),
-            dateUpdated: currentDate.format(DATE_FORMAT)
+            dateCreated: currentDate.format(DATE_TIME_FORMAT),
+            dateUpdated: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -50,8 +50,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            dateCreated: currentDate.format(DATE_FORMAT),
-            dateUpdated: currentDate.format(DATE_FORMAT)
+            dateCreated: currentDate.format(DATE_TIME_FORMAT),
+            dateUpdated: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -81,8 +81,8 @@ describe('Service Tests', () => {
             width: 1,
             height: 1,
             weight: 1,
-            dateCreated: currentDate.format(DATE_FORMAT),
-            dateUpdated: currentDate.format(DATE_FORMAT)
+            dateCreated: currentDate.format(DATE_TIME_FORMAT),
+            dateUpdated: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -113,8 +113,8 @@ describe('Service Tests', () => {
             width: 1,
             height: 1,
             weight: 1,
-            dateCreated: currentDate.format(DATE_FORMAT),
-            dateUpdated: currentDate.format(DATE_FORMAT)
+            dateCreated: currentDate.format(DATE_TIME_FORMAT),
+            dateUpdated: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );

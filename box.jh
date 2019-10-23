@@ -6,8 +6,8 @@ entity Box {
 	width Float 
 	height Float 
 	weight Float 
-    dateCreated LocalDate
-    dateUpdated LocalDate
+    dateCreated ZonedDateTime 
+    dateUpdated ZonedDateTime 
 }
 
 
