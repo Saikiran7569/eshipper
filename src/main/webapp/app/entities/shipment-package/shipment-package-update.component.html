@@ -1,0 +1,206 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-shipment-package-heading" jhiTranslate="eshipperApp.shipmentPackage.home.createOrEditLabel">Create or edit a Shipment Package</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                    <div *ngIf="editForm.get('description').invalid && (editForm.get('description').dirty || editForm.get('description').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('description').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.length" for="field_length">Length</label>
+                    <input type="number" class="form-control" name="length" id="field_length"
+                           formControlName="length"/>
+                    <div *ngIf="editForm.get('length').invalid && (editForm.get('length').dirty || editForm.get('length').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('length').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 11 }">
+                            This field cannot be more than 11.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('length')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.width" for="field_width">Width</label>
+                    <input type="number" class="form-control" name="width" id="field_width"
+                           formControlName="width"/>
+                    <div *ngIf="editForm.get('width').invalid && (editForm.get('width').dirty || editForm.get('width').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('width').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 11 }">
+                            This field cannot be more than 11.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('width')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.height" for="field_height">Height</label>
+                    <input type="number" class="form-control" name="height" id="field_height"
+                           formControlName="height"/>
+                    <div *ngIf="editForm.get('height').invalid && (editForm.get('height').dirty || editForm.get('height').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('height').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 11 }">
+                            This field cannot be more than 11.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('height')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.weight" for="field_weight">Weight</label>
+                    <input type="number" class="form-control" name="weight" id="field_weight"
+                           formControlName="weight"/>
+                    <div *ngIf="editForm.get('weight').invalid && (editForm.get('weight').dirty || editForm.get('weight').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('weight').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 11 }">
+                            This field cannot be more than 11.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('weight')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.position" for="field_position">Position</label>
+                    <input type="number" class="form-control" name="position" id="field_position"
+                           formControlName="position"/>
+                    <div *ngIf="editForm.get('position').invalid && (editForm.get('position').dirty || editForm.get('position').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('position').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 11 }">
+                            This field cannot be more than 11.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('position')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.trackingNumber" for="field_trackingNumber">Tracking Number</label>
+                    <input type="text" class="form-control" name="trackingNumber" id="field_trackingNumber"
+                           formControlName="trackingNumber"/>
+                    <div *ngIf="editForm.get('trackingNumber').invalid && (editForm.get('trackingNumber').dirty || editForm.get('trackingNumber').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('trackingNumber').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.cubedWeight" for="field_cubedWeight">Cubed Weight</label>
+                    <input type="number" class="form-control" name="cubedWeight" id="field_cubedWeight"
+                           formControlName="cubedWeight"/>
+                    <div *ngIf="editForm.get('cubedWeight').invalid && (editForm.get('cubedWeight').dirty || editForm.get('cubedWeight').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cubedWeight').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 11 }">
+                            This field cannot be more than 11.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('cubedWeight')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.codValue" for="field_codValue">Cod Value</label>
+                    <input type="number" class="form-control" name="codValue" id="field_codValue"
+                           formControlName="codValue"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.insuranceAmount" for="field_insuranceAmount">Insurance Amount</label>
+                    <input type="number" class="form-control" name="insuranceAmount" id="field_insuranceAmount"
+                           formControlName="insuranceAmount"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.freightClass" for="field_freightClass">Freight Class</label>
+                    <input type="text" class="form-control" name="freightClass" id="field_freightClass"
+                           formControlName="freightClass"/>
+                    <div *ngIf="editForm.get('freightClass').invalid && (editForm.get('freightClass').dirty || editForm.get('freightClass').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('freightClass').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.nmfcCode" for="field_nmfcCode">Nmfc Code</label>
+                    <input type="text" class="form-control" name="nmfcCode" id="field_nmfcCode"
+                           formControlName="nmfcCode"/>
+                    <div *ngIf="editForm.get('nmfcCode').invalid && (editForm.get('nmfcCode').dirty || editForm.get('nmfcCode').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nmfcCode').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.weightOz" for="field_weightOz">Weight Oz</label>
+                    <input type="number" class="form-control" name="weightOz" id="field_weightOz"
+                           formControlName="weightOz"/>
+                    <div *ngIf="editForm.get('weightOz').invalid && (editForm.get('weightOz').dirty || editForm.get('weightOz').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('weightOz').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 11 }">
+                            This field cannot be more than 11.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('weightOz')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.itemValue" for="field_itemValue">Item Value</label>
+                    <input type="number" class="form-control" name="itemValue" id="field_itemValue"
+                           formControlName="itemValue"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.harmonizedCode" for="field_harmonizedCode">Harmonized Code</label>
+                    <input type="text" class="form-control" name="harmonizedCode" id="field_harmonizedCode"
+                           formControlName="harmonizedCode"/>
+                    <div *ngIf="editForm.get('harmonizedCode').invalid && (editForm.get('harmonizedCode').dirty || editForm.get('harmonizedCode').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('harmonizedCode').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.shipmentPackage.type" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" formControlName="typeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="palletTypeOption.id" *ngFor="let palletTypeOption of pallettypes; trackBy: trackPalletTypeById">{{palletTypeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

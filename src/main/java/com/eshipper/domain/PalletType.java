@@ -5,8 +5,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A PalletType.
@@ -22,13 +20,6 @@ public class PalletType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
-    @OneToMany(mappedBy = "palletType")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Box> boxes = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -36,44 +27,6 @@ public class PalletType implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public PalletType name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Box> getBoxes() {
-        return boxes;
-    }
-
-    public PalletType boxes(Set<Box> boxes) {
-        this.boxes = boxes;
-        return this;
-    }
-
-    public PalletType addBox(Box box) {
-        this.boxes.add(box);
-        box.setPalletType(this);
-        return this;
-    }
-
-    public PalletType removeBox(Box box) {
-        this.boxes.remove(box);
-        box.setPalletType(null);
-        return this;
-    }
-
-    public void setBoxes(Set<Box> boxes) {
-        this.boxes = boxes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -97,7 +50,6 @@ public class PalletType implements Serializable {
     public String toString() {
         return "PalletType{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
             "}";
     }
 }

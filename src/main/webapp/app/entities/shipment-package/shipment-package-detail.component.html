@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="shipmentPackage">
+            <h2><span jhiTranslate="eshipperApp.shipmentPackage.detail.title">Shipment Package</span> {{shipmentPackage.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.description">Description</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.length">Length</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.length}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.width">Width</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.width}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.height">Height</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.height}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.weight">Weight</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.weight}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.position">Position</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.position}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.trackingNumber">Tracking Number</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.trackingNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.cubedWeight">Cubed Weight</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.cubedWeight}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.codValue">Cod Value</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.codValue}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.insuranceAmount">Insurance Amount</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.insuranceAmount}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.freightClass">Freight Class</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.freightClass}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.nmfcCode">Nmfc Code</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.nmfcCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.weightOz">Weight Oz</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.weightOz}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.itemValue">Item Value</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.itemValue}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.harmonizedCode">Harmonized Code</span></dt>
+                <dd>
+                    <span>{{shipmentPackage.harmonizedCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.shipmentPackage.type">Type</span></dt>
+                <dd>
+                    <div *ngIf="shipmentPackage.typeId">
+                        <a [routerLink]="['/pallet-type', shipmentPackage.typeId, 'view']">{{shipmentPackage.typeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/shipment-package', shipmentPackage.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

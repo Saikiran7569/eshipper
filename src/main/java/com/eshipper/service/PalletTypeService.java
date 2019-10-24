@@ -2,9 +2,7 @@ package com.eshipper.service;
 
 import com.eshipper.service.dto.PalletTypeDTO;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -23,10 +21,9 @@ public interface PalletTypeService {
     /**
      * Get all the palletTypes.
      *
-     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<PalletTypeDTO> findAll(Pageable pageable);
+    List<PalletTypeDTO> findAll();
 
 
     /**
