@@ -1,0 +1,30 @@
+entity ShipmentPackage{
+ description String maxlength(255)
+  length Integer max(11)
+  width Integer max(11)
+  height Integer max(11)
+  weight Integer max(11)
+  position Integer max(11)
+  trackingNumber String maxlength(255)
+  cubedWeight Integer max(11)
+  codValue Float
+  insuranceAmount Float
+  freightClass String maxlength(10)
+  nmfcCode String maxlength(50) 
+  weightOz Integer max(11)
+  itemValue Float
+  harmonizedCode String maxlength(100)
+ }
+ entity PalletType{
+ 
+ }
+relationship ManyToOne {
+ShipmentPackage{type} to PalletType
+}
+  
+ // Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate ShipmentPackage with pagination
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl
