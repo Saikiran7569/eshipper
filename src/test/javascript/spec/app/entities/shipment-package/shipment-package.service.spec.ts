@@ -1,15 +1,15 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
-import { PalletTypeService } from 'app/entities/pallet-type/pallet-type.service';
-import { IPalletType, PalletType } from 'app/shared/model/pallet-type.model';
+import { ShipmentPackageService } from 'app/entities/shipment-package/shipment-package.service';
+import { IShipmentPackage, ShipmentPackage } from 'app/shared/model/shipment-package.model';
 
 describe('Service Tests', () => {
-  describe('PalletType Service', () => {
+  describe('ShipmentPackage Service', () => {
     let injector: TestBed;
-    let service: PalletTypeService;
+    let service: ShipmentPackageService;
     let httpMock: HttpTestingController;
-    let elemDefault: IPalletType;
+    let elemDefault: IShipmentPackage;
     let expectedResult;
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -17,10 +17,10 @@ describe('Service Tests', () => {
       });
       expectedResult = {};
       injector = getTestBed();
-      service = injector.get(PalletTypeService);
+      service = injector.get(ShipmentPackageService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new PalletType(0);
+      elemDefault = new ShipmentPackage(0, 'AAAAAAA', 0, 0, 0, 0, 0, 'AAAAAAA', 0, 0, 0, 'AAAAAAA', 'AAAAAAA', 0, 0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -36,7 +36,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: elemDefault });
       });
 
-      it('should create a PalletType', () => {
+      it('should create a ShipmentPackage', () => {
         const returnedFromService = Object.assign(
           {
             id: 0
@@ -45,7 +45,7 @@ describe('Service Tests', () => {
         );
         const expected = Object.assign({}, returnedFromService);
         service
-          .create(new PalletType(null))
+          .create(new ShipmentPackage(null))
           .pipe(take(1))
           .subscribe(resp => (expectedResult = resp));
         const req = httpMock.expectOne({ method: 'POST' });
@@ -53,8 +53,27 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should update a PalletType', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+      it('should update a ShipmentPackage', () => {
+        const returnedFromService = Object.assign(
+          {
+            description: 'BBBBBB',
+            length: 1,
+            width: 1,
+            height: 1,
+            weight: 1,
+            position: 1,
+            trackingNumber: 'BBBBBB',
+            cubedWeight: 1,
+            codValue: 1,
+            insuranceAmount: 1,
+            freightClass: 'BBBBBB',
+            nmfcCode: 'BBBBBB',
+            weightOz: 1,
+            itemValue: 1,
+            harmonizedCode: 'BBBBBB'
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
         service
@@ -66,8 +85,27 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should return a list of PalletType', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+      it('should return a list of ShipmentPackage', () => {
+        const returnedFromService = Object.assign(
+          {
+            description: 'BBBBBB',
+            length: 1,
+            width: 1,
+            height: 1,
+            weight: 1,
+            position: 1,
+            trackingNumber: 'BBBBBB',
+            cubedWeight: 1,
+            codValue: 1,
+            insuranceAmount: 1,
+            freightClass: 'BBBBBB',
+            nmfcCode: 'BBBBBB',
+            weightOz: 1,
+            itemValue: 1,
+            harmonizedCode: 'BBBBBB'
+          },
+          elemDefault
+        );
         const expected = Object.assign({}, returnedFromService);
         service
           .query(expected)
@@ -82,7 +120,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toContainEqual(expected);
       });
 
-      it('should delete a PalletType', () => {
+      it('should delete a ShipmentPackage', () => {
         service.delete(123).subscribe(resp => (expectedResult = resp.ok));
 
         const req = httpMock.expectOne({ method: 'DELETE' });

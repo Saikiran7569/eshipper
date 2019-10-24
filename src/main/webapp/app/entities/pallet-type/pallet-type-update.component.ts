@@ -16,8 +16,7 @@ export class PalletTypeUpdateComponent implements OnInit {
   isSaving: boolean;
 
   editForm = this.fb.group({
-    id: [],
-    name: []
+    id: []
   });
 
   constructor(protected palletTypeService: PalletTypeService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -31,8 +30,7 @@ export class PalletTypeUpdateComponent implements OnInit {
 
   updateForm(palletType: IPalletType) {
     this.editForm.patchValue({
-      id: palletType.id,
-      name: palletType.name
+      id: palletType.id
     });
   }
 
@@ -53,8 +51,7 @@ export class PalletTypeUpdateComponent implements OnInit {
   private createFromForm(): IPalletType {
     return {
       ...new PalletType(),
-      id: this.editForm.get(['id']).value,
-      name: this.editForm.get(['name']).value
+      id: this.editForm.get(['id']).value
     };
   }
 

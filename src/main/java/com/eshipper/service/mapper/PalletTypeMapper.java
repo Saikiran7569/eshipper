@@ -12,9 +12,6 @@ import org.mapstruct.*;
 public interface PalletTypeMapper extends EntityMapper<PalletTypeDTO, PalletType> {
 
 
-    @Mapping(target = "boxes", ignore = true)
-    @Mapping(target = "removeBox", ignore = true)
-    PalletType toEntity(PalletTypeDTO palletTypeDTO);
 
     default PalletType fromId(Long id) {
         if (id == null) {

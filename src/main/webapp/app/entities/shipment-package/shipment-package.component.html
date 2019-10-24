@@ -1,0 +1,100 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eshipperApp.shipmentPackage.home.title">Shipment Packages</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-shipment-package" [routerLink]="['/shipment-package/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="eshipperApp.shipmentPackage.home.createLabel">
+            Create a new Shipment Package
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="shipmentPackages?.length === 0">
+        <span jhiTranslate="eshipperApp.shipmentPackage.home.notFound">No shipmentPackages found</span>
+    </div>
+    <div class="table-responsive" *ngIf="shipmentPackages?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="description"><span jhiTranslate="eshipperApp.shipmentPackage.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="length"><span jhiTranslate="eshipperApp.shipmentPackage.length">Length</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="width"><span jhiTranslate="eshipperApp.shipmentPackage.width">Width</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="height"><span jhiTranslate="eshipperApp.shipmentPackage.height">Height</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="weight"><span jhiTranslate="eshipperApp.shipmentPackage.weight">Weight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="position"><span jhiTranslate="eshipperApp.shipmentPackage.position">Position</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="trackingNumber"><span jhiTranslate="eshipperApp.shipmentPackage.trackingNumber">Tracking Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="cubedWeight"><span jhiTranslate="eshipperApp.shipmentPackage.cubedWeight">Cubed Weight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="codValue"><span jhiTranslate="eshipperApp.shipmentPackage.codValue">Cod Value</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="insuranceAmount"><span jhiTranslate="eshipperApp.shipmentPackage.insuranceAmount">Insurance Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="freightClass"><span jhiTranslate="eshipperApp.shipmentPackage.freightClass">Freight Class</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="nmfcCode"><span jhiTranslate="eshipperApp.shipmentPackage.nmfcCode">Nmfc Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="weightOz"><span jhiTranslate="eshipperApp.shipmentPackage.weightOz">Weight Oz</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="itemValue"><span jhiTranslate="eshipperApp.shipmentPackage.itemValue">Item Value</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="harmonizedCode"><span jhiTranslate="eshipperApp.shipmentPackage.harmonizedCode">Harmonized Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="typeId"><span jhiTranslate="eshipperApp.shipmentPackage.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let shipmentPackage of shipmentPackages ;trackBy: trackId">
+                <td><a [routerLink]="['/shipment-package', shipmentPackage.id, 'view' ]">{{shipmentPackage.id}}</a></td>
+                <td>{{shipmentPackage.description}}</td>
+                <td>{{shipmentPackage.length}}</td>
+                <td>{{shipmentPackage.width}}</td>
+                <td>{{shipmentPackage.height}}</td>
+                <td>{{shipmentPackage.weight}}</td>
+                <td>{{shipmentPackage.position}}</td>
+                <td>{{shipmentPackage.trackingNumber}}</td>
+                <td>{{shipmentPackage.cubedWeight}}</td>
+                <td>{{shipmentPackage.codValue}}</td>
+                <td>{{shipmentPackage.insuranceAmount}}</td>
+                <td>{{shipmentPackage.freightClass}}</td>
+                <td>{{shipmentPackage.nmfcCode}}</td>
+                <td>{{shipmentPackage.weightOz}}</td>
+                <td>{{shipmentPackage.itemValue}}</td>
+                <td>{{shipmentPackage.harmonizedCode}}</td>
+                <td>
+                    <div *ngIf="shipmentPackage.typeId">
+                        <a [routerLink]="['/pallet-type', shipmentPackage.typeId , 'view' ]" >{{shipmentPackage.typeId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/shipment-package', shipmentPackage.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/shipment-package', shipmentPackage.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/shipment-package', { outlets: { popup: shipmentPackage.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="shipmentPackages?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
