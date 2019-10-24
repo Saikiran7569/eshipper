@@ -36,6 +36,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = EshipperApp.class)
 public class PalletTypeResourceIT {
 
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
+
     @Autowired
     private PalletTypeRepository palletTypeRepository;
 
@@ -83,7 +86,8 @@ public class PalletTypeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static PalletType createEntity(EntityManager em) {
-        PalletType palletType = new PalletType();
+        PalletType palletType = new PalletType()
+            .name(DEFAULT_NAME);
         return palletType;
     }
     /**
@@ -93,7 +97,8 @@ public class PalletTypeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static PalletType createUpdatedEntity(EntityManager em) {
-        PalletType palletType = new PalletType();
+        PalletType palletType = new PalletType()
+            .name(UPDATED_NAME);
         return palletType;
     }
 
@@ -118,6 +123,7 @@ public class PalletTypeResourceIT {
         List<PalletType> palletTypeList = palletTypeRepository.findAll();
         assertThat(palletTypeList).hasSize(databaseSizeBeforeCreate + 1);
         PalletType testPalletType = palletTypeList.get(palletTypeList.size() - 1);
+        assertThat(testPalletType.getName()).isEqualTo(DEFAULT_NAME);
     }
 
     @Test
@@ -151,7 +157,8 @@ public class PalletTypeResourceIT {
         restPalletTypeMockMvc.perform(get("/api/pallet-types?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(palletType.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(palletType.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)));
     }
     
     @Test
@@ -164,7 +171,8 @@ public class PalletTypeResourceIT {
         restPalletTypeMockMvc.perform(get("/api/pallet-types/{id}", palletType.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(palletType.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(palletType.getId().intValue()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME));
     }
 
     @Test
@@ -187,6 +195,8 @@ public class PalletTypeResourceIT {
         PalletType updatedPalletType = palletTypeRepository.findById(palletType.getId()).get();
         // Disconnect from session so that the updates on updatedPalletType are not directly saved in db
         em.detach(updatedPalletType);
+        updatedPalletType
+            .name(UPDATED_NAME);
         PalletTypeDTO palletTypeDTO = palletTypeMapper.toDto(updatedPalletType);
 
         restPalletTypeMockMvc.perform(put("/api/pallet-types")
@@ -198,6 +208,7 @@ public class PalletTypeResourceIT {
         List<PalletType> palletTypeList = palletTypeRepository.findAll();
         assertThat(palletTypeList).hasSize(databaseSizeBeforeUpdate);
         PalletType testPalletType = palletTypeList.get(palletTypeList.size() - 1);
+        assertThat(testPalletType.getName()).isEqualTo(UPDATED_NAME);
     }
 
     @Test

@@ -15,9 +15,9 @@ entity ShipmentPackage{
   itemValue Float
   harmonizedCode String maxlength(100)
  }
- entity PalletType{
- 
- }
+entity PalletType{
+ name String
+}
 relationship ManyToOne {
 ShipmentPackage{type} to PalletType
 }

@@ -19,12 +19,14 @@
             <thead>
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.palletType.name">Name</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let palletType of palletTypes ;trackBy: trackId">
                 <td><a [routerLink]="['/pallet-type', palletType.id, 'view' ]">{{palletType.id}}</a></td>
+                <td>{{palletType.name}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

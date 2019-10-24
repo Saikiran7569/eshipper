@@ -1,6 +1,11 @@
 {
     "name": "PalletType",
-    "fields": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
     "relationships": [],
     "changelogDate": "20191022103442",
     "entityTableName": "pallet_type",
