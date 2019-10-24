@@ -15,7 +15,8 @@
       },
       "detail": {
         "title": "Pallet Type"
-      }
+      },
+      "name": "Name"
     }
   }
 }
