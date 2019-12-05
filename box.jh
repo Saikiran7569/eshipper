@@ -11,7 +11,7 @@ entity Box {
 }
 
 
-entity PalletType{
+entity BoxPackageType{
  name String
 }
 
@@ -25,7 +25,7 @@ entity Metric{
 relationship ManyToOne {
 	 Box{createdByUser} to User
  	 Box to Metric 
-     Box to PalletType
+     Box to BoxPackageType
      Box to Company
 }
 
