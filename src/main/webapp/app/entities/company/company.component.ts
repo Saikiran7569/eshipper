@@ -1,13 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { filter, map } from 'rxjs/operators';
 import { JhiEventManager } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ICompany } from 'app/shared/model/company.model';
-import { AccountService } from 'app/core/auth/account.service';
 import { CompanyService } from './company.service';
+import { CompanyDeleteDialogComponent } from './company-delete-dialog.component';
 
 @Component({
   selector: 'jhi-company',
@@ -15,32 +14,18 @@ import { CompanyService } from './company.service';
 })
 export class CompanyComponent implements OnInit, OnDestroy {
   companies: ICompany[];
-  currentAccount: any;
   eventSubscriber: Subscription;
 
-  constructor(
-    protected companyService: CompanyService,
-    protected eventManager: JhiEventManager,
-    protected accountService: AccountService
-  ) {}
+  constructor(protected companyService: CompanyService, protected eventManager: JhiEventManager, protected modalService: NgbModal) {}
 
   loadAll() {
-    this.companyService
-      .query()
-      .pipe(
-        filter((res: HttpResponse<ICompany[]>) => res.ok),
-        map((res: HttpResponse<ICompany[]>) => res.body)
-      )
-      .subscribe((res: ICompany[]) => {
-        this.companies = res;
-      });
+    this.companyService.query().subscribe((res: HttpResponse<ICompany[]>) => {
+      this.companies = res.body;
+    });
   }
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().subscribe(account => {
-      this.currentAccount = account;
-    });
     this.registerChangeInCompanies();
   }
 
@@ -53,6 +38,11 @@ export class CompanyComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInCompanies() {
-    this.eventSubscriber = this.eventManager.subscribe('companyListModification', response => this.loadAll());
+    this.eventSubscriber = this.eventManager.subscribe('companyListModification', () => this.loadAll());
+  }
+
+  delete(company: ICompany) {
+    const modalRef = this.modalService.open(CompanyDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.company = company;
   }
 }

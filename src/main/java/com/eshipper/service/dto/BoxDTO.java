@@ -36,7 +36,7 @@ public class BoxDTO implements Serializable {
 
     private Long metricId;
 
-    private Long palletTypeId;
+    private Long boxPackageTypeId;
 
     private Long companyId;
 
@@ -136,12 +136,12 @@ public class BoxDTO implements Serializable {
         this.metricId = metricId;
     }
 
-    public Long getPalletTypeId() {
-        return palletTypeId;
+    public Long getBoxPackageTypeId() {
+        return boxPackageTypeId;
     }
 
-    public void setPalletTypeId(Long palletTypeId) {
-        this.palletTypeId = palletTypeId;
+    public void setBoxPackageTypeId(Long boxPackageTypeId) {
+        this.boxPackageTypeId = boxPackageTypeId;
     }
 
     public Long getCompanyId() {
@@ -188,7 +188,7 @@ public class BoxDTO implements Serializable {
             ", dateUpdated='" + getDateUpdated() + "'" +
             ", createdByUser=" + getCreatedByUserId() +
             ", metric=" + getMetricId() +
-            ", palletType=" + getPalletTypeId() +
+            ", boxPackageType=" + getBoxPackageTypeId() +
             ", company=" + getCompanyId() +
             "}";
     }

@@ -30,7 +30,7 @@
             <th scope="col"  jhiSortBy="dateUpdated"><span jhiTranslate="eshipperApp.box.dateUpdated">Date Updated</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createdByUserId"><span jhiTranslate="eshipperApp.box.createdByUser">Created By User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="metricId"><span jhiTranslate="eshipperApp.box.metric">Metric</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="palletTypeId"><span jhiTranslate="eshipperApp.box.palletType">Pallet Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="boxPackageTypeId"><span jhiTranslate="eshipperApp.box.boxPackageType">Box Package Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="companyId"><span jhiTranslate="eshipperApp.box.company">Company</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
@@ -56,8 +56,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="box.palletTypeId">
-                        <a [routerLink]="['/pallet-type', box.palletTypeId , 'view' ]" >{{box.palletTypeId}}</a>
+                    <div *ngIf="box.boxPackageTypeId">
+                        <a [routerLink]="['/box-package-type', box.boxPackageTypeId , 'view' ]" >{{box.boxPackageTypeId}}</a>
                     </div>
                 </td>
                 <td>
@@ -79,10 +79,7 @@
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/box', { outlets: { popup: box.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
+                        <button type="submit" (click)="delete(box)"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>

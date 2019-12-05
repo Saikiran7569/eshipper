@@ -20,11 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="metric"/>
 
-        <addForeignKeyConstraint baseColumnNames="pallet_type_id"
+        <addForeignKeyConstraint baseColumnNames="box_package_type_id"
                                  baseTableName="box"
-                                 constraintName="fk_box_pallet_type_id"
+                                 constraintName="fk_box_box_package_type_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="pallet_type"/>
+                                 referencedTableName="box_package_type"/>
 
         <addForeignKeyConstraint baseColumnNames="company_id"
                                  baseTableName="box"

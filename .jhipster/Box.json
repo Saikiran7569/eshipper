@@ -63,9 +63,9 @@
         },
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "palletType",
+            "otherEntityName": "boxPackageType",
             "otherEntityRelationshipName": "box",
-            "relationshipName": "palletType",
+            "relationshipName": "boxPackageType",
             "otherEntityField": "id"
         },
         {

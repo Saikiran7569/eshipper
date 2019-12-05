@@ -1,0 +1,22 @@
+{
+  "eshipperApp": {
+    "boxPackageType": {
+      "home": {
+        "title": "Box Package Types",
+        "createLabel": "Create a new Box Package Type",
+        "createOrEditLabel": "Create or edit a Box Package Type",
+        "notFound": "No Box Package Types found"
+      },
+      "created": "A new Box Package Type is created with identifier {{ param }}",
+      "updated": "A Box Package Type is updated with identifier {{ param }}",
+      "deleted": "A Box Package Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Box Package Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Box Package Type"
+      },
+      "name": "Name"
+    }
+  }
+}

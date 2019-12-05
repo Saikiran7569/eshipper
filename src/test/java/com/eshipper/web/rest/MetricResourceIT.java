@@ -236,42 +236,4 @@ public class MetricResourceIT {
         List<Metric> metricList = metricRepository.findAll();
         assertThat(metricList).hasSize(databaseSizeBeforeDelete - 1);
     }
-
-    @Test
-    @Transactional
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(Metric.class);
-        Metric metric1 = new Metric();
-        metric1.setId(1L);
-        Metric metric2 = new Metric();
-        metric2.setId(metric1.getId());
-        assertThat(metric1).isEqualTo(metric2);
-        metric2.setId(2L);
-        assertThat(metric1).isNotEqualTo(metric2);
-        metric1.setId(null);
-        assertThat(metric1).isNotEqualTo(metric2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(MetricDTO.class);
-        MetricDTO metricDTO1 = new MetricDTO();
-        metricDTO1.setId(1L);
-        MetricDTO metricDTO2 = new MetricDTO();
-        assertThat(metricDTO1).isNotEqualTo(metricDTO2);
-        metricDTO2.setId(metricDTO1.getId());
-        assertThat(metricDTO1).isEqualTo(metricDTO2);
-        metricDTO2.setId(2L);
-        assertThat(metricDTO1).isNotEqualTo(metricDTO2);
-        metricDTO1.setId(null);
-        assertThat(metricDTO1).isNotEqualTo(metricDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(metricMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(metricMapper.fromId(null)).isNull();
-    }
 }

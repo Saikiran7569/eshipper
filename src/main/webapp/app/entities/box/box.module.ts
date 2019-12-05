@@ -5,14 +5,12 @@ import { EshipperSharedModule } from 'app/shared/shared.module';
 import { BoxComponent } from './box.component';
 import { BoxDetailComponent } from './box-detail.component';
 import { BoxUpdateComponent } from './box-update.component';
-import { BoxDeletePopupComponent, BoxDeleteDialogComponent } from './box-delete-dialog.component';
-import { boxRoute, boxPopupRoute } from './box.route';
-
-const ENTITY_STATES = [...boxRoute, ...boxPopupRoute];
+import { BoxDeleteDialogComponent } from './box-delete-dialog.component';
+import { boxRoute } from './box.route';
 
 @NgModule({
-  imports: [EshipperSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [BoxComponent, BoxDetailComponent, BoxUpdateComponent, BoxDeleteDialogComponent, BoxDeletePopupComponent],
+  imports: [EshipperSharedModule, RouterModule.forChild(boxRoute)],
+  declarations: [BoxComponent, BoxDetailComponent, BoxUpdateComponent, BoxDeleteDialogComponent],
   entryComponents: [BoxDeleteDialogComponent]
 })
 export class EshipperBoxModule {}

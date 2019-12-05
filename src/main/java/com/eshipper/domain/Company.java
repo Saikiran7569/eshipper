@@ -5,8 +5,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Company.
@@ -22,10 +20,6 @@ public class Company implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "company")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Box> boxes = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -33,31 +27,6 @@ public class Company implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Set<Box> getBoxes() {
-        return boxes;
-    }
-
-    public Company boxes(Set<Box> boxes) {
-        this.boxes = boxes;
-        return this;
-    }
-
-    public Company addBox(Box box) {
-        this.boxes.add(box);
-        box.setCompany(this);
-        return this;
-    }
-
-    public Company removeBox(Box box) {
-        this.boxes.remove(box);
-        box.setCompany(null);
-        return this;
-    }
-
-    public void setBoxes(Set<Box> boxes) {
-        this.boxes = boxes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

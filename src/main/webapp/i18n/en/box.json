@@ -27,7 +27,7 @@
       "dateUpdated": "Date Updated",
       "createdByUser": "Created By User",
       "metric": "Metric",
-      "palletType": "Pallet Type",
+      "boxPackageType": "Box Package Type",
       "company": "Company"
     }
   }

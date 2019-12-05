@@ -332,42 +332,4 @@ public class BoxResourceIT {
         List<Box> boxList = boxRepository.findAll();
         assertThat(boxList).hasSize(databaseSizeBeforeDelete - 1);
     }
-
-    @Test
-    @Transactional
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(Box.class);
-        Box box1 = new Box();
-        box1.setId(1L);
-        Box box2 = new Box();
-        box2.setId(box1.getId());
-        assertThat(box1).isEqualTo(box2);
-        box2.setId(2L);
-        assertThat(box1).isNotEqualTo(box2);
-        box1.setId(null);
-        assertThat(box1).isNotEqualTo(box2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(BoxDTO.class);
-        BoxDTO boxDTO1 = new BoxDTO();
-        boxDTO1.setId(1L);
-        BoxDTO boxDTO2 = new BoxDTO();
-        assertThat(boxDTO1).isNotEqualTo(boxDTO2);
-        boxDTO2.setId(boxDTO1.getId());
-        assertThat(boxDTO1).isEqualTo(boxDTO2);
-        boxDTO2.setId(2L);
-        assertThat(boxDTO1).isNotEqualTo(boxDTO2);
-        boxDTO1.setId(null);
-        assertThat(boxDTO1).isNotEqualTo(boxDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(boxMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(boxMapper.fromId(null)).isNull();
-    }
 }

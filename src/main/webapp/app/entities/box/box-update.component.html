@@ -84,10 +84,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="eshipperApp.box.palletType" for="field_palletType">Pallet Type</label>
-                    <select class="form-control" id="field_palletType" name="palletType" formControlName="palletTypeId">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.box.boxPackageType" for="field_boxPackageType">Box Package Type</label>
+                    <select class="form-control" id="field_boxPackageType" name="boxPackageType" formControlName="boxPackageTypeId">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="palletTypeOption.id" *ngFor="let palletTypeOption of pallettypes; trackBy: trackPalletTypeById">{{palletTypeOption.id}}</option>
+                        <option [ngValue]="boxPackageTypeOption.id" *ngFor="let boxPackageTypeOption of boxpackagetypes; trackBy: trackBoxPackageTypeById">{{boxPackageTypeOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">

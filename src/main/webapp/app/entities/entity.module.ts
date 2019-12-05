@@ -51,6 +51,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'shipment-package',
         loadChildren: () => import('./shipment-package/shipment-package.module').then(m => m.EshipperShipmentPackageModule)
+      },
+      {
+        path: 'box-package-type',
+        loadChildren: () => import('./box-package-type/box-package-type.module').then(m => m.EshipperBoxPackageTypeModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
