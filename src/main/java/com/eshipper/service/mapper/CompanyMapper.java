@@ -12,9 +12,6 @@ import org.mapstruct.*;
 public interface CompanyMapper extends EntityMapper<CompanyDTO, Company> {
 
 
-    @Mapping(target = "boxes", ignore = true)
-    @Mapping(target = "removeBox", ignore = true)
-    Company toEntity(CompanyDTO companyDTO);
 
     default Company fromId(Long id) {
         if (id == null) {

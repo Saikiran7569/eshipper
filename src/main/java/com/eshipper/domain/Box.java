@@ -62,7 +62,7 @@ public class Box implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("boxes")
-    private PalletType palletType;
+    private BoxPackageType boxPackageType;
 
     @ManyToOne
     @JsonIgnoreProperties("boxes")
@@ -220,17 +220,17 @@ public class Box implements Serializable {
         this.metric = metric;
     }
 
-    public PalletType getPalletType() {
-        return palletType;
+    public BoxPackageType getBoxPackageType() {
+        return boxPackageType;
     }
 
-    public Box palletType(PalletType palletType) {
-        this.palletType = palletType;
+    public Box boxPackageType(BoxPackageType boxPackageType) {
+        this.boxPackageType = boxPackageType;
         return this;
     }
 
-    public void setPalletType(PalletType palletType) {
-        this.palletType = palletType;
+    public void setBoxPackageType(BoxPackageType boxPackageType) {
+        this.boxPackageType = boxPackageType;
     }
 
     public Company getCompany() {

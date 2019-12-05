@@ -1,14 +1,7 @@
 {
     "name": "Company",
     "fields": [],
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "box",
-            "otherEntityRelationshipName": "company",
-            "relationshipName": "box"
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20190927115708",
     "entityTableName": "company",
     "dto": "mapstruct",

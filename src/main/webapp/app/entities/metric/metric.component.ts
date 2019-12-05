@@ -1,13 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { filter, map } from 'rxjs/operators';
 import { JhiEventManager } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IMetric } from 'app/shared/model/metric.model';
-import { AccountService } from 'app/core/auth/account.service';
 import { MetricService } from './metric.service';
+import { MetricDeleteDialogComponent } from './metric-delete-dialog.component';
 
 @Component({
   selector: 'jhi-metric',
@@ -15,28 +14,18 @@ import { MetricService } from './metric.service';
 })
 export class MetricComponent implements OnInit, OnDestroy {
   metrics: IMetric[];
-  currentAccount: any;
   eventSubscriber: Subscription;
 
-  constructor(protected metricService: MetricService, protected eventManager: JhiEventManager, protected accountService: AccountService) {}
+  constructor(protected metricService: MetricService, protected eventManager: JhiEventManager, protected modalService: NgbModal) {}
 
   loadAll() {
-    this.metricService
-      .query()
-      .pipe(
-        filter((res: HttpResponse<IMetric[]>) => res.ok),
-        map((res: HttpResponse<IMetric[]>) => res.body)
-      )
-      .subscribe((res: IMetric[]) => {
-        this.metrics = res;
-      });
+    this.metricService.query().subscribe((res: HttpResponse<IMetric[]>) => {
+      this.metrics = res.body;
+    });
   }
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().subscribe(account => {
-      this.currentAccount = account;
-    });
     this.registerChangeInMetrics();
   }
 
@@ -49,6 +38,11 @@ export class MetricComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInMetrics() {
-    this.eventSubscriber = this.eventManager.subscribe('metricListModification', response => this.loadAll());
+    this.eventSubscriber = this.eventManager.subscribe('metricListModification', () => this.loadAll());
+  }
+
+  delete(metric: IMetric) {
+    const modalRef = this.modalService.open(MetricDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.metric = metric;
   }
 }

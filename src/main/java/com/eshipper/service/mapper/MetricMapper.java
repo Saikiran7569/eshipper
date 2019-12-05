@@ -12,9 +12,6 @@ import org.mapstruct.*;
 public interface MetricMapper extends EntityMapper<MetricDTO, Metric> {
 
 
-    @Mapping(target = "boxes", ignore = true)
-    @Mapping(target = "removeBox", ignore = true)
-    Metric toEntity(MetricDTO metricDTO);
 
     default Metric fromId(Long id) {
         if (id == null) {

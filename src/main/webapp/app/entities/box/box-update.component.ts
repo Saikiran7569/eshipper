@@ -5,7 +5,6 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
@@ -15,8 +14,8 @@ import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
 import { IMetric } from 'app/shared/model/metric.model';
 import { MetricService } from 'app/entities/metric/metric.service';
-import { IPalletType } from 'app/shared/model/pallet-type.model';
-import { PalletTypeService } from 'app/entities/pallet-type/pallet-type.service';
+import { IBoxPackageType } from 'app/shared/model/box-package-type.model';
+import { BoxPackageTypeService } from 'app/entities/box-package-type/box-package-type.service';
 import { ICompany } from 'app/shared/model/company.model';
 import { CompanyService } from 'app/entities/company/company.service';
 
@@ -31,7 +30,7 @@ export class BoxUpdateComponent implements OnInit {
 
   metrics: IMetric[];
 
-  pallettypes: IPalletType[];
+  boxpackagetypes: IBoxPackageType[];
 
   companies: ICompany[];
 
@@ -48,7 +47,7 @@ export class BoxUpdateComponent implements OnInit {
     dateUpdated: [],
     createdByUserId: [],
     metricId: [],
-    palletTypeId: [],
+    boxPackageTypeId: [],
     companyId: []
   });
 
@@ -57,7 +56,7 @@ export class BoxUpdateComponent implements OnInit {
     protected boxService: BoxService,
     protected userService: UserService,
     protected metricService: MetricService,
-    protected palletTypeService: PalletTypeService,
+    protected boxPackageTypeService: BoxPackageTypeService,
     protected companyService: CompanyService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -70,32 +69,19 @@ export class BoxUpdateComponent implements OnInit {
     });
     this.userService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IUser[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IUser[]>) => response.body)
-      )
-      .subscribe((res: IUser[]) => (this.users = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
     this.metricService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IMetric[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IMetric[]>) => response.body)
-      )
-      .subscribe((res: IMetric[]) => (this.metrics = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.palletTypeService
+      .subscribe((res: HttpResponse<IMetric[]>) => (this.metrics = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.boxPackageTypeService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IPalletType[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IPalletType[]>) => response.body)
-      )
-      .subscribe((res: IPalletType[]) => (this.pallettypes = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe(
+        (res: HttpResponse<IBoxPackageType[]>) => (this.boxpackagetypes = res.body),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
     this.companyService
       .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<ICompany[]>) => mayBeOk.ok),
-        map((response: HttpResponse<ICompany[]>) => response.body)
-      )
-      .subscribe((res: ICompany[]) => (this.companies = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: HttpResponse<ICompany[]>) => (this.companies = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(box: IBox) {
@@ -112,7 +98,7 @@ export class BoxUpdateComponent implements OnInit {
       dateUpdated: box.dateUpdated != null ? box.dateUpdated.format(DATE_TIME_FORMAT) : null,
       createdByUserId: box.createdByUserId,
       metricId: box.metricId,
-      palletTypeId: box.palletTypeId,
+      boxPackageTypeId: box.boxPackageTypeId,
       companyId: box.companyId
     });
   }
@@ -148,7 +134,7 @@ export class BoxUpdateComponent implements OnInit {
         this.editForm.get(['dateUpdated']).value != null ? moment(this.editForm.get(['dateUpdated']).value, DATE_TIME_FORMAT) : undefined,
       createdByUserId: this.editForm.get(['createdByUserId']).value,
       metricId: this.editForm.get(['metricId']).value,
-      palletTypeId: this.editForm.get(['palletTypeId']).value,
+      boxPackageTypeId: this.editForm.get(['boxPackageTypeId']).value,
       companyId: this.editForm.get(['companyId']).value
     };
   }
@@ -177,7 +163,7 @@ export class BoxUpdateComponent implements OnInit {
     return item.id;
   }
 
-  trackPalletTypeById(index: number, item: IPalletType) {
+  trackBoxPackageTypeById(index: number, item: IBoxPackageType) {
     return item.id;
   }
 

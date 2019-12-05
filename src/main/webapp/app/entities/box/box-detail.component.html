@@ -51,10 +51,10 @@
                         <a [routerLink]="['/metric', box.metricId, 'view']">{{box.metricId}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="eshipperApp.box.palletType">Pallet Type</span></dt>
+                <dt><span jhiTranslate="eshipperApp.box.boxPackageType">Box Package Type</span></dt>
                 <dd>
-                    <div *ngIf="box.palletTypeId">
-                        <a [routerLink]="['/pallet-type', box.palletTypeId, 'view']">{{box.palletTypeId}}</a>
+                    <div *ngIf="box.boxPackageTypeId">
+                        <a [routerLink]="['/box-package-type', box.boxPackageTypeId, 'view']">{{box.boxPackageTypeId}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="eshipperApp.box.company">Company</span></dt>

@@ -2,22 +2,20 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IBox } from 'app/shared/model/box.model';
-import { AccountService } from 'app/core/auth/account.service';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { BoxService } from './box.service';
+import { BoxDeleteDialogComponent } from './box-delete-dialog.component';
 
 @Component({
   selector: 'jhi-box',
   templateUrl: './box.component.html'
 })
 export class BoxComponent implements OnInit, OnDestroy {
-  currentAccount: any;
   boxes: IBox[];
   error: any;
   success: any;
@@ -34,10 +32,10 @@ export class BoxComponent implements OnInit, OnDestroy {
   constructor(
     protected boxService: BoxService,
     protected parseLinks: JhiParseLinks,
-    protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected eventManager: JhiEventManager
+    protected eventManager: JhiEventManager,
+    protected modalService: NgbModal
   ) {
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.routeData = this.activatedRoute.data.subscribe(data => {
@@ -90,9 +88,6 @@ export class BoxComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().subscribe(account => {
-      this.currentAccount = account;
-    });
     this.registerChangeInBoxes();
   }
 
@@ -105,7 +100,12 @@ export class BoxComponent implements OnInit, OnDestroy {
   }
 
   registerChangeInBoxes() {
-    this.eventSubscriber = this.eventManager.subscribe('boxListModification', response => this.loadAll());
+    this.eventSubscriber = this.eventManager.subscribe('boxListModification', () => this.loadAll());
+  }
+
+  delete(box: IBox) {
+    const modalRef = this.modalService.open(BoxDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.box = box;
   }
 
   sort() {

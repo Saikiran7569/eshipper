@@ -19,6 +19,7 @@
         "woPackageType": "Wo Package Type",
         "palletType": "Pallet Type",
         "shipmentPackage": "Shipment Package",
+        "boxPackageType": "Box Package Type",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
