@@ -4,10 +4,17 @@ entity ShippingOrder{
 
 entity BatchShipmentRateDetail{
 
+	rateJson String
 }
 
 
   relationship OneToOne {
-  ShippingOrder to BatchShipmentRateDetail
+  ShippingOrder{batchRate} to BatchShipmentRateDetail
   
   }
+  
+  
+
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl
