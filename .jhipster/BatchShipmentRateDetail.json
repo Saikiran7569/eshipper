@@ -1,0 +1,23 @@
+{
+    "name": "BatchShipmentRateDetail",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "shippingOrder",
+            "otherEntityRelationshipName": "batchShipmentRateDetail",
+            "relationshipName": "shippingOrder",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191220102002",
+    "entityTableName": "batch_shipment_rate_detail",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
