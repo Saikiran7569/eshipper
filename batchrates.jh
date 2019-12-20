@@ -1,0 +1,13 @@
+entity ShippingOrder{
+
+}
+
+entity BatchShipmentRateDetail{
+
+}
+
+
+  relationship OneToOne {
+  ShippingOrder to BatchShipmentRateDetail
+  
+  }
