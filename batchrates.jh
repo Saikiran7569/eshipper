@@ -11,3 +11,9 @@ entity BatchShipmentRateDetail{
   ShippingOrder to BatchShipmentRateDetail
   
   }
+  
+  
+  paginate AddressBook with pagination
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl
