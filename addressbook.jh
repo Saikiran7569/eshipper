@@ -48,6 +48,8 @@ entity Company {
   
 }
 
+
+
 entity Province {
   
   name String maxlength(255)
@@ -74,6 +76,18 @@ relationship ManyToOne {
      AddressBook{createdBy} to User1
 }
 
+
+
+entity BatchRateDetail{
+
+	rateJson String
+}
+
+
+  relationship OneToOne {
+  AddressBook{batchRate} to BatchRateDetail
+  
+  }
 
 // Set pagination options
 //paginate JobHistory, Employee with infinite-scroll
