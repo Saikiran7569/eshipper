@@ -10,6 +10,10 @@ entity Box {
     dateUpdated ZonedDateTime 
 }
 
+entity BatchRateDetail{
+
+rateJson String
+}
 
 entity BoxPackageType{
  name String
@@ -27,6 +31,10 @@ relationship ManyToOne {
  	 Box{metric} to Metric 
      Box{boxPackageType} to BoxPackageType
      Box{company} to Company
+}
+
+relationship OneToOne{
+ Box{batchRate} to BatchRateDetail
 }
 
 //Set pagination options

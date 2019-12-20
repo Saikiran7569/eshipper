@@ -48,6 +48,14 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "batchRateDetail",
+            "otherEntityRelationshipName": "box",
+            "relationshipName": "batchRate",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "user",
             "otherEntityRelationshipName": "box",
