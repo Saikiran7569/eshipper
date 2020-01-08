@@ -1,0 +1,24 @@
+{
+  "eshipperApp": {
+    "supplies": {
+      "home": {
+        "title": "Supplies",
+        "createLabel": "Create a new Supplies",
+        "createOrEditLabel": "Create or edit a Supplies",
+        "notFound": "No Supplies found"
+      },
+      "created": "A new Supplies is created with identifier {{ param }}",
+      "updated": "A Supplies is updated with identifier {{ param }}",
+      "deleted": "A Supplies is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Supplies {{ id }}?"
+      },
+      "detail": {
+        "title": "Supplies"
+      },
+      "item": "Item",
+      "name": "Name",
+      "supplies": "Supplies"
+    }
+  }
+}

@@ -20,6 +20,8 @@
         "palletType": "Pallet Type",
         "shipmentPackage": "Shipment Package",
         "boxPackageType": "Box Package Type",
+        "supplies": "Supplies",
+        "carrier": "Carrier",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

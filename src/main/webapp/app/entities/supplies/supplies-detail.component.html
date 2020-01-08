@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="supplies">
+            <h2><span jhiTranslate="eshipperApp.supplies.detail.title">Supplies</span> {{supplies.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.supplies.item">Item</span></dt>
+                <dd>
+                    <span>{{supplies.item}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.supplies.name">Name</span></dt>
+                <dd>
+                    <span>{{supplies.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.supplies.supplies">Supplies</span></dt>
+                <dd>
+                    <div *ngIf="supplies.suppliesId">
+                        <a [routerLink]="['/carrier', supplies.suppliesId, 'view']">{{supplies.suppliesId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/supplies', supplies.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
