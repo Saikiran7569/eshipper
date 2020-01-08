@@ -1,0 +1,32 @@
+{
+    "name": "Supplies",
+    "fields": [
+        {
+            "fieldName": "item",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "carrier",
+            "otherEntityRelationshipName": "carrier",
+            "relationshipName": "supplies",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200108070041",
+    "entityTableName": "supplies",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

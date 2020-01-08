@@ -1,0 +1,22 @@
+{
+    "name": "Carrier",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "supplies",
+            "otherEntityRelationshipName": "supplies",
+            "relationshipName": "carrier"
+        }
+    ],
+    "changelogDate": "20200108070042",
+    "entityTableName": "carrier",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
