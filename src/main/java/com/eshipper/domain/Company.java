@@ -1,4 +1,5 @@
 package com.eshipper.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -20,6 +21,14 @@ public class Company implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JsonIgnoreProperties("companies")
+    private Industry industry;
+
+    @ManyToOne
+    @JsonIgnoreProperties("companies")
+    private MonthlyShipments monthlyshipments;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -27,6 +36,32 @@ public class Company implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Industry getIndustry() {
+        return industry;
+    }
+
+    public Company industry(Industry industry) {
+        this.industry = industry;
+        return this;
+    }
+
+    public void setIndustry(Industry industry) {
+        this.industry = industry;
+    }
+
+    public MonthlyShipments getMonthlyshipments() {
+        return monthlyshipments;
+    }
+
+    public Company monthlyshipments(MonthlyShipments monthlyShipments) {
+        this.monthlyshipments = monthlyShipments;
+        return this;
+    }
+
+    public void setMonthlyshipments(MonthlyShipments monthlyShipments) {
+        this.monthlyshipments = monthlyShipments;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

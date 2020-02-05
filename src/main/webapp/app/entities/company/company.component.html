@@ -19,12 +19,24 @@
             <thead>
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.industry">Industry</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.company.monthlyshipments">Monthlyshipments</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let company of companies ;trackBy: trackId">
                 <td><a [routerLink]="['/company', company.id, 'view' ]">{{company.id}}</a></td>
+                <td>
+                    <div *ngIf="company.industryId">
+                        <a [routerLink]="['/industry', company.industryId , 'view' ]" >{{company.industryId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="company.monthlyshipmentsId">
+                        <a [routerLink]="['/monthly-shipments', company.monthlyshipmentsId , 'view' ]" >{{company.monthlyshipmentsId}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

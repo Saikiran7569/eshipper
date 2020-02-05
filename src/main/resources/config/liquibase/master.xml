@@ -30,11 +30,15 @@
     <include file="config/liquibase/changelog/20191205102512_added_entity_BoxPackageType.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200108070041_added_entity_Supplies.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200108070042_added_entity_Carrier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205105139_added_entity_Industry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205105140_added_entity_MonthlyShipments.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200205105141_added_entity_CustomsTaxBillTo.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20190926112057_added_entity_constraints_AddressBook.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191010100412_added_entity_constraints_Box.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191022103441_added_entity_constraints_Box.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191024063032_added_entity_constraints_ShipmentPackage.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200108070041_added_entity_constraints_Supplies.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190927115708_added_entity_constraints_Company.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

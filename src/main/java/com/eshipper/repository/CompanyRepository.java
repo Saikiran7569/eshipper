@@ -1,4 +1,5 @@
 package com.eshipper.repository;
+
 import com.eshipper.domain.Company;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;

@@ -5,6 +5,18 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.company.industry">Industry</span></dt>
+                <dd>
+                    <div *ngIf="company.industryId">
+                        <a [routerLink]="['/industry', company.industryId, 'view']">{{company.industryId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.company.monthlyshipments">Monthlyshipments</span></dt>
+                <dd>
+                    <div *ngIf="company.monthlyshipmentsId">
+                        <a [routerLink]="['/monthly-shipments', company.monthlyshipmentsId, 'view']">{{company.monthlyshipmentsId}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

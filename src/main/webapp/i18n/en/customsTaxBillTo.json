@@ -1,0 +1,22 @@
+{
+  "eshipperApp": {
+    "customsTaxBillTo": {
+      "home": {
+        "title": "Customs Tax Bill Tos",
+        "createLabel": "Create a new Customs Tax Bill To",
+        "createOrEditLabel": "Create or edit a Customs Tax Bill To",
+        "notFound": "No Customs Tax Bill Tos found"
+      },
+      "created": "A new Customs Tax Bill To is created with identifier {{ param }}",
+      "updated": "A Customs Tax Bill To is updated with identifier {{ param }}",
+      "deleted": "A Customs Tax Bill To is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Customs Tax Bill To {{ id }}?"
+      },
+      "detail": {
+        "title": "Customs Tax Bill To"
+      },
+      "billTo": "Bill To"
+    }
+  }
+}
