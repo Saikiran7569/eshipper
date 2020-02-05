@@ -4,12 +4,26 @@
             <h2 id="jhi-company-heading" jhiTranslate="eshipperApp.company.home.createOrEditLabel">Create or edit a Company</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group" [hidden]="!editForm.get('id').value">
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id"
                         readonly />
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.company.industry" for="field_industry">Industry</label>
+                    <select class="form-control" id="field_industry" name="industry" formControlName="industryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="industryOption.id" *ngFor="let industryOption of industries; trackBy: trackById">{{industryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="eshipperApp.company.monthlyshipments" for="field_monthlyshipments">Monthlyshipments</label>
+                    <select class="form-control" id="field_monthlyshipments" name="monthlyshipments" formControlName="monthlyshipmentsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="monthlyShipmentsOption.id" *ngFor="let monthlyShipmentsOption of monthlyshipments; trackBy: trackById">{{monthlyShipmentsOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

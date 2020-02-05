@@ -22,6 +22,9 @@
         "boxPackageType": "Box Package Type",
         "supplies": "Supplies",
         "carrier": "Carrier",
+        "industry": "Industry",
+        "monthlyShipments": "Monthly Shipments",
+        "customsTaxBillTo": "Customs Tax Bill To",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

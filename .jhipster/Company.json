@@ -1,7 +1,22 @@
 {
     "name": "Company",
     "fields": [],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "industry",
+            "otherEntityRelationshipName": "company",
+            "relationshipName": "industry",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "monthlyShipments",
+            "otherEntityRelationshipName": "company",
+            "relationshipName": "monthlyshipments",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20190927115708",
     "entityTableName": "company",
     "dto": "mapstruct",

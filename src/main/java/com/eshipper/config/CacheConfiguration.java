@@ -70,6 +70,9 @@ public class CacheConfiguration {
             createCache(cm, com.eshipper.domain.Supplies.class.getName());
             createCache(cm, com.eshipper.domain.Carrier.class.getName());
             createCache(cm, com.eshipper.domain.Carrier.class.getName() + ".carriers");
+            createCache(cm, com.eshipper.domain.Industry.class.getName());
+            createCache(cm, com.eshipper.domain.MonthlyShipments.class.getName());
+            createCache(cm, com.eshipper.domain.CustomsTaxBillTo.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

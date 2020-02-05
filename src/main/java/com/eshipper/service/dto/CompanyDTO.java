@@ -10,12 +10,32 @@ public class CompanyDTO implements Serializable {
     private Long id;
 
 
+    private Long industryId;
+
+    private Long monthlyshipmentsId;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getIndustryId() {
+        return industryId;
+    }
+
+    public void setIndustryId(Long industryId) {
+        this.industryId = industryId;
+    }
+
+    public Long getMonthlyshipmentsId() {
+        return monthlyshipmentsId;
+    }
+
+    public void setMonthlyshipmentsId(Long monthlyShipmentsId) {
+        this.monthlyshipmentsId = monthlyShipmentsId;
     }
 
     @Override
@@ -43,6 +63,8 @@ public class CompanyDTO implements Serializable {
     public String toString() {
         return "CompanyDTO{" +
             "id=" + getId() +
+            ", industryId=" + getIndustryId() +
+            ", monthlyshipmentsId=" + getMonthlyshipmentsId() +
             "}";
     }
 }
