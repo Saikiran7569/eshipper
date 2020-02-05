@@ -1,0 +1,32 @@
+entity Industry{
+	name String
+}
+
+entity MonthlyShipments{
+	range String
+}
+
+entity CustomsTaxBillTo{
+
+	billTo String
+}
+
+entity Company {
+
+}
+
+relationship ManyToOne {
+
+ Company{industry} to Industry
+ Company{monthlyshipments} to MonthlyShipments
+ 
+ 
+} 
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+//paginate Job with pagination
+
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl
+
