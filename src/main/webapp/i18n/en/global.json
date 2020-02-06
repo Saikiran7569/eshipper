@@ -25,6 +25,7 @@
         "industry": "Industry",
         "monthlyShipments": "Monthly Shipments",
         "customsTaxBillTo": "Customs Tax Bill To",
+        "batchServiceType": "Batch Service Type",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
