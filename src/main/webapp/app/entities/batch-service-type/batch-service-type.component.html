@@ -1,0 +1,57 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eshipperApp.batchServiceType.home.title">Batch Service Types</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-batch-service-type" [routerLink]="['/batch-service-type/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="eshipperApp.batchServiceType.home.createLabel">
+            Create a new Batch Service Type
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="batchServiceTypes?.length === 0">
+        <span jhiTranslate="eshipperApp.batchServiceType.home.notFound">No batchServiceTypes found</span>
+    </div>
+    <div class="table-responsive" *ngIf="batchServiceTypes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.batchServiceType.serviceName">Service Name</span></th>
+            <th scope="col" ><span jhiTranslate="eshipperApp.batchServiceType.value">Value</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let batchServiceType of batchServiceTypes ;trackBy: trackId">
+                <td><a [routerLink]="['/batch-service-type', batchServiceType.id, 'view' ]">{{batchServiceType.id}}</a></td>
+                <td>{{batchServiceType.serviceName}}</td>
+                <td>{{batchServiceType.value}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/batch-service-type', batchServiceType.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/batch-service-type', batchServiceType.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(batchServiceType)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
