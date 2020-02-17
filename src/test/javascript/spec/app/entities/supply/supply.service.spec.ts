@@ -1,15 +1,15 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { CarrierService } from 'app/entities/carrier/carrier.service';
-import { ICarrier, Carrier } from 'app/shared/model/carrier.model';
+import { SupplyService } from 'app/entities/supply/supply.service';
+import { ISupply, Supply } from 'app/shared/model/supply.model';
 
 describe('Service Tests', () => {
-  describe('Carrier Service', () => {
+  describe('Supply Service', () => {
     let injector: TestBed;
-    let service: CarrierService;
+    let service: SupplyService;
     let httpMock: HttpTestingController;
-    let elemDefault: ICarrier;
-    let expectedResult: ICarrier | ICarrier[] | boolean | null;
+    let elemDefault: ISupply;
+    let expectedResult: ISupply | ISupply[] | boolean | null;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -17,10 +17,10 @@ describe('Service Tests', () => {
       });
       expectedResult = null;
       injector = getTestBed();
-      service = injector.get(CarrierService);
+      service = injector.get(SupplyService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Carrier(0);
+      elemDefault = new Supply(0, 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -34,7 +34,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject(elemDefault);
       });
 
-      it('should create a Carrier', () => {
+      it('should create a Supply', () => {
         const returnedFromService = Object.assign(
           {
             id: 0
@@ -44,15 +44,21 @@ describe('Service Tests', () => {
 
         const expected = Object.assign({}, returnedFromService);
 
-        service.create(new Carrier()).subscribe(resp => (expectedResult = resp.body));
+        service.create(new Supply()).subscribe(resp => (expectedResult = resp.body));
 
         const req = httpMock.expectOne({ method: 'POST' });
         req.flush(returnedFromService);
         expect(expectedResult).toMatchObject(expected);
       });
 
-      it('should update a Carrier', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+      it('should update a Supply', () => {
+        const returnedFromService = Object.assign(
+          {
+            itemName: 'BBBBBB',
+            logoPath: 'BBBBBB'
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -63,8 +69,14 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject(expected);
       });
 
-      it('should return a list of Carrier', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+      it('should return a list of Supply', () => {
+        const returnedFromService = Object.assign(
+          {
+            itemName: 'BBBBBB',
+            logoPath: 'BBBBBB'
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -76,7 +88,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toContainEqual(expected);
       });
 
-      it('should delete a Carrier', () => {
+      it('should delete a Supply', () => {
         service.delete(123).subscribe(resp => (expectedResult = resp.ok));
 
         const req = httpMock.expectOne({ method: 'DELETE' });

@@ -79,6 +79,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'batch-service-type',
         loadChildren: () => import('./batch-service-type/batch-service-type.module').then(m => m.EshipperBatchServiceTypeModule)
+      },
+      {
+        path: 'supply',
+        loadChildren: () => import('./supply/supply.module').then(m => m.EshipperSupplyModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

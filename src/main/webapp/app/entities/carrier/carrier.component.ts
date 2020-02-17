@@ -19,9 +19,7 @@ export class CarrierComponent implements OnInit, OnDestroy {
   constructor(protected carrierService: CarrierService, protected eventManager: JhiEventManager, protected modalService: NgbModal) {}
 
   loadAll(): void {
-    this.carrierService.query().subscribe((res: HttpResponse<ICarrier[]>) => {
-      this.carriers = res.body ? res.body : [];
-    });
+    this.carrierService.query().subscribe((res: HttpResponse<ICarrier[]>) => (this.carriers = res.body || []));
   }
 
   ngOnInit(): void {

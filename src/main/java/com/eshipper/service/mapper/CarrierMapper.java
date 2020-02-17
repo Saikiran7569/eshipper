@@ -1,5 +1,6 @@
 package com.eshipper.service.mapper;
 
+
 import com.eshipper.domain.*;
 import com.eshipper.service.dto.CarrierDTO;
 
@@ -12,8 +13,8 @@ import org.mapstruct.*;
 public interface CarrierMapper extends EntityMapper<CarrierDTO, Carrier> {
 
 
-    @Mapping(target = "carriers", ignore = true)
-    @Mapping(target = "removeCarrier", ignore = true)
+    @Mapping(target = "supplies", ignore = true)
+    @Mapping(target = "removeSupply", ignore = true)
     Carrier toEntity(CarrierDTO carrierDTO);
 
     default Carrier fromId(Long id) {

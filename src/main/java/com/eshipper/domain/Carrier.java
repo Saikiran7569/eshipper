@@ -1,4 +1,5 @@
 package com.eshipper.domain;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -22,9 +23,9 @@ public class Carrier implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "supplies")
+    @OneToMany(mappedBy = "carrier")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Supplies> carriers = new HashSet<>();
+    private Set<Supply> supplies = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -35,29 +36,29 @@ public class Carrier implements Serializable {
         this.id = id;
     }
 
-    public Set<Supplies> getCarriers() {
-        return carriers;
+    public Set<Supply> getSupplies() {
+        return supplies;
     }
 
-    public Carrier carriers(Set<Supplies> supplies) {
-        this.carriers = supplies;
+    public Carrier supplies(Set<Supply> supplies) {
+        this.supplies = supplies;
         return this;
     }
 
-    public Carrier addCarrier(Supplies supplies) {
-        this.carriers.add(supplies);
-        supplies.setSupplies(this);
+    public Carrier addSupply(Supply supply) {
+        this.supplies.add(supply);
+        supply.setCarrier(this);
         return this;
     }
 
-    public Carrier removeCarrier(Supplies supplies) {
-        this.carriers.remove(supplies);
-        supplies.setSupplies(null);
+    public Carrier removeSupply(Supply supply) {
+        this.supplies.remove(supply);
+        supply.setCarrier(null);
         return this;
     }
 
-    public void setCarriers(Set<Supplies> supplies) {
-        this.carriers = supplies;
+    public void setSupplies(Set<Supply> supplies) {
+        this.supplies = supplies;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -13,9 +13,7 @@ export class CarrierDetailComponent implements OnInit {
   constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ carrier }) => {
-      this.carrier = carrier;
-    });
+    this.activatedRoute.data.subscribe(({ carrier }) => (this.carrier = carrier));
   }
 
   previousState(): void {
