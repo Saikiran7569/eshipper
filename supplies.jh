@@ -1,8 +1,6 @@
-entity Supplies{
- item  String,
- name String,
- 
- 
+entity Supply{
+ itemName  String,
+ logoPath String
 }
 
 entity Carrier{
@@ -10,10 +8,8 @@ entity Carrier{
 }
 
 relationship OneToMany {
-  Carrier{carrier} to Supplies{supplies}
- 
- 
-  }
+  Carrier to Supply{carrier}  
+ }
 // Set pagination options
 //paginate JobHistory, Employee with infinite-scroll
 //paginate Job with pagination
