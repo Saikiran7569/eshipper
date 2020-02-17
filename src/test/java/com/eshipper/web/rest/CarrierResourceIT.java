@@ -110,7 +110,7 @@ public class CarrierResourceIT {
         // Create the Carrier
         CarrierDTO carrierDTO = carrierMapper.toDto(carrier);
         restCarrierMockMvc.perform(post("/api/carriers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(carrierDTO)))
             .andExpect(status().isCreated());
 
@@ -131,7 +131,7 @@ public class CarrierResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCarrierMockMvc.perform(post("/api/carriers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(carrierDTO)))
             .andExpect(status().isBadRequest());
 
@@ -150,7 +150,7 @@ public class CarrierResourceIT {
         // Get all the carrierList
         restCarrierMockMvc.perform(get("/api/carriers?sort=id,desc"))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(carrier.getId().intValue())));
     }
     
@@ -163,7 +163,7 @@ public class CarrierResourceIT {
         // Get the carrier
         restCarrierMockMvc.perform(get("/api/carriers/{id}", carrier.getId()))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(carrier.getId().intValue()));
     }
 
@@ -190,7 +190,7 @@ public class CarrierResourceIT {
         CarrierDTO carrierDTO = carrierMapper.toDto(updatedCarrier);
 
         restCarrierMockMvc.perform(put("/api/carriers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(carrierDTO)))
             .andExpect(status().isOk());
 
@@ -210,7 +210,7 @@ public class CarrierResourceIT {
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restCarrierMockMvc.perform(put("/api/carriers")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .contentType(TestUtil.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(carrierDTO)))
             .andExpect(status().isBadRequest());
 
@@ -229,7 +229,7 @@ public class CarrierResourceIT {
 
         // Delete the carrier
         restCarrierMockMvc.perform(delete("/api/carriers/{id}", carrier.getId())
-            .accept(TestUtil.APPLICATION_JSON_UTF8))
+            .accept(TestUtil.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

@@ -6,27 +6,27 @@ import { JhiEventManager } from 'ng-jhipster';
 import { EshipperTestModule } from '../../../test.module';
 import { MockEventManager } from '../../../helpers/mock-event-manager.service';
 import { MockActiveModal } from '../../../helpers/mock-active-modal.service';
-import { CarrierDeleteDialogComponent } from 'app/entities/carrier/carrier-delete-dialog.component';
-import { CarrierService } from 'app/entities/carrier/carrier.service';
+import { SupplyDeleteDialogComponent } from 'app/entities/supply/supply-delete-dialog.component';
+import { SupplyService } from 'app/entities/supply/supply.service';
 
 describe('Component Tests', () => {
-  describe('Carrier Management Delete Component', () => {
-    let comp: CarrierDeleteDialogComponent;
-    let fixture: ComponentFixture<CarrierDeleteDialogComponent>;
-    let service: CarrierService;
+  describe('Supply Management Delete Component', () => {
+    let comp: SupplyDeleteDialogComponent;
+    let fixture: ComponentFixture<SupplyDeleteDialogComponent>;
+    let service: SupplyService;
     let mockEventManager: MockEventManager;
     let mockActiveModal: MockActiveModal;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [EshipperTestModule],
-        declarations: [CarrierDeleteDialogComponent]
+        declarations: [SupplyDeleteDialogComponent]
       })
-        .overrideTemplate(CarrierDeleteDialogComponent, '')
+        .overrideTemplate(SupplyDeleteDialogComponent, '')
         .compileComponents();
-      fixture = TestBed.createComponent(CarrierDeleteDialogComponent);
+      fixture = TestBed.createComponent(SupplyDeleteDialogComponent);
       comp = fixture.componentInstance;
-      service = fixture.debugElement.injector.get(CarrierService);
+      service = fixture.debugElement.injector.get(SupplyService);
       mockEventManager = TestBed.get(JhiEventManager);
       mockActiveModal = TestBed.get(NgbActiveModal);
     });

@@ -1,10 +1,10 @@
-import { ISupplies } from 'app/shared/model/supplies.model';
+import { ISupply } from 'app/shared/model/supply.model';
 
 export interface ICarrier {
   id?: number;
-  carriers?: ISupplies[];
+  supplies?: ISupply[];
 }
 
 export class Carrier implements ICarrier {
-  constructor(public id?: number, public carriers?: ISupplies[]) {}
+  constructor(public id?: number, public supplies?: ISupply[]) {}
 }

@@ -62,7 +62,6 @@ public class CarrierServiceImpl implements CarrierService {
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-
     /**
      * Get one carrier by id.
      *

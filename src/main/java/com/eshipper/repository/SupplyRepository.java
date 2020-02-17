@@ -1,15 +1,15 @@
 package com.eshipper.repository;
 
-import com.eshipper.domain.Carrier;
+import com.eshipper.domain.Supply;
 
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 /**
- * Spring Data  repository for the Carrier entity.
+ * Spring Data  repository for the Supply entity.
  */
 @SuppressWarnings("unused")
 @Repository
-public interface CarrierRepository extends JpaRepository<Carrier, Long> {
+public interface SupplyRepository extends JpaRepository<Supply, Long> {
 
 }

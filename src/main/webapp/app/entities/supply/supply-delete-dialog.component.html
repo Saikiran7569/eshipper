@@ -1,4 +1,4 @@
-<form *ngIf="carrier" name="deleteForm" (ngSubmit)="confirmDelete(carrier.id!)">
+<form *ngIf="supply" name="deleteForm" (ngSubmit)="confirmDelete(supply.id!)">
     <div class="modal-header">
         <h4 class="modal-title" jhiTranslate="entity.delete.title">Confirm delete operation</h4>
 
@@ -9,7 +9,7 @@
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
 
-        <p id="jhi-delete-carrier-heading" jhiTranslate="eshipperApp.carrier.delete.question" [translateValues]="{ id: carrier.id }">Are you sure you want to delete this Carrier?</p>
+        <p id="jhi-delete-supply-heading" jhiTranslate="eshipperApp.supply.delete.question" [translateValues]="{ id: supply.id }">Are you sure you want to delete this Supply?</p>
     </div>
 
     <div class="modal-footer">
@@ -17,7 +17,7 @@
             <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
 
-        <button id="jhi-confirm-delete-carrier" type="submit" class="btn btn-danger">
+        <button id="jhi-confirm-delete-supply" type="submit" class="btn btn-danger">
             <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Delete</span>
         </button>
     </div>

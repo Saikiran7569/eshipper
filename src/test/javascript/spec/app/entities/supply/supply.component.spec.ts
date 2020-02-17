@@ -3,27 +3,27 @@ import { of } from 'rxjs';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { EshipperTestModule } from '../../../test.module';
-import { CarrierComponent } from 'app/entities/carrier/carrier.component';
-import { CarrierService } from 'app/entities/carrier/carrier.service';
-import { Carrier } from 'app/shared/model/carrier.model';
+import { SupplyComponent } from 'app/entities/supply/supply.component';
+import { SupplyService } from 'app/entities/supply/supply.service';
+import { Supply } from 'app/shared/model/supply.model';
 
 describe('Component Tests', () => {
-  describe('Carrier Management Component', () => {
-    let comp: CarrierComponent;
-    let fixture: ComponentFixture<CarrierComponent>;
-    let service: CarrierService;
+  describe('Supply Management Component', () => {
+    let comp: SupplyComponent;
+    let fixture: ComponentFixture<SupplyComponent>;
+    let service: SupplyService;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [EshipperTestModule],
-        declarations: [CarrierComponent]
+        declarations: [SupplyComponent]
       })
-        .overrideTemplate(CarrierComponent, '')
+        .overrideTemplate(SupplyComponent, '')
         .compileComponents();
 
-      fixture = TestBed.createComponent(CarrierComponent);
+      fixture = TestBed.createComponent(SupplyComponent);
       comp = fixture.componentInstance;
-      service = fixture.debugElement.injector.get(CarrierService);
+      service = fixture.debugElement.injector.get(SupplyService);
     });
 
     it('Should call load all on init', () => {
@@ -32,7 +32,7 @@ describe('Component Tests', () => {
       spyOn(service, 'query').and.returnValue(
         of(
           new HttpResponse({
-            body: [new Carrier(123)],
+            body: [new Supply(123)],
             headers
           })
         )
@@ -43,7 +43,7 @@ describe('Component Tests', () => {
 
       // THEN
       expect(service.query).toHaveBeenCalled();
-      expect(comp.carriers && comp.carriers[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+      expect(comp.supplies && comp.supplies[0]).toEqual(jasmine.objectContaining({ id: 123 }));
     });
   });
 });

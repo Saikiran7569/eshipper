@@ -25,7 +25,6 @@ public interface CarrierService {
      */
     List<CarrierDTO> findAll();
 
-
     /**
      * Get the "id" carrier.
      *

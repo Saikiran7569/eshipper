@@ -4,19 +4,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarrierMapperTest {
+public class SupplyMapperTest {
 
-    private CarrierMapper carrierMapper;
+    private SupplyMapper supplyMapper;
 
     @BeforeEach
     public void setUp() {
-        carrierMapper = new CarrierMapperImpl();
+        supplyMapper = new SupplyMapperImpl();
     }
 
     @Test
     public void testEntityFromId() {
         Long id = 1L;
-        assertThat(carrierMapper.fromId(id).getId()).isEqualTo(id);
-        assertThat(carrierMapper.fromId(null)).isNull();
+        assertThat(supplyMapper.fromId(id).getId()).isEqualTo(id);
+        assertThat(supplyMapper.fromId(null)).isNull();
     }
 }

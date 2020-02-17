@@ -4,9 +4,9 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "supplies",
-            "otherEntityRelationshipName": "supplies",
-            "relationshipName": "carrier"
+            "otherEntityName": "supply",
+            "otherEntityRelationshipName": "carrier",
+            "relationshipName": "supply"
         }
     ],
     "changelogDate": "20200108070042",

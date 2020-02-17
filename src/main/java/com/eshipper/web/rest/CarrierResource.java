@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -81,7 +80,6 @@ public class CarrierResource {
     /**
      * {@code GET  /carriers} : get all the carriers.
      *
-
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of carriers in body.
      */
     @GetMapping("/carriers")
