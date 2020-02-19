@@ -1,0 +1,22 @@
+{
+    "name": "User11",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "suppliesOrders",
+            "otherEntityRelationshipName": "createdByUser",
+            "relationshipName": "suppliesOrders"
+        }
+    ],
+    "changelogDate": "20200219095100",
+    "entityTableName": "user_11",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

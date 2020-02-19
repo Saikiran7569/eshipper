@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="eshipperApp.suppliesOrders.home.title">Supplies Orders</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-supplies-orders" [routerLink]="['/supplies-orders/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="eshipperApp.suppliesOrders.home.createLabel">
+            Create a new Supplies Orders
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="suppliesOrders?.length === 0">
+        <span jhiTranslate="eshipperApp.suppliesOrders.home.notFound">No suppliesOrders found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="suppliesOrders?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.suppliesOrders.itemName">Item Name</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.suppliesOrders.quantity">Quantity</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.suppliesOrders.createdDate">Created Date</span></th>
+                    <th scope="col" ><span jhiTranslate="eshipperApp.suppliesOrders.createdByUser">Created By User</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let suppliesOrders of suppliesOrders ;trackBy: trackId">
+                    <td><a [routerLink]="['/supplies-orders', suppliesOrders.id, 'view']">{{ suppliesOrders.id }}</a></td>
+                    <td>{{ suppliesOrders.itemName }}</td>
+                    <td>{{ suppliesOrders.quantity }}</td>
+                    <td>{{ suppliesOrders.createdDate | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="suppliesOrders.createdByUserId">
+                            <a [routerLink]="['/user-11', suppliesOrders.createdByUserId , 'view']" >{{ suppliesOrders.createdByUserId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/supplies-orders', suppliesOrders.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/supplies-orders', suppliesOrders.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(suppliesOrders)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

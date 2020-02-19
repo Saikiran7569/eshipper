@@ -1,0 +1,25 @@
+{
+  "eshipperApp": {
+    "suppliesOrders": {
+      "home": {
+        "title": "Supplies Orders",
+        "createLabel": "Create a new Supplies Orders",
+        "createOrEditLabel": "Create or edit a Supplies Orders",
+        "notFound": "No Supplies Orders found"
+      },
+      "created": "A new Supplies Orders is created with identifier {{ param }}",
+      "updated": "A Supplies Orders is updated with identifier {{ param }}",
+      "deleted": "A Supplies Orders is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Supplies Orders {{ id }}?"
+      },
+      "detail": {
+        "title": "Supplies Orders"
+      },
+      "itemName": "Item Name",
+      "quantity": "Quantity",
+      "createdDate": "Created Date",
+      "createdByUser": "Created By User"
+    }
+  }
+}

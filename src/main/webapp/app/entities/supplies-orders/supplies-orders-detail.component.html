@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="suppliesOrders">
+            <h2><span jhiTranslate="eshipperApp.suppliesOrders.detail.title">Supplies Orders</span> {{ suppliesOrders.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="eshipperApp.suppliesOrders.itemName">Item Name</span></dt>
+                <dd>
+                    <span>{{ suppliesOrders.itemName }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.suppliesOrders.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ suppliesOrders.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.suppliesOrders.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ suppliesOrders.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="eshipperApp.suppliesOrders.createdByUser">Created By User</span></dt>
+                <dd>
+                    <div *ngIf="suppliesOrders.createdByUserId">
+                        <a [routerLink]="['/user-11', suppliesOrders.createdByUserId, 'view']">{{ suppliesOrders.createdByUserId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/supplies-orders', suppliesOrders.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
