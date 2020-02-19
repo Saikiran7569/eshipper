@@ -7,8 +7,17 @@ entity Carrier{
 
 }
 
+entity SuppliesOrders{
+	itemName String,
+    quantity Integer,
+    createdDate LocalDate,
+}
+entity User11{
+
+}
 relationship OneToMany {
-  Carrier to Supply{carrier}  
+  Carrier to Supply{carrier} 
+  User11 to SuppliesOrders{createdByUser}
  }
 // Set pagination options
 //paginate JobHistory, Employee with infinite-scroll
