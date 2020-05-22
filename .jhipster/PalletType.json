@@ -1,20 +1,20 @@
 {
-    "name": "PalletType",
-    "fields": [
-        {
-            "fieldName": "name",
-            "fieldType": "String"
-        }
-    ],
-    "relationships": [],
-    "changelogDate": "20191022103442",
-    "entityTableName": "pallet_type",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "PalletType",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20191022103442",
+  "entityTableName": "pallet_type",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

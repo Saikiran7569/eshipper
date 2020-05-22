@@ -1,36 +1,36 @@
 {
-    "name": "SuppliesOrders",
-    "fields": [
-        {
-            "fieldName": "itemName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "quantity",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "user11",
-            "otherEntityRelationshipName": "suppliesOrders",
-            "relationshipName": "createdByUser",
-            "otherEntityField": "id"
-        }
-    ],
-    "changelogDate": "20200219095000",
-    "entityTableName": "supplies_orders",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "SuppliesOrders",
+  "fields": [
+    {
+      "fieldName": "itemName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user11",
+      "otherEntityRelationshipName": "suppliesOrders",
+      "relationshipName": "createdByUser",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200219095000",
+  "entityTableName": "supplies_orders",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

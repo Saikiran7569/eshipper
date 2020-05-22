@@ -1,0 +1,22 @@
+{
+  "eshipperApp": {
+    "shippingOrder": {
+      "home": {
+        "title": "Shipping Orders",
+        "createLabel": "Create a new Shipping Order",
+        "createOrEditLabel": "Create or edit a Shipping Order",
+        "notFound": "No Shipping Orders found"
+      },
+      "created": "A new Shipping Order is created with identifier {{ param }}",
+      "updated": "A Shipping Order is updated with identifier {{ param }}",
+      "deleted": "A Shipping Order is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shipping Order {{ id }}?"
+      },
+      "detail": {
+        "title": "Shipping Order"
+      },
+      "commodityType": "Commodity Type"
+    }
+  }
+}

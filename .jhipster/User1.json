@@ -1,20 +1,20 @@
 {
-    "name": "User1",
-    "fields": [
-        {
-            "fieldName": "name",
-            "fieldType": "String"
-        }
-    ],
-    "relationships": [],
-    "changelogDate": "20191007071426",
-    "entityTableName": "user_1",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*",
-    "readOnly": false
+  "name": "User1",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20191007071426",
+  "entityTableName": "user_1",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "applications": "*",
+  "readOnly": false
 }

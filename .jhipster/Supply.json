@@ -1,32 +1,32 @@
 {
-    "name": "Supply",
-    "fields": [
-        {
-            "fieldName": "itemName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "logoPath",
-            "fieldType": "String"
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "carrier",
-            "otherEntityRelationshipName": "supply",
-            "relationshipName": "carrier",
-            "otherEntityField": "id"
-        }
-    ],
-    "changelogDate": "20200217121400",
-    "entityTableName": "supply",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "Supply",
+  "fields": [
+    {
+      "fieldName": "itemName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "logoPath",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "carrier",
+      "otherEntityRelationshipName": "supply",
+      "relationshipName": "carrier",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200217121400",
+  "entityTableName": "supply",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

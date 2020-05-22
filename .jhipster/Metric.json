@@ -1,15 +1,15 @@
 {
-    "name": "Metric",
-    "fields": [],
-    "relationships": [],
-    "changelogDate": "20191010100413",
-    "entityTableName": "metric",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "",
-    "applications": "*",
-    "readOnly": false
+  "name": "Metric",
+  "fields": [],
+  "relationships": [],
+  "changelogDate": "20191010100413",
+  "entityTableName": "metric",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "applications": "*",
+  "readOnly": false
 }

@@ -1,0 +1,22 @@
+{
+  "eshipperApp": {
+    "commodityType": {
+      "home": {
+        "title": "Commodity Types",
+        "createLabel": "Create a new Commodity Type",
+        "createOrEditLabel": "Create or edit a Commodity Type",
+        "notFound": "No Commodity Types found"
+      },
+      "created": "A new Commodity Type is created with identifier {{ param }}",
+      "updated": "A Commodity Type is updated with identifier {{ param }}",
+      "deleted": "A Commodity Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Commodity Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Commodity Type"
+      },
+      "name": "Name"
+    }
+  }
+}

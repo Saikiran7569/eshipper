@@ -1,20 +1,20 @@
 {
-    "name": "BatchRateDetail",
-    "fields": [
-        {
-            "fieldName": "rateJson",
-            "fieldType": "String"
-        }
-    ],
-    "relationships": [],
-    "changelogDate": "20191220120920",
-    "entityTableName": "batch_rate_detail",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "BatchRateDetail",
+  "fields": [
+    {
+      "fieldName": "rateJson",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20191220120920",
+  "entityTableName": "batch_rate_detail",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }
