@@ -29,6 +29,8 @@
         "supply": "Supply",
         "suppliesOrders": "Supplies Orders",
         "user11": "User 11",
+        "commodityType": "Commodity Type",
+        "shippingOrder": "Shipping Order",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

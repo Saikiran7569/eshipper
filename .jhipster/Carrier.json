@@ -1,22 +1,22 @@
 {
-    "name": "Carrier",
-    "fields": [],
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "supply",
-            "otherEntityRelationshipName": "carrier",
-            "relationshipName": "supply"
-        }
-    ],
-    "changelogDate": "20200108070042",
-    "entityTableName": "carrier",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "Carrier",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "supply",
+      "otherEntityRelationshipName": "carrier",
+      "relationshipName": "supply"
+    }
+  ],
+  "changelogDate": "20200108070042",
+  "entityTableName": "carrier",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

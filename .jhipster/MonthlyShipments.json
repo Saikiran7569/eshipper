@@ -1,20 +1,20 @@
 {
-    "name": "MonthlyShipments",
-    "fields": [
-        {
-            "fieldName": "range",
-            "fieldType": "String"
-        }
-    ],
-    "relationships": [],
-    "changelogDate": "20200205105140",
-    "entityTableName": "monthly_shipments",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "MonthlyShipments",
+  "fields": [
+    {
+      "fieldName": "range",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200205105140",
+  "entityTableName": "monthly_shipments",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*"
 }

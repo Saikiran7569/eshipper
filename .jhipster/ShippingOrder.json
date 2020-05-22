@@ -1,24 +1,24 @@
 {
-    "name": "ShippingOrder",
-    "fields": [],
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "batchShipmentRateDetail",
-            "otherEntityRelationshipName": "shippingOrder",
-            "relationshipName": "batchRate",
-            "otherEntityField": "id",
-            "ownerSide": true
-        }
-    ],
-    "changelogDate": "20191220102001",
-    "entityTableName": "shipping_order",
-    "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "ShippingOrder",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "commodityType",
+      "otherEntityRelationshipName": "shippingOrder",
+      "relationshipName": "commodityType",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20191220102001",
+  "entityTableName": "shipping_order",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "embedded": false
 }
